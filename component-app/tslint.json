@@ -46,7 +46,7 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-inferrable-types": true,
+    // "no-inferrable-types": true,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
@@ -115,8 +115,8 @@
  
   // [ENABLED, "SUFFIX"] 
   // Where "SUFFIX" is your custom suffix, for instance "Page" for Ionic 2 components. 
-  "component-class-suffix": [true, "Component"],
-  "directive-class-suffix": [true, "Directive"],
+  // "component-class-suffix": [true, "Component"],
+  // "directive-class-suffix": [true, "Directive"],
   "import-destructuring-spacing": true,
   "templates-use-public": true,
   "no-access-missing-member": true,
