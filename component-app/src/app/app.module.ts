@@ -1,22 +1,41 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { FirstPageComponent } from './first-page.component';
+import { PageNotFoundComponent } from './not-found.component';
+
+const appRoutes: Routes = [
+  {
+    path: 'first-page',
+    component: FirstPageComponent,
+    data: { firstPageTitle: 'Route Title First Page' }
+  },
+  {
+    path: '', redirectTo: '', pathMatch: 'full'
+  },
+  {
+    path: '**', component: PageNotFoundComponent
+  }
+];
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstPageComponent
+    FirstPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
