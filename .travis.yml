@@ -7,7 +7,7 @@ node_js:
 
 branches:
   only:
-  - configure-angular2-application
+  - master
 
 before_install:
  - export CHROME_BIN=/usr/bin/google-chrome
@@ -17,3 +17,5 @@ before_install:
  - sudo apt-get install -y libappindicator1 fonts-liberation
  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
  - sudo dpkg -i google-chrome*.deb
+
+ script: ./run_build.sh
