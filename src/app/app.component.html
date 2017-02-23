@@ -2,6 +2,12 @@
   {{title}}
 </h1>
 <nav>
+  <div *ngIf="isLoggedIn">
+    <p>Logged In: {{user_displayName}} ({{user_email}}) <img src="{{user_image}}" style="height: 30px"></p>
+  </div>
+  <div *ngIf="!isLoggedIn">
+    <p>Logged Out!</p>
+  </div>
   <a routerLink="" routerLinkActive="active">Go Home</a>
   <a routerLink="/first-page" routerLinkActive="active">Go to 'First Page'</a>
 </nav>

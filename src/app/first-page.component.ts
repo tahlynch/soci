@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
-    selector: 'first-page',
+    selector: 'cmp-first-page',
     templateUrl: './first-page.component.html'
 })
 export class FirstPageComponent implements OnInit {
