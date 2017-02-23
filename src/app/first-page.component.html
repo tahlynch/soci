@@ -1,1 +1,4 @@
 <div>{{title}}</div>
+<div *ngFor="let item of items | async">
+    {{item.$key}}: {{item.$value}}
+</div>
