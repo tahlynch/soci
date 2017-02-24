@@ -11,24 +11,29 @@ import { PageNotFoundComponent } from './not-found.component';
 import { AuthService } from './providers/auth.service';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MaterialComponent } from './material/material.component';
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 
 const appRoutes: Routes = [
+  {
+    path: '', component: MaterialComponent
+  },
   {
     path: 'first-page',
     component: FirstPageComponent,
     data: { firstPageTitle: 'Route Title First Page' }
   },
   {
-    path: '', component: HomePageComponent
+    path: 'login', component: LoginPageComponent
   },
   {
-    path: 'login', component: LoginPageComponent
+    path: 'material', component: MaterialComponent
   },
   {
     path: '**', component: PageNotFoundComponent
   }
 ];
-
 
 @NgModule({
   declarations: [
@@ -36,14 +41,16 @@ const appRoutes: Routes = [
     FirstPageComponent,
     PageNotFoundComponent,
     LoginPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    MaterialComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MaterialModule
   ],
   providers: [Title, AuthService],
   bootstrap: [AppComponent]
