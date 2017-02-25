@@ -1,0 +1,48 @@
+<p>
+  material works!
+</p>
+
+<p>
+  <md-checkbox>Check me!</md-checkbox>
+</p>
+<p>
+  <md-radio-group>
+    <md-radio-button value="1">Option 1</md-radio-button>
+    <md-radio-button value="2">Option 2</md-radio-button>
+  </md-radio-group>
+</p>
+<p>
+  <md-select placeholder="Favorite food" [(ngModel)]="selectedFood">
+    <md-option *ngFor="let food of foods" [value]="food.viewValue">
+      {{ food.viewValue }}
+    </md-option>
+  </md-select>
+</p>
+<div>{{selectedFood}}</div>
+
+<p>
+  <md-slider></md-slider>
+</p>
+
+<p>
+  <button md-button [mdMenuTriggerFor]="appMenu">
+    <md-icon>more_vert</md-icon>
+    </button>
+  <md-menu #appMenu="mdMenu">
+    <button md-menu-item> Settings </button>
+    <button md-menu-item> Help </button>
+  </md-menu>
+</p>
+
+<p>
+  <md-sidenav-container class="example-container" style="height: 200px;">
+    <md-sidenav #sidenav class="example-sidenav">
+      Jolly good!
+    </md-sidenav>
+    <div class="example-sidenav-content">
+      <button md-button (click)="sidenav.open()">
+          Open sidenav
+          </button>
+    </div>
+  </md-sidenav-container>
+</p>
