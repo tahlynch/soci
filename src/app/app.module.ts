@@ -17,7 +17,7 @@ import 'hammerjs';
 
 const appRoutes: Routes = [
   {
-    path: '', component: MaterialComponent
+    path: '', component: HomePageComponent
   },
   {
     path: 'first-page',
