@@ -1,3 +1,4 @@
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 .layout-column {
   display: -webkit-box;
   display: -ms-flexbox;

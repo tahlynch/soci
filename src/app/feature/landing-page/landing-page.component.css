@@ -1,8 +1,5 @@
 :host {
   height: 100%;
   overflow: auto;
-}
-.temp-container {
-  height: 200px;
   background-color: white;
 }
