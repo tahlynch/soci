@@ -82,8 +82,27 @@
     font-size: 24px;
 }
 
+.sideNav-button{
+  display: none;
+  margin: 0 12px 0 12px;
+  cursor: pointer;
+  user-select: none;
+
+  .md-icon{
+    color: #ffcb2b;
+  }
+}
+
 @media (max-width: 800px) {
     .app-bar {
         height: 48px
+    }
+
+    .logo-button{
+      display: none;
+    }
+
+    .sideNav-button{
+      display: flex;
     }
 }

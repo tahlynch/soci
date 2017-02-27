@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FeatureService } from '../providers/feature.service';
 
 @Component({
   selector: 'app-bar',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-bar.component.css']
 })
 export class AppBarComponent implements OnInit {
-
-  constructor() { }
+  constructor(private featureService: FeatureService) { }
 
   ngOnInit() {
   }
 
+  onClicked() {
+    this.featureService.openSideNav();
+  }
 }
