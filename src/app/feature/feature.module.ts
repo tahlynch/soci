@@ -9,6 +9,7 @@ import { FeatureRoutingModule } from './feature-routing.module';
 import { FeatureService } from './providers/feature.service';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import 'hammerjs';
     FeatureRoutingModule,
     MaterialModule
   ],
-  declarations: [LandingPageComponent, AppBarComponent, FeatureComponent],
+  declarations: [LandingPageComponent, AppBarComponent, FeatureComponent, FooterComponent],
   providers: [FeatureService]
 })
 export class FeatureModule { }

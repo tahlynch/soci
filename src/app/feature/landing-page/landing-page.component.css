@@ -1,5 +1,12 @@
 :host {
   height: 100%;
   overflow: auto;
-  background-color: white;
+  background-color: #ffffff;
+}
+.sideNav-container {
+  height: 100%;
+  background-color: #ffffff;
+}
+.sideNav-container .sideNav {
+  width: 300px;
 }
