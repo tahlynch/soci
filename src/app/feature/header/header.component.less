@@ -1,20 +1,24 @@
 :host {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: block;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    background-color: white;
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
 .header {
+    max-width: 1800px;
+    margin: 0 auto;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     height: 70px;
     border-bottom: 1px solid #EDEDED;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
 }
 
 .top-left {
@@ -82,27 +86,28 @@
     font-size: 24px;
 }
 
-.sideNav-button{
-  display: none;
-  margin: 0 12px 0 12px;
-  cursor: pointer;
-  user-select: none;
+.sideNav-button {
+    display: none;
+    margin: 0 12px 0 12px;
+    cursor: pointer;
+    user-select: none;
+    .md-icon {
+        color: #ffcb2b;
+    }
+}
 
-  .md-icon{
-    color: #ffcb2b;
-  }
+.binding-at-top {
+    box-shadow: none;
 }
 
 @media (max-width: 800px) {
     .header {
         height: 48px
     }
-
-    .logo-button{
-      display: none;
+    .logo-button {
+        display: none;
     }
-
-    .sideNav-button{
-      display: flex;
+    .sideNav-button {
+        display: flex;
     }
 }

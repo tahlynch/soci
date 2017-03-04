@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FeatureService } from '../providers/feature.service';
 
 @Component({
@@ -7,12 +7,25 @@ import { FeatureService } from '../providers/feature.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private featureService: FeatureService) { }
+  isScreenAtTop: Boolean;
+
+  constructor(private featureService: FeatureService) {
+    this.onWindowScroll();
+  }
 
   ngOnInit() {
   }
 
   onClicked() {
     this.featureService.openSideNav();
+  }
+
+  @HostListener('window:scroll', [])
+  private onWindowScroll() {
+    if (window.scrollY > 0) {
+      this.isScreenAtTop = false;
+    } else {
+      this.isScreenAtTop = true;
+    }
   }
 }
