@@ -1,18 +1,16 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FeatureService } from '../providers/feature.service';
+
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   isScreenAtTop: Boolean;
-  logoImage = require('assets/images/logo.png');
+  logoImage = require('assets/images/feature-icon.svg');
   constructor(private featureService: FeatureService) {
     this.onWindowScroll();
-  }
-
-  ngOnInit() {
   }
 
   onClicked() {

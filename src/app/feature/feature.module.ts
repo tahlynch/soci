@@ -10,6 +10,7 @@ import { FeatureService } from './providers/feature.service';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 import { FooterComponent } from './footer/footer.component';
+import { FirstComponent } from './first/first.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { FooterComponent } from './footer/footer.component';
     FeatureRoutingModule,
     MaterialModule
   ],
-  declarations: [LandingPageComponent, HeaderComponent, FeatureComponent, FooterComponent],
+  declarations: [LandingPageComponent, HeaderComponent, FeatureComponent, FooterComponent, FirstComponent],
   providers: [FeatureService]
 })
 export class FeatureModule { }

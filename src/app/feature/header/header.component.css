@@ -10,6 +10,7 @@
   z-index: 1;
 }
 .header {
+  background-color: #ffffff;
   max-width: 1800px;
   margin: 0 auto;
   display: -webkit-box;
@@ -48,6 +49,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  margin-left: 65px;
 }
 .logo {
   display: -webkit-box;
@@ -67,7 +69,6 @@
   display: flex;
 }
 .logo-icon .icon {
-  margin-left: 65px;
   height: 50px;
   width: 50px;
 }
@@ -108,13 +109,14 @@
   padding: 7px 14px;
   border-bottom: 3px solid transparent;
   border-top: 3px solid transparent;
-}
-.nav-item a {
   color: #4A4A4A;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
+}
+.active {
+  border-bottom: 3px solid #5471F9;
 }
 .nav-item:hover {
   border-bottom: 3px solid #BCC8FB;

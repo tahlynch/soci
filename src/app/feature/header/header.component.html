@@ -1,8 +1,7 @@
-<div class="header"
-      [class.binding-at-top]="isScreenAtTop">
+<div class="header" [class.binding-at-top]="isScreenAtTop">
   <div class="top-left">
     <div class="logo-button">
-      <div class="logo">
+      <div class="logo" routerLink="/feature">
         <div class="logo-icon">
           <img class="icon" [src]="logoImage">
         </div>
@@ -14,17 +13,17 @@
     </div>
   </div>
   <nav class="nav">
-    <div class="nav-item">
-      <a routerLink="/feature">First</a>
+    <div class="nav-item" routerLink="/feature/first" routerLinkActive="active">
+      First
     </div>
-    <div class="nav-item">
-      <a routerLink="/feature">Second</a>
+    <div class="nav-item" routerLink="/feature/second" routerLinkActive="active">
+      Second
     </div>
-    <div class="nav-item">
-      <a routerLink="/feature">Third</a>
+    <div class="nav-item" routerLink="/feature/third" routerLinkActive="active">
+      Third
     </div>
-    <div class="nav-item">
-      <a routerLink="/feature">Fourth</a>
+    <div class="nav-item" routerLink="/feature/fourth" routerLinkActive="active">
+      Fourth
     </div>
   </nav>
 </div>
