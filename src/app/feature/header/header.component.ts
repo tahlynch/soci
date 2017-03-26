@@ -8,7 +8,7 @@ import { FeatureService } from '../providers/feature.service';
 })
 export class HeaderComponent {
   isScreenAtTop: Boolean;
-  logoImage = require('assets/images/feature-icon.svg');
+  logoImage = require('./feature-icon.svg');
   constructor(private featureService: FeatureService) {
     this.onWindowScroll();
   }
