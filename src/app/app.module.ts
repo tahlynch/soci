@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './not-found/not-found.component';
 import { FeatureModule } from './feature/feature.module';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     FeatureModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

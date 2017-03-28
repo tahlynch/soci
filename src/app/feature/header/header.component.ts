@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Output, EventEmitter } from '@angular/core';
 import { FeatureService } from '../providers/feature.service';
 
 @Component({
@@ -9,12 +9,14 @@ import { FeatureService } from '../providers/feature.service';
 export class HeaderComponent {
   isScreenAtTop: Boolean;
   logoImage = require('./feature-icon.svg');
+  @Output() isHamburgerClicked = new EventEmitter();
+
   constructor(private featureService: FeatureService) {
     this.onWindowScroll();
   }
 
   onClicked() {
-    this.featureService.openSideNav();
+    this.isHamburgerClicked.emit();
   }
 
   @HostListener('window:scroll', [])

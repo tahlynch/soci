@@ -8,6 +8,7 @@ import { FeatureComponent } from './feature.component';
 import { FeatureRoutingModule } from './feature-routing.module';
 import { FeatureService } from './providers/feature.service';
 import { MaterialModule } from '@angular/material';
+import { NavigationModule } from './navigation/navigation.module';
 import 'hammerjs';
 import { FooterComponent } from './footer/footer.component';
 import { FirstComponent } from './first/first.component';
@@ -16,7 +17,8 @@ import { FirstComponent } from './first/first.component';
   imports: [
     CommonModule,
     FeatureRoutingModule,
-    MaterialModule
+    MaterialModule,
+    NavigationModule
   ],
   declarations: [LandingPageComponent, HeaderComponent, FeatureComponent, FooterComponent, FirstComponent],
   providers: [FeatureService]
