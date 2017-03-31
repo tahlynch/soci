@@ -13,7 +13,7 @@ export class FooterComponent implements OnInit {
   }
 
   onFooterButtonClicked() {
-    window.scrollTo(0, 0);
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   }
 
 }
