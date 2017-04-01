@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './not-found/not-found.component';
-import { LandingPageComponent } from './feature/landing-page/landing-page.component';
+import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { FirstComponent } from './first/first.component';
+
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/feature', pathMatch: 'full' },
+  {
+    path: '', component: LandingPageComponent
+  },
   {
     path: '**', component: PageNotFoundComponent
   }

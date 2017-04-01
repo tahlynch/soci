@@ -1,4 +1,4 @@
-:host {
+#header {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,8 +8,6 @@
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   z-index: 1;
-}
-.header {
   background-color: #ffffff;
   max-width: 1800px;
   margin: 0 auto;
@@ -19,6 +17,9 @@
   justify-content: space-between;
   height: 70px;
   border-bottom: 1px solid #EDEDED;
+}
+#spacer {
+  height: 70px;
 }
 .top-left {
   display: -webkit-box;
@@ -118,7 +119,10 @@
   border-bottom: 3px solid #BCC8FB;
 }
 @media (max-width: 800px) {
-  .header {
+  #header {
+    height: 48px;
+  }
+  #spacer {
     height: 48px;
   }
   .logo-button {
