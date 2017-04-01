@@ -12,6 +12,7 @@ import { NavigationModule } from './navigation/navigation.module';
 import 'hammerjs';
 import { FooterComponent } from './footer/footer.component';
 import { FirstComponent } from './first/first.component';
+import { TransformDirective } from './transform.directive';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { FirstComponent } from './first/first.component';
     MaterialModule,
     NavigationModule
   ],
-  declarations: [LandingPageComponent, HeaderComponent, FeatureComponent, FooterComponent, FirstComponent],
+  declarations: [LandingPageComponent, HeaderComponent, FeatureComponent, FooterComponent, FirstComponent, TransformDirective],
   providers: [FeatureService]
 })
 export class FeatureModule { }
