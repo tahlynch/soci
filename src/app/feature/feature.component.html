@@ -1,0 +1,7 @@
+<sidenav [isOpen]="isSideNavOpen" (onClose)="toggleSideNav()"></sidenav>
+<header (isHamburgerClicked)="toggleSideNav()"></header>
+<!--<div class="foo-container">
+  <div myTransform class="foo-logo"></div>
+  </div>-->
+<router-outlet></router-outlet>
+<app-footer></app-footer>

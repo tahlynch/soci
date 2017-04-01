@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from 'environments/firebase.config';
-import { AuthService } from './providers/auth.service';
 let component: AppComponent;
 let fixture: ComponentFixture<AppComponent>;
 
@@ -22,7 +21,7 @@ describe('AppComponent', () => {
         RouterTestingModule.withRoutes([{path: 'login', component: DefaultComponent}]),
         AngularFireModule.initializeApp(firebaseConfig)
       ],
-      providers: [AuthService]
+      providers: []
     });
     TestBed.compileComponents();
   });
@@ -32,12 +31,4 @@ describe('AppComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // it('should create the app', async(() => {
-  //   expect(component).toBeDefined();
-  // }));
-
-  // it(`should have as title 'Angular 2 Setup'`, async(() => {
-  //   expect(component.title).toEqual('Angular 2 Setup');
-  // }));
 });

@@ -6,53 +6,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from './../environments/firebase.config';
 import { AppComponent } from './app.component';
-import { FirstPageComponent } from './first-page.component';
-import { PageNotFoundComponent } from './not-found.component';
-import { AuthService } from './providers/auth.service';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { MaterialComponent } from './material/material.component';
-import { MaterialModule } from '@angular/material';
-import 'hammerjs';
-
-const appRoutes: Routes = [
-  {
-    path: '', component: HomePageComponent
-  },
-  {
-    path: 'first-page',
-    component: FirstPageComponent,
-    data: { firstPageTitle: 'Route Title First Page' }
-  },
-  {
-    path: 'login', component: LoginPageComponent
-  },
-  {
-    path: 'material', component: MaterialComponent
-  },
-  {
-    path: '**', component: PageNotFoundComponent
-  }
-];
+import { PageNotFoundComponent } from './not-found/not-found.component';
+import { FeatureModule } from './feature/feature.module';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstPageComponent,
     PageNotFoundComponent,
-    LoginPageComponent,
-    HomePageComponent,
-    MaterialComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot(appRoutes),
-    MaterialModule
+    FeatureModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
-  providers: [Title, AuthService],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

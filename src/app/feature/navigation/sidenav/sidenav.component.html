@@ -1,0 +1,4 @@
+<div [@slideInOut]="menuState" class="sidenav">
+  Content
+</div>
+<div *ngIf="isOpen" class="sidenav-shade" (click)="closeSideNav()"></div>
