@@ -6,7 +6,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FeatureComponent } from './feature.component';
 import { FeatureRoutingModule } from './feature-routing.module';
-import { FeatureService } from './providers/feature.service';
 import { MaterialModule } from '@angular/material';
 import { NavigationModule } from './navigation/navigation.module';
 import 'hammerjs';
@@ -22,6 +21,6 @@ import { TransformDirective } from './transform.directive';
     NavigationModule
   ],
   declarations: [LandingPageComponent, HeaderComponent, FeatureComponent, FooterComponent, FirstComponent, TransformDirective],
-  providers: [FeatureService]
+  providers: []
 })
 export class FeatureModule { }

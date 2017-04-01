@@ -1,5 +1,4 @@
 import { Component, HostListener, Output, EventEmitter } from '@angular/core';
-import { FeatureService } from '../providers/feature.service';
 
 @Component({
   selector: 'header',
@@ -11,7 +10,7 @@ export class HeaderComponent {
   logoImage = require('./feature-icon.svg');
   @Output() isHamburgerClicked = new EventEmitter();
 
-  constructor(private featureService: FeatureService) {
+  constructor() {
     this.onWindowScroll();
   }
 
