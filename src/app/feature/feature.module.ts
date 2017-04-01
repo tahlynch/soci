@@ -12,6 +12,17 @@ import 'hammerjs';
 import { FooterComponent } from './footer/footer.component';
 import { FirstComponent } from './first/first.component';
 import { TransformDirective } from './transform.directive';
+import { HeaderscrolledDirective } from './header/header-scrolled.directive';
+
+const declarations = [
+  LandingPageComponent,
+  HeaderComponent,
+  FeatureComponent,
+  FooterComponent,
+  FirstComponent,
+  TransformDirective,
+  HeaderscrolledDirective
+];
 
 @NgModule({
   imports: [
@@ -20,7 +31,7 @@ import { TransformDirective } from './transform.directive';
     MaterialModule,
     NavigationModule
   ],
-  declarations: [LandingPageComponent, HeaderComponent, FeatureComponent, FooterComponent, FirstComponent, TransformDirective],
+  declarations: declarations,
   providers: []
 })
 export class FeatureModule { }

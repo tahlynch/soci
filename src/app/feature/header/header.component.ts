@@ -1,4 +1,4 @@
-import { Component, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'header',
@@ -6,24 +6,12 @@ import { Component, HostListener, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  isScreenAtTop: Boolean;
   logoImage = require('./feature-icon.svg');
   @Output() isHamburgerClicked = new EventEmitter();
 
-  constructor() {
-    this.onWindowScroll();
-  }
+  constructor() {}
 
   onClicked() {
     this.isHamburgerClicked.emit();
-  }
-
-  @HostListener('window:scroll', [])
-  private onWindowScroll() {
-    if (window.scrollY > 0) {
-      this.isScreenAtTop = false;
-    } else {
-      this.isScreenAtTop = true;
-    }
   }
 }
