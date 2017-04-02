@@ -1,7 +1,8 @@
 export const firebaseConfig = {
-    apiKey: 'AIzaSyCypqbUppRn3wpd_bNCxd8q6scy2tMhHsg',
-    authDomain: 'millsytest.firebaseapp.com',
-    databaseURL: 'https://millsytest.firebaseio.com',
-    storageBucket: 'millsytest.appspot.com',
-    messagingSenderId: '234670545729'
+    apiKey: 'AIzaSyDNDRUb8B462zXKaotoh6l7ifgiQl2GZ6A',
+    authDomain: 'first-3ef14.firebaseapp.com',
+    databaseURL: 'https://first-3ef14.firebaseio.com',
+    projectId: 'first-3ef14',
+    storageBucket: 'first-3ef14.appspot.com',
+    messagingSenderId: '1083675026434'
 };

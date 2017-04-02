@@ -21,6 +21,8 @@ import { TransformDirective } from './transform.directive';
 import { HeaderscrolledDirective } from './header/header-scrolled.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import * as firebase from 'firebase';
+
 const declarations = [
   AppComponent,
   PageNotFoundComponent,
@@ -31,7 +33,7 @@ const declarations = [
   TransformDirective,
   HeaderscrolledDirective
 ];
-
+firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: declarations,
   imports: [
