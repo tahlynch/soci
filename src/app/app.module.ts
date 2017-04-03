@@ -20,7 +20,7 @@ import { FirstComponent } from './first/first.component';
 import { TransformDirective } from './transform.directive';
 import { HeaderscrolledDirective } from './header/header-scrolled.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { StoryService } from './providers/story.service';
 import * as firebase from 'firebase';
 
 const declarations = [
@@ -47,7 +47,7 @@ firebase.initializeApp(firebaseConfig);
     MaterialModule,
     NavigationModule
   ],
-  providers: [Title],
+  providers: [Title, StoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

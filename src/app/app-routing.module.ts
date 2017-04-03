@@ -10,6 +10,9 @@ const appRoutes: Routes = [
     path: '', component: LandingPageComponent
   },
   {
+    path: 'first', component: FirstComponent
+  },
+  {
     path: '**', component: PageNotFoundComponent
   }
 ];
