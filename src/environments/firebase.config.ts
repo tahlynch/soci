@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-    apiKey: 'AIzaSyDNDRUb8B462zXKaotoh6l7ifgiQl2GZ6A',
-    authDomain: 'first-3ef14.firebaseapp.com',
-    databaseURL: 'https://first-3ef14.firebaseio.com',
-    projectId: 'first-3ef14',
-    storageBucket: 'first-3ef14.appspot.com',
-    messagingSenderId: '1083675026434'
+    apiKey: 'AIzaSyAcNH0FGoMqGjTqt1oB8m7DZXI1jKrBzfQ',
+    authDomain: 'soci-2382e.firebaseapp.com',
+    databaseURL: 'https://soci-2382e.firebaseio.com',
+    projectId: 'soci-2382e',
+    storageBucket: 'soci-2382e.appspot.com',
+    messagingSenderId: '120943099917'
 };
