@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange, AnimationTransitionEvent } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import 'rxjs/add/operator/first';
 
@@ -14,7 +14,8 @@ import 'rxjs/add/operator/first';
       state('out', style({
         transform: 'translate3d(0, 0, 0)'
       })),
-      transition('in => out', animate('300ms ease-in-out'))
+      transition('in => out', animate('250ms ease-in-out')),
+      transition('out => in', animate('150ms ease-in-out'))
     ]),
   ]
 })
@@ -26,7 +27,6 @@ export class SidenavComponent implements OnChanges {
   @Output() onCloseBegin = new EventEmitter();
   @Output() onClose = new EventEmitter();
   menuState = 'in';
-
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -37,7 +37,6 @@ export class SidenavComponent implements OnChanges {
 
   open(): Promise<void> {
     this.onOpenBegin.emit();
-    this.isOpen = true;
     return Promise.resolve();
   }
 
@@ -51,7 +50,6 @@ export class SidenavComponent implements OnChanges {
 
   closeSideNav() {
     this.menuState = 'in';
-    this.isOpen = false;
     this.onClose.emit();
   }
 }

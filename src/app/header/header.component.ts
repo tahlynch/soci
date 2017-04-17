@@ -6,7 +6,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  logoImage = require('./feature-icon.svg');
+  logoImage = '/assets/images/feature-icon.svg';
   @Output() isHamburgerClicked = new EventEmitter();
 
   constructor() {}

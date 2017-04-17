@@ -17,10 +17,12 @@ import { NavigationModule } from './navigation/navigation.module';
 import 'hammerjs';
 import { FooterComponent } from './footer/footer.component';
 import { FirstComponent } from './first/first.component';
+import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
 import { TransformDirective } from './transform.directive';
 import { HeaderscrolledDirective } from './header/header-scrolled.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { StoryService } from './providers/story.service';
+import { SidenavContentComponent } from './sidenav-content/sidenav-content.component';
 import * as firebase from 'firebase';
 
 const declarations = [
@@ -30,8 +32,10 @@ const declarations = [
   HeaderComponent,
   FooterComponent,
   FirstComponent,
+  WhatWeDoComponent,
   TransformDirective,
-  HeaderscrolledDirective
+  HeaderscrolledDirective,
+  SidenavContentComponent
 ];
 firebase.initializeApp(firebaseConfig);
 @NgModule({
