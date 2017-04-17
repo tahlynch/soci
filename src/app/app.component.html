@@ -1,5 +1,5 @@
 <sidenav [isOpen]="isSideNavOpen" (onClose)="toggleSideNav()">
-  <sidenav-content></sidenav-content>
+  <sidenav-content (toggleSideNav)="toggleSideNav()"></sidenav-content>
 </sidenav>
 <header (isHamburgerClicked)="toggleSideNav()"></header>
 <router-outlet></router-outlet>

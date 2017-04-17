@@ -50,7 +50,7 @@
 }
 
 .nav-item {
-  font-size: 14px;
+    font-size: 14px;
     margin-right: 40px;
     cursor: pointer;
 }
@@ -61,25 +61,68 @@
     cursor: pointer;
 }
 
-@media (max-width: 800px) {
-.footer{
-  padding: 20px 20px;
+.special-olympics-logo {
+    cursor: pointer;
 }
 
+.soci-logo {
+    padding: 50px;
+    border-top: 1px solid #EDEDED;
+    background-color: #ffffff;
+    .logo {
+        width: 310px;
+    }
+}
+
+.follow-us{
+  display: flex;
+margin-right: 40px;
+  .text{
+    margin-right: 15px;
+  }
+}
+
+.email-us{
+  display: flex;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.email-us:hover{
+  color: #555555;
+}
+
+.right{
+  display: flex;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+
+  .soci-logo{
+    padding: 50px 0;
+  }
+    .footer {
+        padding: 20px 20px;
+    }
     .nav {
         flex-direction: column;
     }
-
-    .nav-item{
-      margin-top: 5px;
-      margin-bottom: 5px;
+    .nav-item {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .footer-links {
+        flex-direction: column;
+    }
+    .right {
+        margin-top: 20px;
+        flex-direction: column;
     }
 
-    .footer-links{
-      flex-direction: column;
-    }
-
-    .icons{
+    .email-us{
       margin-top: 20px;
+      display: block;
     }
 }

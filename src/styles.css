@@ -19,3 +19,6 @@ h3 {
   font-size: 15px;
   font-weight: normal;
 }
+*:focus {
+  outline: none;
+}

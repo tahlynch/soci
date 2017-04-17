@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'sidenav-content',
@@ -7,8 +7,9 @@ import { Component } from '@angular/core';
 })
 export class SidenavContentComponent {
   specialOlympoicsLogo = '/assets/images/special-olympics-logo.svg';
+  @Output() toggleSideNav = new EventEmitter();
 
   closeSideNav() {
-
+    this.toggleSideNav.emit();
   }
 }

@@ -1,9 +1,14 @@
+<div class="soci-logo">
+  <img class="logo" src="/assets/images/soci-logo.svg" alt="SOCI Logo">
+</div>
 <div class="footer">
   <div *ngIf="isButtonVisible" class="footer-button" data-scroll aria-label="Back to top" (click)="onFooterButtonClicked()">
     <md-icon class="md-icon">keyboard_arrow_up</md-icon>
   </div>
   <div class="footer-content">
-    <div class="soci-title">SOCI</div>
+    <a href="http://www.specialolympics.org/">
+      <img class="special-olympics-logo" src="/assets/images/speical-olympics-full-logo.svg" href="www.google.com" alt="Special Olympics Logo">
+    </a>
     <div class="footer-links">
       <nav class="nav">
         <div class="nav-item" routerLink="/first" routerLinkActive="active">
@@ -19,10 +24,14 @@
           Link 4
         </div>
       </nav>
-      <div class="icons">
-        <img class="icon" [src]="youtubeImage" alt="">
-        <img class="icon" [src]="facebookImage" alt="">
-        <img class="icon" [src]="instagramImage" alt="">
+      <div class="right">
+        <div class="follow-us">
+          <div class="text">FOLLOW US</div>
+          <img class="icon" [src]="youtubeImage" alt="">
+          <img class="icon" [src]="facebookImage" alt="">
+          <img class="icon" [src]="instagramImage" alt="">
+        </div>
+        <div class="email-us">EMAIL US</div>
       </div>
     </div>
   </div>
