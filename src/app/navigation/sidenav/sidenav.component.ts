@@ -1,4 +1,13 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange, AnimationTransitionEvent } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+  SimpleChange,
+  AnimationTransitionEvent
+} from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import 'rxjs/add/operator/first';
 
@@ -42,14 +51,26 @@ export class SidenavComponent implements OnChanges {
 
   updateState(isOpen: boolean) {
     if (isOpen) {
-      this.menuState = 'out';
+      this.openMenu();
     } else {
-      this.menuState = 'in';
+      this.closeMenu();
     }
   }
 
   closeSideNav() {
-    this.menuState = 'in';
+    this.closeMenu();
     this.onClose.emit();
+  }
+
+  swipe() {
+    this.closeSideNav();
+  }
+
+  private openMenu() {
+    this.menuState = 'out';
+  }
+
+  private closeMenu() {
+    this.menuState = 'in';
   }
 }

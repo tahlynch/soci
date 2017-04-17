@@ -1,14 +1,8 @@
-:host {
+.footer {
     position: relative;
     display: flex;
     background-color: #FAFAFA;
     padding: 50px 80px;
-    align-items: center;
-}
-
-.footer-content {
-    position: relative;
-    margin: 0 auto;
 }
 
 .footer-button {
@@ -32,4 +26,60 @@
 
 .footer-button:hover {
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 0 6px 0 rgba(0, 0, 0, 0.1)
+}
+
+.footer-content {
+    width: 100%;
+    color: #808080;
+}
+
+.soci-title {
+    font-size: 40px;
+}
+
+.footer-links {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav-item {
+  font-size: 14px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.icon {
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+.footer{
+  padding: 20px 20px;
+}
+
+    .nav {
+        flex-direction: column;
+    }
+
+    .nav-item{
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .footer-links{
+      flex-direction: column;
+    }
+
+    .icons{
+      margin-top: 20px;
+    }
 }

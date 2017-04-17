@@ -1,6 +1,29 @@
-<div class="footer-button" data-scroll aria-label="Back to top" (click)="onFooterButtonClicked()">
+<div class="footer">
+  <div *ngIf="isButtonVisible" class="footer-button" data-scroll aria-label="Back to top" (click)="onFooterButtonClicked()">
     <md-icon class="md-icon">keyboard_arrow_up</md-icon>
   </div>
-<div class="footer-content">
-  Footer Content
+  <div class="footer-content">
+    <div class="soci-title">SOCI</div>
+    <div class="footer-links">
+      <nav class="nav">
+        <div class="nav-item" routerLink="/first" routerLinkActive="active">
+          Link 1
+        </div>
+        <div class="nav-item" routerLink="/whatwedo" routerLinkActive="active">
+          Link 2
+        </div>
+        <div class="nav-item" routerLink="/third" routerLinkActive="active">
+          Link 3
+        </div>
+        <div class="nav-item" routerLink="/fourth" routerLinkActive="active">
+          Link 4
+        </div>
+      </nav>
+      <div class="icons">
+        <img class="icon" [src]="youtubeImage" alt="">
+        <img class="icon" [src]="facebookImage" alt="">
+        <img class="icon" [src]="instagramImage" alt="">
+      </div>
+    </div>
+  </div>
 </div>

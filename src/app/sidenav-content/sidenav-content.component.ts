@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class SidenavContentComponent {
   specialOlympoicsLogo = '/assets/images/special-olympics-logo.svg';
+
+  closeSideNav() {
+
+  }
 }
