@@ -1,0 +1,9 @@
+{
+  "name": "navigation",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "hammerjs": "^2.0.8"
+  }
+}

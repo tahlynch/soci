@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor() {}
+  isSideNavOpen = false;
+
+  constructor() { }
+
+  toggleSideNav() {
+    this.isSideNavOpen = !this.isSideNavOpen;
+  }
 }

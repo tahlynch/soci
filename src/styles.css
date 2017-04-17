@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 html,
 body {
   margin: 0px;
@@ -11,4 +10,15 @@ body {
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
+}
+h2 {
+  font-size: 24px;
+  font-weight: normal;
+}
+h3 {
+  font-size: 15px;
+  font-weight: normal;
+}
+*:focus {
+  outline: none;
 }
