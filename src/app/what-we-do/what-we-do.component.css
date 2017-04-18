@@ -1,5 +1,82 @@
 :host {
-  display: flex;
-  flex: 1;
   background: #ffffff;
+}
+.left-padding {
+  padding-left: 250px !important;
+}
+.white-text {
+  color: #ffffff !important;
+}
+.title-container {
+  padding: 120px 60px;
+}
+.title-content {
+  max-width: 600px;
+}
+.title-content .heading {
+  font-size: 50px;
+  margin: 30px 0;
+}
+.title-content .body {
+  font-size: 18px;
+  line-height: 35px;
+}
+.first-container {
+  position: relative;
+}
+.first-container .shape {
+  top: 255px;
+  left: 900px;
+  position: absolute;
+  width: 600px;
+  background-color: #059334;
+  padding: 60px;
+}
+.first-container .shape-heading {
+  margin: 20px 0;
+  font-size: 30px;
+}
+.first-container .shape-body {
+  font-size: 16px;
+  line-height: 35px;
+}
+.body-container {
+  padding: 120px 60px;
+}
+.body-content {
+  max-width: 600px;
+}
+.body-content .heading {
+  font-size: 40px;
+  margin: 30px 0;
+}
+.body-content .body {
+  font-size: 16px;
+  line-height: 35px;
+}
+.real-sports-container {
+  background-color: #f9d050;
+  padding: 120px 60px;
+}
+.real-sports-container .body-content {
+  max-width: initial;
+}
+.healthier-athletes-container {
+  position: relative;
+}
+.healthier-athletes-container .shape {
+  bottom: -100px;
+  left: 850px;
+  position: absolute;
+  width: 600px;
+  background-color: #0b50a0;
+  padding: 60px;
+}
+.healthier-athletes-container .shape-heading {
+  margin: 20px 0;
+  font-size: 30px;
+}
+.healthier-athletes-container .shape-body {
+  font-size: 16px;
+  line-height: 35px;
 }
