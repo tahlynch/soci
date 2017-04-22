@@ -1,17 +1,12 @@
 :host {
   background: #ffffff;
-}
-.left-padding {
-  padding-left: 250px !important;
+  overflow-x: hidden;
 }
 .white-text {
   color: #ffffff !important;
 }
 .title-container {
   padding: 120px 60px;
-}
-.title-content {
-  max-width: 600px;
 }
 .title-content .heading {
   font-size: 50px;
@@ -22,6 +17,7 @@
   line-height: 35px;
 }
 .first-container {
+  margin: 0 auto;
   position: relative;
 }
 .first-container .shape {
@@ -41,10 +37,8 @@
   line-height: 35px;
 }
 .body-container {
+  margin: 0 auto;
   padding: 120px 60px;
-}
-.body-content {
-  max-width: 600px;
 }
 .body-content .heading {
   font-size: 40px;
@@ -55,6 +49,7 @@
   line-height: 35px;
 }
 .real-sports-container {
+  margin: 0 auto;
   background-color: #f9d050;
   padding: 120px 60px;
 }
@@ -79,4 +74,18 @@
 .healthier-athletes-container .shape-body {
   font-size: 16px;
   line-height: 35px;
+}
+.page-item-width {
+  width: 60%;
+}
+@media (max-width: 800px) {
+  .title-container {
+    padding: 30px;
+  }
+  #what-we-do__image {
+    height: 225px;
+  }
+  .page-item-width {
+    width: 100%;
+  }
 }
