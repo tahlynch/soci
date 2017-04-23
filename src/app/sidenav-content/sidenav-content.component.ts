@@ -11,5 +11,6 @@ export class SidenavContentComponent {
 
   closeSideNav() {
     this.toggleSideNav.emit();
+    window.scroll({ top: 0, left: 0 });
   }
 }

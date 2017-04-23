@@ -9,9 +9,13 @@ export class HeaderComponent {
   logoImage = '/assets/images/special-olympics-logo.svg';
   @Output() isHamburgerClicked = new EventEmitter();
 
-  constructor() {}
+  constructor() { }
 
   onClicked() {
     this.isHamburgerClicked.emit();
+  }
+
+  scrollToTop() {
+    window.scroll({ top: 0, left: 0 });
   }
 }
