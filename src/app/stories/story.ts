@@ -6,4 +6,5 @@ export class Story {
   created?: number;
   isDraft = false;
   isAccepted = true;
+  auther: string;
 }

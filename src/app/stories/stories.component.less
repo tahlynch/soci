@@ -1,5 +1,53 @@
-:host{
-  display: flex;
-  flex: 1;
-  background-color: #ffffff;
+:host {
+    background-color: #ffffff;
+}
+
+.tiles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile__container {
+    cursor: pointer;
+    max-width: 100%;
+    min-width: 300px;
+    flex: 1;
+    margin: 5px;
+    margin-bottom: 10px;
+}
+
+.tile__content {
+    flex: 1;
+}
+
+.tile__content:hover {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.tile__content:active {
+    box-shadow: none;
+}
+
+.tile__content__image {
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+}
+
+.tile__content__title {
+    font-size: 28px;
+    line-height: 28px;
+    word-wrap: break-word;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.tile__content__author {
+    line-height: 12px;
+    opacity: .5;
+}
+
+.tile__content__date {
+    font-size: 12px;
+    opacity: .5;
 }

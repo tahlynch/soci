@@ -25,6 +25,7 @@ export class StoriesComponent implements OnInit {
   onSubmit() {
     this.submitted = false;
     this.model.created = Date.now();
+    this.model.auther = 'Millsy Pacino';
     this.storyService.uploadStory(this.model, this.fileList);
   }
 }

@@ -1,4 +1,26 @@
-<div [hidden]="submitted">
+<div class="main__container">
+  <div class="main__content">
+    <div class="main__content__container">
+      <div class="main__content__left">
+        <div class="main__content__title">Stories</div>
+        <div class="main__content__body">In every corner of the earth, Special Olympics is changing the lives of people with intellectual disabilities. These
+          stories come from the Cayman Islands.</div>
+      </div>
+      <img class="main__content__logo" src="/assets/images/special-olympics-logo.svg" alt="Special Olympics Logo">
+    </div>
+  </div>
+</div>
+<div class="tiles">
+  <div *ngFor="let story of stories | async" class="tile__container">
+    <div class="tile__content">
+      <div class="tile__content__image" [ngStyle]="{'background-image':'url(' + story.documentUrls[0] + ')'}"></div>
+      <div class="tile__content__title">{{story.title}}</div>
+      <div class="tile__content__author">Millsy Pacino</div>
+      <div class="tile__content__date">{{story.created | date:'fullDate'}}</div>
+    </div>
+  </div>
+</div>
+<!--<div [hidden]="submitted">
   <h1>Photo Form</h1>
   <form (ngSubmit)="onSubmit()" #photoForm="ngForm">
     <div class="form-group">
@@ -14,12 +36,4 @@
     </div>
     <button type="submit" class="" [disabled]="!photoForm.form.valid">Submit</button>
   </form>
-</div>
-<!--&nbsp;&nbsp;
-<div *ngFor="let story of stories | async">
-  <div>Title: {{story.title}}</div>
-  <div>{{story.body}}</div>
-  <div *ngFor="let url of story.documentUrls">
-    <img [src]="url" />
-  </div>
 </div>-->
