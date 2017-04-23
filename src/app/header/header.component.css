@@ -17,6 +17,7 @@
   justify-content: space-between;
   height: 70px;
   border-bottom: 1px solid #EDEDED;
+  z-index: 100;
 }
 #spacer {
   height: 70px;

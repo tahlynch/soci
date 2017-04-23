@@ -27,6 +27,7 @@
   margin-right: 20px;
 }
 .nav-item {
+  display: initial;
   cursor: pointer;
   margin-top: 25px;
   margin-bottom: 25px;
