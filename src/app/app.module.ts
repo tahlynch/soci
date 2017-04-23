@@ -16,7 +16,7 @@ import { MaterialModule } from '@angular/material';
 import { NavigationModule } from './navigation/navigation.module';
 import 'hammerjs';
 import { FooterComponent } from './footer/footer.component';
-import { FirstComponent } from './first/first.component';
+import { StoriesComponent } from './stories/stories.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
 import { TransformDirective } from './transform.directive';
 import { HeaderscrolledDirective } from './header/header-scrolled.directive';
@@ -31,7 +31,7 @@ const declarations = [
   LandingPageComponent,
   HeaderComponent,
   FooterComponent,
-  FirstComponent,
+  StoriesComponent,
   WhatWeDoComponent,
   TransformDirective,
   HeaderscrolledDirective,

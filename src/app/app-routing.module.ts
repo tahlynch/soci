@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { FirstComponent } from './first/first.component';
+import { StoriesComponent } from './stories/stories.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
 const appRoutes: Routes = [
   {
     path: '', component: LandingPageComponent
   },
   {
-    path: 'first', component: FirstComponent
+    path: 'stories', component: StoriesComponent
   },
   {
     path: 'whatwedo', component: WhatWeDoComponent
