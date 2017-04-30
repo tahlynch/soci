@@ -1,4 +1,5 @@
 export class Story {
+  id: string;
   title: string;
   body: string;
   uid: string;
@@ -6,4 +7,5 @@ export class Story {
   created?: number;
   isDraft = false;
   isAccepted = true;
+  auther: string;
 }

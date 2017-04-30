@@ -1,7 +1,7 @@
 <div id="header" headerscrolled>
   <div class="top-left">
     <div class="logo-button">
-      <div class="logo" routerLink="">
+      <div class="logo" routerLink="" (click)="scrollToTop()">
         <div class="logo-icon">
           <img class="icon" [src]="logoImage">
         </div>
@@ -13,16 +13,16 @@
     </div>
   </div>
   <nav class="nav">
-    <div class="nav-item" routerLink="/first" routerLinkActive="active">
-      First
+    <div class="nav-item" routerLink="/stories" routerLinkActive="active" (click)="scrollToTop()">
+      Stories
     </div>
-    <div class="nav-item" routerLink="/whatwedo" routerLinkActive="active">
+    <div class="nav-item" routerLink="/whatwedo" routerLinkActive="active" (click)="scrollToTop()">
       What We Do
     </div>
-    <div class="nav-item" routerLink="/third" routerLinkActive="active">
+    <div class="nav-item" routerLink="/third" routerLinkActive="active" (click)="scrollToTop()">
       Third
     </div>
-    <div class="nav-item" routerLink="/fourth" routerLinkActive="active">
+    <div class="nav-item" routerLink="/fourth" routerLinkActive="active" (click)="scrollToTop()">
       Fourth
     </div>
   </nav>
