@@ -1,4 +1,5 @@
 export class Story {
+  id: string;
   title: string;
   body: string;
   uid: string;

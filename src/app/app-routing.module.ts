@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { StoriesComponent } from './stories/stories.component';
+import { StoryComponent } from './stories/story/story.component'
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
 const appRoutes: Routes = [
   {
@@ -11,6 +12,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'stories', component: StoriesComponent
+  },
+  {
+    path: 'story/:id', component: StoryComponent
   },
   {
     path: 'whatwedo', component: WhatWeDoComponent

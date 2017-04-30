@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StoryService } from '../providers/story.service';
-import { Story } from './story';
+import { Story } from './story/story';
 import { FirebaseListObservable } from 'angularfire2';
 @Component({
   selector: 'stories',
@@ -12,10 +13,15 @@ export class StoriesComponent implements OnInit {
   fileList: FileList;
   model = new Story();
   stories: FirebaseListObservable<any>;
-  constructor(private storyService: StoryService) { }
+  constructor(private storyService: StoryService, private router: Router) { }
 
   ngOnInit(): void {
     this.stories = this.storyService.allStories();
+  }
+
+  onStoryClicked(story: any) {
+    this.router.navigate(['/story', story.$key])
+    window.scroll({ top: 0, left: 0 });
   }
 
   onFileUploadChange(fileList: FileList) {

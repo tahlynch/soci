@@ -11,7 +11,7 @@
   </div>
 </div>
 <div class="tiles">
-  <div *ngFor="let story of stories | async" class="tile__container">
+  <div *ngFor="let story of stories | async" class="tile__container" (click)="onStoryClicked(story)">
     <div class="tile__content">
       <div class="tile__content__image" [ngStyle]="{'background-image':'url(' + story.documentUrls[0] + ')'}"></div>
       <div class="tile__content__title">{{story.title}}</div>
@@ -20,7 +20,7 @@
     </div>
   </div>
 </div>
-<!--<div [hidden]="submitted">
+<div [hidden]="submitted">
   <h1>Photo Form</h1>
   <form (ngSubmit)="onSubmit()" #photoForm="ngForm">
     <div class="form-group">
@@ -28,7 +28,7 @@
       <input type="text" class="form-control" id="title" required [(ngModel)]="model.title" name="title" #title="ngModel">
     </div>
     <div class="form-group">
-      <label for="body">Write yo shit:</label>
+      <label for="body">Body:</label>
       <input type="text" class="form-control" id="title" required [(ngModel)]="model.body" name="body" #body="ngModel">
     </div>
     <div class="form-group">
@@ -36,4 +36,4 @@
     </div>
     <button type="submit" class="" [disabled]="!photoForm.form.valid">Submit</button>
   </form>
-</div>-->
+</div>
