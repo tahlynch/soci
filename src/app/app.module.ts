@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from '@angular/material';
 import { NavigationModule } from './navigation/navigation.module';
 import { StoriesModule } from './stories/stories.module';
+import { GalleryModule } from "./gallery/gallery.module";
 import 'hammerjs';
 import { FooterComponent } from './footer/footer.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
@@ -43,6 +44,7 @@ firebase.initializeApp(firebaseConfig);
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    GalleryModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,
