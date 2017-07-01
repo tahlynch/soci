@@ -1,0 +1,24 @@
+<div [hidden]="submitted">
+  <h1>Create Album</h1>
+  <form (ngSubmit)="onSubmit()" #photoForm="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" required [(ngModel)]="model.title" name="title" #title="ngModel">
+    </div>
+    <div class="form-group">
+      <input type="file" multiple name="fileUpload" (change)="onFileUploadChange($event.target.files)">
+    </div>
+    <button type="submit" class="" [disabled]="!photoForm.form.valid">Submit</button>
+  </form>
+</div>
+
+<div class="albums">
+  <div *ngFor="let album of albums | async" class="album__container" (click)="onAlbumClicked(album)">
+    <div class="album__content">
+      <div class="album__content__image" [ngStyle]="{'background-image':'url(' + album.documentUrls[0] + ')'}"></div>
+      <div class="album__content__title">{{album.title}}</div>
+      <div class="album__content__author">Millsy Pacino</div>
+      <div class="album__content__date">{{album.created | date:'fullDate'}}</div>
+    </div>
+  </div>
+</div>

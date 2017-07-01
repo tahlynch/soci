@@ -1,0 +1,57 @@
+:host {
+    background-color: #ffffff;
+}
+
+.albums {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.album__container {
+    cursor: pointer;
+    min-width: 200px;
+    flex: 1;
+    margin: 15px;
+    margin-bottom: 10px;
+}
+
+.album__content {
+    flex: 1;
+}
+
+.album__content:hover {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.album__content:active {
+    box-shadow: none;
+}
+
+.album__content__image {
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+}
+
+.album__content__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    word-wrap: break-word;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.album__content__author {
+    font-size: 12px;
+    line-height: 12px;
+    opacity: .5;
+}
+
+.album__content__date {
+    font-size: 10px;
+    opacity: .5;
+}

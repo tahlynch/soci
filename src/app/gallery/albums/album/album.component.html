@@ -1,0 +1,11 @@
+<div class="album-main__container">
+  <div class="album-main__content">
+    <div class="album-main__title">{{album.title}}</div>
+    <div class="album-main__date">{{dateText}}</div>
+  </div>
+</div>
+<div class="album-photos__container">
+  <div class="album-photos__content" *ngFor="let image of album.documentUrls">
+    <img class="album-photos__image" [src]="image" (click)="onImageClicked(image)"/>
+  </div>
+</div>
