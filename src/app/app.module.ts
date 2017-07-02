@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from './../environments/firebase.config';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -43,6 +44,7 @@ firebase.initializeApp(firebaseConfig);
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,

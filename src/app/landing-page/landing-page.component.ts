@@ -1,7 +1,6 @@
 import { Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MdSidenav } from '@angular/material';
 import * as firebase from 'firebase';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 @Component({
   selector: 'app-landing-page',
@@ -10,7 +9,7 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 })
 export class LandingPageComponent implements OnInit {
   foo1 = '';
-  constructor(private ref: ChangeDetectorRef, private af: AngularFire) {
+  constructor(private ref: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {

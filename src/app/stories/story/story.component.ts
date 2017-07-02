@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { StoryService } from '../../providers/story.service';
 import { Story } from './story';
-import { FirebaseObjectObservable } from 'angularfire2';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'story',

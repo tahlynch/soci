@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Story } from '../stories/story/story';
 
 @Injectable()
 export class StoryService {
 
-  constructor(private af: AngularFire) { }
+  constructor(private angularFireDatabase: AngularFireDatabase) { }
 
   uploadStory(story: Story, fileList: FileList) {
     if (fileList.length === 0) {
@@ -24,11 +24,11 @@ export class StoryService {
   }
 
   allStories(): FirebaseListObservable<any> {
-    return this.af.database.list('/stories');
+    return this.angularFireDatabase.list('/stories');
   }
 
   getStory(key: string): any {
-    return this.af.database.object('/stories/' + key);
+    return this.angularFireDatabase.object('/stories/' + key);
   }
 
   private putFileInStorage(file: File, folderPath: string): firebase.Promise<any> {
@@ -38,6 +38,6 @@ export class StoryService {
   }
 
   private saveStory(story: Story) {
-    const item = this.af.database.list('/stories').push(story);
+    const item = this.angularFireDatabase.list('/stories').push(story);
   }
 }

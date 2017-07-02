@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoryService } from '../providers/story.service';
 import { Story } from './story/story';
-import { FirebaseListObservable } from 'angularfire2';
+import { FirebaseListObservable } from 'angularfire2/database';
 @Component({
   selector: 'stories',
   templateUrl: './stories.component.html',
