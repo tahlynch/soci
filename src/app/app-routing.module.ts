@@ -6,6 +6,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { StoriesComponent } from './stories/stories.component';
 import { StoryComponent } from './stories/story/story.component'
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
+import { EventsOverviewComponent } from 'app/events/events-overview/events-overview.component';
+
 const appRoutes: Routes = [
   {
     path: '', component: LandingPageComponent
@@ -18,6 +20,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'whatwedo', component: WhatWeDoComponent
+  },
+  {
+    path: 'events', component: EventsOverviewComponent
   },
   {
     path: '**', component: PageNotFoundComponent

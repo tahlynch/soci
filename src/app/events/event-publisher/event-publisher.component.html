@@ -1,0 +1,64 @@
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate>
+  <div style="margin-bottom: 1em">
+    <button type="submit" [disabled]="eventForm.status == 'INVALID'" class="btn btn-success">Save</button> &nbsp;
+    <button type="reset" (click)="resetForm()" [disabled]="eventForm.pristine" class="btn btn-danger">Revert</button>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Start date:
+      <input class="form-control" type="date" formControlName="startDate">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">End date:
+      <input class="form-control" type="date" formControlName="endDate">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Type of event:
+      <select class="form-control" formControlName="eventType">
+          <option *ngFor="let eventType of eventTypes" [value]="eventType">{{eventType}}</option>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Status of event:
+      <select class="form-control" formControlName="eventStatus">
+        <option *ngFor="let eventStatus of eventStatuses" [value]="eventStatus">{{eventStatus}}</option>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Title:
+      <input class="form-control" formControlName="title">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Description:
+      <textarea class="form-control" formControlName="description" rows="4" cols="50"></textarea>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Venue Name:
+      <input class="form-control" formControlName="venueName">
+    </label>
+  </div>
+<div class="form-group">
+    <label class="center-block">Location:
+      <input class="form-control" formControlName="location">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Upload a photo:
+    <input type="file" (change)="onPhotoChange($event.target.files)">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Photo caption:
+      <input class="form-control" formControlName="photoCaption">
+    </label>
+  </div>
+  <p>eventForm value: {{ eventForm.value | json}}</p>
+  <p>Form value: {{ eventForm.status | json }}</p>
+  <h4>Title change log</h4>
+  <div *ngFor="let title of titleChangeLog">{{title}}</div>
+</form>

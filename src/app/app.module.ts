@@ -24,6 +24,7 @@ import { HeaderscrolledDirective } from './header/header-scrolled.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SidenavContentComponent } from './sidenav-content/sidenav-content.component';
 import * as firebase from 'firebase';
+import { EventsModule } from './events/events.module';
 
 const declarations = [
   AppComponent,
@@ -50,7 +51,8 @@ firebase.initializeApp(firebaseConfig);
     CommonModule,
     MaterialModule,
     NavigationModule,
-    StoriesModule
+    StoriesModule,
+    EventsModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]
