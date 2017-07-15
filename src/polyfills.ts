@@ -16,7 +16,7 @@ import 'core-js/es6/set';
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
-require('smoothscroll-polyfill').polyfill();
+import 'scroll-behaviour/polyfill';
 import 'web-animations-js';
 
 // If you need to support the browsers/features below, uncomment the import
