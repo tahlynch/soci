@@ -1,6 +1,6 @@
-<sidenav [isOpen]="isSideNavOpen" (onClose)="toggleSideNav()">
-  <sidenav-content (toggleSideNav)="toggleSideNav()"></sidenav-content>
-</sidenav>
-<header (isHamburgerClicked)="toggleSideNav()"></header>
+<soci-sidenav [isOpen]="isSideNavOpen" (onClose)="toggleSideNav()">
+  <soci-sidenav-content (toggleSideNav)="toggleSideNav()"></soci-sidenav-content>
+</soci-sidenav>
+<soci-header (isHamburgerClicked)="toggleSideNav()"></soci-header>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<soci-footer></soci-footer>

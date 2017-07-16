@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'soci-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.less']
 })

@@ -12,7 +12,7 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
 import 'rxjs/add/operator/first';
 
 @Component({
-  selector: 'sidenav',
+  selector: 'soci-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.less'],
   animations: [

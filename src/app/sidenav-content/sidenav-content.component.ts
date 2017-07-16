@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'sidenav-content',
+  selector: 'soci-sidenav-content',
   templateUrl: './sidenav-content.component.html',
   styleUrls: ['./sidenav-content.component.less']
 })

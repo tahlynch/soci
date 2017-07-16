@@ -3,11 +3,11 @@ import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularFireModule } from 'angularfire2';
-import { firebaseConfig } from 'environments/firebase.config';
+import { firebaseConfig } from '../environments/firebase.config';
 let component: AppComponent;
 let fixture: ComponentFixture<AppComponent>;
 
-@Component({selector: 'blank-cmp', template: ``})
+@Component({selector: 'soci-blank-cmp', template: ``})
 class DefaultComponent {}
 
 describe('AppComponent', () => {

@@ -112,6 +112,7 @@
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
+  user-select: none;
 }
 .active {
   border-bottom: 3px solid #ED1C24;

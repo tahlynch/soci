@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[myTransform]'
+  selector: '[sociMyTransform]'
 })
 export class TransformDirective {
   private translateY = 0;
@@ -11,7 +11,7 @@ export class TransformDirective {
   constructor(private el: ElementRef) {}
 
   @HostListener('window:scroll') onscroll() {
-    if(window.innerWidth <= 414 && window.innerHeight <= 736){
+    if (window.innerWidth <= 414 && window.innerHeight <= 736) {
       return;
     }
     this.transform(window.scrollY);
