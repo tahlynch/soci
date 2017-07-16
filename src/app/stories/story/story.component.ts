@@ -7,7 +7,7 @@ import { FirebaseObjectObservable } from 'angularfire2/database';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-  selector: 'story',
+  selector: 'soci-story',
   templateUrl: './story.component.html',
   styleUrls: ['./story.component.less']
 })
@@ -23,7 +23,7 @@ export class StoryComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.storyService.getStory(params['id'])).subscribe((story: any) => {
         this.story = story;
-      })
+      });
   }
 
   onBackArrowClicked() {

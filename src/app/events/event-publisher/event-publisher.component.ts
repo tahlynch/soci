@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Event, eventTypes, eventStatuses } from './data-model';
 
 @Component({
-  selector: 'event-publisher',
+  selector: 'soci-event-publisher',
   templateUrl: './event-publisher.component.html',
   styleUrls: ['./event-publisher.component.less']
 })
@@ -35,13 +35,13 @@ export class EventPublisherComponent implements OnInit {
   }
 
   onSubmit() {
-    this.event = this.prepareSaveEvent()
+    this.event = this.prepareSaveEvent();
   }
 
   onPhotoChange(file: File) {
     this.eventForm.patchValue({
       photo: file
-    })
+    });
   }
 
   private prepareSaveEvent(): Event {
@@ -55,7 +55,7 @@ export class EventPublisherComponent implements OnInit {
       eventStatus: formModel.eventStatus as string,
       title: formModel.title as string,
       description: formModel.description as string
-    }
+    };
     return saveEvent;
   }
 

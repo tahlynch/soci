@@ -4,14 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from './../environments/firebase.config';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from '@angular/material';
 import { NavigationModule } from './navigation/navigation.module';
@@ -29,7 +28,7 @@ import { EventsModule } from './events/events.module';
 const declarations = [
   AppComponent,
   PageNotFoundComponent,
-  LandingPageComponent,
+  HomeComponent,
   HeaderComponent,
   FooterComponent,
   WhatWeDoComponent,

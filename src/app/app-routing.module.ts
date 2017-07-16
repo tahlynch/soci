@@ -2,15 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { HomeComponent } from './home/home.component';
 import { StoriesComponent } from './stories/stories.component';
-import { StoryComponent } from './stories/story/story.component'
+import { StoryComponent } from './stories/story/story.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
-import { EventsOverviewComponent } from 'app/events/events-overview/events-overview.component';
 
 const appRoutes: Routes = [
   {
-    path: '', component: LandingPageComponent
+    path: '', component: HomeComponent
   },
   {
     path: 'stories', component: StoriesComponent
@@ -20,9 +19,6 @@ const appRoutes: Routes = [
   },
   {
     path: 'whatwedo', component: WhatWeDoComponent
-  },
-  {
-    path: 'events', component: EventsOverviewComponent
   },
   {
     path: '**', component: PageNotFoundComponent

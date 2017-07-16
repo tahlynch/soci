@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'events-overview',
+  selector: 'soci-events-overview',
   templateUrl: './events-overview.component.html',
   styleUrls: ['./events-overview.component.less']
 })

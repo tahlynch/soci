@@ -6,7 +6,7 @@ import { SidenavModule } from './sidenav/sidenav.module';
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
     'swipe': { velocity: 0.4, threshold: 20 }
-  }
+  };
 }
 
 @NgModule({

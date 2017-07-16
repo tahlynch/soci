@@ -4,7 +4,7 @@ import { StoryService } from '../providers/story.service';
 import { Story } from './story/story';
 import { FirebaseListObservable } from 'angularfire2/database';
 @Component({
-  selector: 'stories',
+  selector: 'soci-stories',
   templateUrl: './stories.component.html',
   styleUrls: ['./stories.component.less']
 })
@@ -20,7 +20,7 @@ export class StoriesComponent implements OnInit {
   }
 
   onStoryClicked(story: any) {
-    this.router.navigate(['/story', story.$key])
+    this.router.navigate(['/story', story.$key]);
     window.scroll({ top: 0, left: 0 });
   }
 
