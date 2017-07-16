@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StoryService } from '../providers/story.service';
+import { StoryService } from './story.service';
 import { Story } from './story/story';
 import { FirebaseListObservable } from 'angularfire2/database';
 @Component({

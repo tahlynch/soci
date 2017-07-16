@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { StoryService } from '../../providers/story.service';
+import { StoryService } from '../story.service';
 import { Story } from './story';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import 'rxjs/add/operator/switchMap';

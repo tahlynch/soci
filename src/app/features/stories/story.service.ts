@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Story } from '../stories/story/story';
+import { Story } from './story/story';
 
 @Injectable()
 export class StoryService {
