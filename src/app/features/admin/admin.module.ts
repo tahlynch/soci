@@ -5,14 +5,16 @@ import { EventPublisherComponent } from './event-publisher/event-publisher.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MenuComponent } from './menu/menu.component';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdDatepickerModule, MdNativeDateModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    MaterialModule
+    MaterialModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   declarations: [AdminComponent, EventPublisherComponent, MenuComponent]
 })

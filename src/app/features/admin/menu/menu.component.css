@@ -1,6 +1,3 @@
-:host {
-  padding-right: 24px;
-}
 .menu__container {
   height: 100%;
 }
@@ -33,6 +30,7 @@
 }
 @media (min-width: 800px) {
   .menu__container {
+    margin-right: 24px;
     width: 200px;
   }
   .menu__nav__item__label {
