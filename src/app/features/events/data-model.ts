@@ -1,8 +1,8 @@
 export class Event {
   startDate: Date;
   endDate: Date;
-  startTime: number;
-  endTime: number;
+  startTime: string;
+  endTime: string;
   eventType: string;
   eventStatus: string;
   title: string;
