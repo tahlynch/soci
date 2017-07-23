@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.event-publisher__container {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.event-publisher__form {
+  margin-top: 25px;
+}
+.event-publisher__form__item {
+  margin-bottom: 10px;
+}
+.form__control--default-width {
+  width: 100%;
+}
+.form__control--100-percent-width {
+  width: 100%;
+}
+.event-publisher__form__buttons {
+  display: flex;
+  justify-content: center;
+}
+.event-publisher__form__button {
+  color: #ffffff;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.event-publisher__form__button__cancel {
+  background: gray;
+}
+.event-publisher__form__button__submit {
+  background: #059334;
+}
+@media (min-width: 800px) {
+  .form__control--default-width {
+    width: 300px;
+  }
+}

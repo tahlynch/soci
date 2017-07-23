@@ -1,0 +1,39 @@
+.menu__container {
+  height: 100%;
+}
+.menu__container .active {
+  background-color: rgba(0, 0, 0, 0.06);
+  font-weight: bold;
+  cursor: default;
+}
+.menu__nav__item {
+  height: 40px;
+  font-size: 14px;
+  align-items: center;
+  border-radius: 0 2px 2px 0;
+  display: flex;
+  cursor: pointer;
+}
+.menu__nav__item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.menu__nav__item__content {
+  display: flex;
+  align-items: center;
+}
+.menu__nav__item__icon {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.menu__nav__item__label {
+  display: none;
+}
+@media (min-width: 800px) {
+  .menu__container {
+    margin-right: 24px;
+    width: 200px;
+  }
+  .menu__nav__item__label {
+    display: block;
+  }
+}

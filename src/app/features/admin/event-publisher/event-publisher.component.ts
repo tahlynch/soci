@@ -13,6 +13,8 @@ export class EventPublisherComponent implements OnInit {
   eventTypes = eventTypes;
   eventStatuses = eventStatuses;
   titleChangeLog: string[] = [];
+  isTouchUi = false;
+
 
   constructor(private formBuilder: FormBuilder) {
     this.createForm();
@@ -36,6 +38,7 @@ export class EventPublisherComponent implements OnInit {
 
   onSubmit() {
     this.event = this.prepareSaveEvent();
+    alert('Submitted');
   }
 
   onPhotoChange(file: File) {

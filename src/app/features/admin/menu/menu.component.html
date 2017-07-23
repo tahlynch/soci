@@ -1,0 +1,10 @@
+<div class="menu__container">
+  <nav class="menu__nav" *ngFor="let menuItem of menuItems">
+    <div class="menu__nav__item" [routerLink]="menuItem.link" routerLinkActive="active">
+      <div class="menu__nav__item__content">
+        <md-icon class="menu__nav__item__icon">{{menuItem.icon}}</md-icon>
+        <div class="menu__nav__item__label">{{menuItem.label}}</div>
+      </div>
+    </div>
+  </nav>
+</div>
