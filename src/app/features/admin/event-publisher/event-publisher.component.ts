@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Event, eventTypes, eventStatuses } from './data-model';
+import { Event, eventTypes, eventStatuses } from '../../events/data-model';
 
 @Component({
   selector: 'soci-event-publisher',
@@ -52,8 +52,8 @@ export class EventPublisherComponent implements OnInit {
     const saveEvent: Event = {
       startDate: formModel.startDate as Date,
       endDate: formModel.endDate as Date,
-      startTime: formModel.startTime as number,
-      endTime: formModel.endTime as number,
+      startTime: formModel.startTime as string,
+      endTime: formModel.endTime as string,
       eventType: formModel.eventType as string,
       eventStatus: formModel.eventStatus as string,
       title: formModel.title as string,

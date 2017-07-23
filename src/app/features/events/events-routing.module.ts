@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EventsOverviewComponent } from './events-overview/events-overview.component';
+import { EventsComponent } from './events.component';
 
-const routes: Routes = [
-  {
-    path: 'overview', component: EventsOverviewComponent
-  }
-];
+const routes: Routes = [{ path: 'events', component: EventsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

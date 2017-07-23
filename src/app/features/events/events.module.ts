@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EventsOverviewComponent } from './events-overview/events-overview.component';
+import { MdGridListModule} from '@angular/material';
+
+import { EventsRoutingModule } from './events-routing.module';
+import { EventsComponent } from './events.component';
+import { DateFormatPipe } from './date-format.pipe';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MdGridListModule,
+    EventsRoutingModule
   ],
-  declarations: [EventsOverviewComponent]
+  declarations: [EventsComponent, DateFormatPipe]
 })
 export class EventsModule { }

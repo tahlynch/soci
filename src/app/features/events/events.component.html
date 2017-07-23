@@ -1,0 +1,23 @@
+<div class="main__container">
+  <div class="main__content">
+    <div class="main__content__container">
+      <div class="main__content__left">
+        <div class="main__content__title">Events</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="schedule__grid">
+  <div class="schedule__grid__section" *ngFor="let temp of temp">
+    <div class="schedule__grid__content">
+      <div class="schedule__row__date">{{temp.date | dateFormat}}</div>
+      <div class="schedule__row__events">
+        <div class="schedule__row__event" *ngFor="let event of temp.events">
+          <div class="schedule__row__event__title">{{event.title}}</div>
+          <div class="schedule__row__event__subtitle">{{event.startTime}} - {{event.endTime}}</div>
+          <span class="schedule__row__event__tag" [ngClass]="getTagClass(event.eventType)">{{event.eventType}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
