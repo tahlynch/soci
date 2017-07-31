@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Event, eventTypes } from './data-model';
 
 @Component({
@@ -9,7 +11,7 @@ import { Event, eventTypes } from './data-model';
 export class EventsComponent implements OnInit {
   events: Event[] = [];
   temp: Foo[] = [];
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     const firstEvent = new Event();
@@ -18,6 +20,7 @@ export class EventsComponent implements OnInit {
     firstEvent.startTime = '1:45pm';
     firstEvent.endTime = '3:45pm';
     firstEvent.eventType = 'Sports - Athletics';
+    firstEvent.description = 'Want to extend your app to new platforms including Android Wear, Daydream, TV and Auto? Our office hours are hosted by Google UX leads responsible for Play Store, Wear, TV, and Auto and during 1:1 sessions, developers can get guidance on 1) app design principles for these new formats, 2) how to find balance between design consistency with existing patterns and coherency with the medium, and 3) how to apply Material Design patterns.';
     this.events.push(firstEvent);
 
     const secondEvent = new Event();
@@ -61,6 +64,10 @@ export class EventsComponent implements OnInit {
     this.events.push(forthEvent);
 
     this.temp = this.foo();
+  }
+
+  onEventClicked(event: any) {
+    this.router.navigate(['event'], { relativeTo: this.route });
   }
 
   getTagClass(eventType: string): string {

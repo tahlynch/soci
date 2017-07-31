@@ -12,7 +12,7 @@
     <div class="schedule__grid__content">
       <div class="schedule__row__date">{{temp.date | dateFormat}}</div>
       <div class="schedule__row__events">
-        <div class="schedule__row__event" *ngFor="let event of temp.events">
+        <div class="schedule__row__event" *ngFor="let event of temp.events" (click)="onEventClicked(event)">
           <div class="schedule__row__event__title">{{event.title}}</div>
           <div class="schedule__row__event__subtitle">{{event.startTime}} - {{event.endTime}}</div>
           <span class="schedule__row__event__tag" [ngClass]="getTagClass(event.eventType)">{{event.eventType}}</span>
@@ -21,3 +21,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

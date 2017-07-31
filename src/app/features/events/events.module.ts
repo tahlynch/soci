@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MdGridListModule} from '@angular/material';
+import { MdGridListModule } from '@angular/material';
+import { MaterialModule } from '@angular/material';
 
 import { EventsRoutingModule } from './events-routing.module';
 import { EventsComponent } from './events.component';
 import { DateFormatPipe } from './date-format.pipe';
+import { DialogModule } from '../../dialog/dialog.module';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MdGridListModule,
-    EventsRoutingModule
+    EventsRoutingModule,
+    DialogModule,
+    MaterialModule
   ],
-  declarations: [EventsComponent, DateFormatPipe]
+  declarations: [EventsComponent, DateFormatPipe, EventDetailComponent]
 })
 export class EventsModule { }
