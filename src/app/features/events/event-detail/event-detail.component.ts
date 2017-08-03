@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Event } from '../data-model';
+import { EventsService } from '../events.service';
+import { EventsHelper } from '../events-helper';
 
 @Component({
   selector: 'soci-event-detail',
@@ -9,13 +11,22 @@ import { Event } from '../data-model';
   styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent implements OnInit {
-  event: Event;
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  event: Event = new Event();
+  eventsHelper = new EventsHelper();
+  constructor(private router: Router, private route: ActivatedRoute, private eventsService: EventsService) { }
 
   ngOnInit() {
+    this.loadEvent();
   }
 
   onEventCloseClicked() {
     this.router.navigate(['/events']);
+  }
+
+  private loadEvent() {
+    this.route.params
+      .switchMap((params: Params) => this.eventsService.getEvent(params['key'])).subscribe((event: any) => {
+        this.event = event;
+      });
   }
 }

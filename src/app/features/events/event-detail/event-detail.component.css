@@ -1,3 +1,12 @@
+.event__tag--fundraiser {
+  background: #ce93d8;
+}
+.event__tag--sports {
+  background: pink;
+}
+.event__tag--community-leadership {
+  background: #80cbc4;
+}
 .event__close {
   display: flex;
   position: absolute;
@@ -11,7 +20,6 @@
   display: flex;
   padding-left: 25px;
   padding-right: 25px;
-  background-color: #ce93d8;
   min-height: 180px;
   align-items: flex-end;
 }
@@ -58,6 +66,7 @@
   .event__title__container {
     padding-left: 80px;
     padding-right: 80px;
+    min-height: 220px;
   }
   .event__title__text {
     font-size: 40px;

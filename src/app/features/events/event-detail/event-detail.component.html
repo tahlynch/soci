@@ -3,21 +3,13 @@
     <div class="event__close" (click)="onEventCloseClicked()">
       <md-icon class="">arrow_back</md-icon>
     </div>
-    <div class="event__title__container">
-      <div class="event__title__text">Athletics: Shotput Exhibition</div>
+    <div class="event__title__container" [ngClass]="eventsHelper.getTagClass(event.eventType)">
+      <div class="event__title__text">{{event.title}}</div>
     </div>
     <div class="event__detail__container">
       <div class="event__detail__time">Wed. May 17, 12PM - 1PM</div>
-      <div class="event__detail__location">Field of dreams</div>
-      <p class="event__detail__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla tempus sem non laoreet. Sed placerat justo sed
-        tortor vulputate blandit sit amet et tellus. Aenean suscipit arcu a purus condimentum, sed aliquet ex finibus. Praesent
-        at velit mauris. Sed vestibulum nec lorem in faucibus. Vivamus eget arcu leo. Nunc maximus ex leo, vitae pretium
-        mi varius sed. Phasellus id viverra quam, et consequat dolor. Suspendisse non blandit augue. Sed consectetur risus
-        quis porta lacinia. Quisque commodo sollicitudin libero id finibus. Fusce viverra nunc at magna dictum, a condimentum
-        ante semper. Suspendisse vel dictum orci. Sed vel lectus et dolor sagittis consequat in quis nibh. Sed tempor vestibulum
-        pharetra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean metus
-        felis, pharetra placerat porta eu, accumsan id libero. Donec sodales ex sed nisi auctor posuere. Donec maximus dictum
-        lorem at tincidunt. Ut a erat id tortor porta sollicitudin.</p>
+      <div class="event__detail__location">{{event.location}}</div>
+      <p class="event__detail__description">{{event.description}}</p>
     </div>
     <!-- <div class="event__fab"></div> -->
   </div>

@@ -5,7 +5,8 @@ import { EventPublisherComponent } from './event-publisher/event-publisher.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MenuComponent } from './menu/menu.component';
-import { MaterialModule, MdDatepickerModule, MdNativeDateModule} from '@angular/material';
+import { MaterialModule, MdDatepickerModule, MdNativeDateModule, MdAutocompleteModule} from '@angular/material';
+import { AdminService } from './admin.service';
 
 @NgModule({
   imports: [
@@ -14,8 +15,10 @@ import { MaterialModule, MdDatepickerModule, MdNativeDateModule} from '@angular/
     AdminRoutingModule,
     MaterialModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    MdAutocompleteModule
   ],
-  declarations: [AdminComponent, EventPublisherComponent, MenuComponent]
+  declarations: [AdminComponent, EventPublisherComponent, MenuComponent],
+  providers: [ AdminService ]
 })
 export class AdminModule { }

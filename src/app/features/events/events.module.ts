@@ -8,6 +8,7 @@ import { EventsComponent } from './events.component';
 import { DateFormatPipe } from './date-format.pipe';
 import { DialogModule } from '../../dialog/dialog.module';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { EventsService } from './events.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
     DialogModule,
     MaterialModule
   ],
-  declarations: [EventsComponent, DateFormatPipe, EventDetailComponent]
+  declarations: [EventsComponent, DateFormatPipe, EventDetailComponent],
+  providers: [EventsService]
 })
 export class EventsModule { }

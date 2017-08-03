@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: 'eventpublisher',
         component: EventPublisherComponent
+      },
+      {
+        path: 'eventpublisher/:key',
+        component: EventPublisherComponent
       }
     ]
   }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Event, eventTypes, eventStatuses } from '../../events/data-model';
+import { ActivatedRoute, Params } from '@angular/router';
+
+import { Event, eventTypes, eventStatuses, eventTimes } from '../../events/data-model';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'soci-event-publisher',
@@ -10,19 +13,19 @@ import { Event, eventTypes, eventStatuses } from '../../events/data-model';
 export class EventPublisherComponent implements OnInit {
   event: Event;
   eventForm: FormGroup;
+  eventTimes = eventTimes;
   eventTypes = eventTypes;
   eventStatuses = eventStatuses;
   titleChangeLog: string[] = [];
   isTouchUi = false;
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private adminService: AdminService, private route: ActivatedRoute) {
     this.createForm();
     this.logTitleChanges();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   resetForm() {
     this.eventForm.reset();
@@ -38,7 +41,7 @@ export class EventPublisherComponent implements OnInit {
 
   onSubmit() {
     this.event = this.prepareSaveEvent();
-    alert('Submitted');
+    this.adminService.saveEvent(this.event);
   }
 
   onPhotoChange(file: File) {
@@ -50,14 +53,15 @@ export class EventPublisherComponent implements OnInit {
   private prepareSaveEvent(): Event {
     const formModel = this.eventForm.value;
     const saveEvent: Event = {
-      startDate: formModel.startDate as Date,
+      startDate: (formModel.startDate as Date).toString(),
       endDate: formModel.endDate as Date,
       startTime: formModel.startTime as string,
       endTime: formModel.endTime as string,
       eventType: formModel.eventType as string,
       eventStatus: formModel.eventStatus as string,
       title: formModel.title as string,
-      description: formModel.description as string
+      description: formModel.description as string,
+      location: formModel.location as string
     };
     return saveEvent;
   }
@@ -66,6 +70,8 @@ export class EventPublisherComponent implements OnInit {
     this.eventForm = this.formBuilder.group({
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required],
       eventType: ['', Validators.required],
       eventStatus: ['', Validators.required],
       title: ['', Validators.required],

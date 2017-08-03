@@ -22,6 +22,20 @@
       <md-datepicker touchUi="true" #endDatepicker></md-datepicker>
     </div>
     <div class="event-publisher__form__item">
+      <md-select class="form__control--default-width" placeholder="Start time" formControlName="startTime">
+        <md-option *ngFor="let eventTime of eventTimes" [value]="eventTime">
+          {{ eventTime }}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="event-publisher__form__item">
+      <md-select class="form__control--default-width" placeholder="End time" formControlName="endTime">
+        <md-option *ngFor="let eventTime of eventTimes" [value]="eventTime">
+          {{ eventTime }}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="event-publisher__form__item">
       <md-select class="form__control--default-width" placeholder="Status of event" formControlName="eventStatus">
         <md-option *ngFor="let eventStatus of eventStatuses" [value]="eventStatus">
           {{ eventStatus }}
@@ -50,10 +64,7 @@
     </div>
     <div class="event-publisher__form__buttons">
       <button class="event-publisher__form__button event-publisher__form__button__cancel" type="reset" (click)="resetForm()" md-button>Cancel</button>
-
       <button class="event-publisher__form__button event-publisher__form__button__submit" type="submit" md-button>Publish</button>
     </div>
   </form>
 </div>
-<!-- <p>eventForm value: {{ eventForm.value | json}}</p>
-<p>Form value: {{ eventForm.status | json }}</p> -->
