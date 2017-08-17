@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
-import { EventPublisherComponent } from './event-publisher/event-publisher.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule, MdDatepickerModule, MdNativeDateModule, MdAutocompleteModule} from '@angular/material';
+
+import { EventPublisherComponent } from './event-publisher/event-publisher.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MenuComponent } from './menu/menu.component';
-import { MaterialModule, MdDatepickerModule, MdNativeDateModule, MdAutocompleteModule} from '@angular/material';
 import { AdminService } from './admin.service';
 
 @NgModule({

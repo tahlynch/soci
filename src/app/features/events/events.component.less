@@ -1,11 +1,14 @@
 @import "./events.less";
-
 :host {
     background: #ffffff;
 }
 
 .schedule__grid {
     border-top: 1px solid #dcdcdc;
+}
+
+.schedule__grid__placeholder {
+    margin: 20px auto;
 }
 
 .schedule__grid__section {
@@ -54,6 +57,23 @@
     padding: 4px;
 }
 
+.filter__container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter__button {
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filter__button__text {
+    display: none;
+    padding-right: 10px;
+}
+
 @media(min-width: 800px) {
     .schedule__row__date {
         width: 85px;
@@ -72,5 +92,12 @@
         margin: 0 auto;
         padding-left: 20px;
         max-width: 1280px;
+    }
+    .filter__container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .filter__button__text {
+        display: block;
     }
 }
