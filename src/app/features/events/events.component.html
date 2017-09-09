@@ -15,18 +15,21 @@
 </div>
 <!-- <soci-filter></soci-filter> -->
 <div class="schedule__grid">
-  <md-spinner class="schedule__grid__placeholder" *ngIf="eventItems.length === 0"></md-spinner>
-  <div class="schedule__grid__section" *ngFor="let eventItem of eventItems">
+  <md-spinner class="schedule__grid__placeholder" *ngIf="eventsService.isLoadingEvents"></md-spinner>
+  <div class="schedule__grid__section" *ngFor="let eventItem of eventsService.eventItems">
     <div class="schedule__grid__content">
       <div class="schedule__row__date">{{eventItem.date | dateFormat}}</div>
       <div class="schedule__row__events">
         <div class="schedule__row__event" *ngFor="let event of eventItem.events" (click)="onEventClicked(event)">
-          <div class="schedule__row__event__title">{{event.title}}</div>
-          <div class="schedule__row__event__subtitle">{{event.startTime}} - {{event.endTime}}</div>
-          <span class="schedule__row__event__tag" [ngClass]="eventsHelper.getTagClass(event.eventType)">{{event.eventType}}</span>
+          <div class="schedule__row__event__detail">
+            <div class="schedule__row__event__title">{{event.title}}</div>
+            <div class="schedule__row__event__subtitle">{{event.startTime}} - {{event.endTime}}</div>
+            <span class="schedule__row__event__tag" [ngClass]="eventsHelper.getTagClass(event.eventType)">{{event.eventType}}</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="schedule__grid__no-events" *ngIf="eventsService.eventItems.length === 0 && !eventsService.isLoadingEvents">No Events</div>
 </div>
 <router-outlet></router-outlet>

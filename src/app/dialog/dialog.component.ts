@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'soci-dialog',
@@ -6,6 +6,7 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/cor
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit, OnDestroy {
+  @Input() isDialogCentered = false;
   @Output() close = new EventEmitter();
 
   constructor() { }

@@ -11,19 +11,25 @@
       <md-icon class="md-icon">menu</md-icon>
     </div>
   </div>
-  <nav class="nav">
-    <div class="nav-item" routerLink="/stories" routerLinkActive="active" (click)="scrollToTop()">
-      Stories
-    </div>
-    <div class="nav-item" routerLink="/whatwedo" routerLinkActive="active" (click)="scrollToTop()">
-      What We Do
-    </div>
-    <div class="nav-item" routerLink="/events" routerLinkActive="active" (click)="scrollToTop()">
-      Events
-    </div>
-    <div class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
-      Admin
-    </div>
-  </nav>
+  <div class="header__right">
+    <nav class="nav">
+      <div class="nav-item" routerLink="/stories" routerLinkActive="active" (click)="scrollToTop()">
+        Stories
+      </div>
+      <div class="nav-item" routerLink="/whatwedo" routerLinkActive="active" (click)="scrollToTop()">
+        What We Do
+      </div>
+      <div class="nav-item" routerLink="/events" routerLinkActive="active" (click)="scrollToTop()">
+        Events
+      </div>
+      <div class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
+        Admin
+      </div>
+    </nav>
+    <button class="donate__button" md-button>
+      <div class="donate__button__text">DONATE</div>
+    </button>
+    <div class="sign-in__button">SIGN IN</div>
+  </div>
 </div>
 <div id="spacer"></div>

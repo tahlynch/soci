@@ -1,5 +1,6 @@
-export class Event {
-  startDate: string;
+export class SociEvent {
+  $key?: any;
+  startDate: Date;
   endDate: Date;
   startTime: string;
   endTime: string;

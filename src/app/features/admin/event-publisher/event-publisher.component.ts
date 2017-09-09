@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { Event, eventTypes, eventStatuses, eventTimes } from '../../events/data-model';
-import { AdminService } from '../admin.service';
+import { SociEvent, eventTypes, eventStatuses, eventTimes } from '../../events/data-model';
+import { EventsService } from '../../events/events.service';
 
 @Component({
   selector: 'soci-event-publisher',
@@ -11,37 +11,46 @@ import { AdminService } from '../admin.service';
   styleUrls: ['./event-publisher.component.less']
 })
 export class EventPublisherComponent implements OnInit {
-  event: Event;
   eventForm: FormGroup;
   eventTimes = eventTimes;
   eventTypes = eventTypes;
   eventStatuses = eventStatuses;
   titleChangeLog: string[] = [];
   isTouchUi = false;
-
-
-  constructor(private formBuilder: FormBuilder, private adminService: AdminService, private route: ActivatedRoute) {
-    this.createForm();
-    this.logTitleChanges();
+  pageTitle = '';
+  submitButtonText = '';
+  constructor(private eventsService: EventsService, private formBuilder: FormBuilder,
+    private route: ActivatedRoute, private router: Router) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.createForm();
+    const key = this.getEventKeyFromRoute();
+    if (!key || key.length === 0) {
+      this.pageTitle = 'Event Publisher';
+      this.submitButtonText = 'Save';
+      return;
+    }
+    this.pageTitle = 'Event Editor';
+    this.submitButtonText = 'Edit';
+    this.loadEvent(key);
+  }
 
   resetForm() {
     this.eventForm.reset();
     this.titleChangeLog = [];
   }
 
-  logTitleChanges() {
-    const titleControl = this.eventForm.get('title');
-    titleControl.valueChanges.forEach(
-      (value: string) => this.titleChangeLog.push(value)
-    );
+  onSubmit() {
+    if (this.eventForm.invalid) {
+      return;
+    }
+    this.eventsService.saveEvent(this.prepareSaveEvent());
+    this.navigateToMyEventsPage();
   }
 
-  onSubmit() {
-    this.event = this.prepareSaveEvent();
-    this.adminService.saveEvent(this.event);
+  onCancelClicked() {
+    this.navigateToMyEventsPage();
   }
 
   onPhotoChange(file: File) {
@@ -50,10 +59,14 @@ export class EventPublisherComponent implements OnInit {
     });
   }
 
-  private prepareSaveEvent(): Event {
+  private navigateToMyEventsPage() {
+    this.router.navigate(['admin']);
+  }
+
+  private prepareSaveEvent(): SociEvent {
     const formModel = this.eventForm.value;
-    const saveEvent: Event = {
-      startDate: (formModel.startDate as Date).toString(),
+    const saveEvent: SociEvent = {
+      startDate: formModel.startDate as Date,
       endDate: formModel.endDate as Date,
       startTime: formModel.startTime as string,
       endTime: formModel.endTime as string,
@@ -68,8 +81,8 @@ export class EventPublisherComponent implements OnInit {
 
   private createForm() {
     this.eventForm = this.formBuilder.group({
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      startDate: [null, Validators.required],
+      endDate: [null, Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
       eventType: ['', Validators.required],
@@ -80,6 +93,37 @@ export class EventPublisherComponent implements OnInit {
       location: '',
       photo: File,
       photoCaption: ''
+    });
+  }
+
+  private createSociEvent(event: SociEvent): SociEvent {
+    const sociEvent: SociEvent = new SociEvent();
+    sociEvent.description = event.description || '';
+    sociEvent.endDate = new Date(event.endDate);
+    sociEvent.endTime = event.endTime || '';
+    sociEvent.eventStatus = event.eventStatus || '';
+    sociEvent.eventType = event.eventType || '';
+    sociEvent.location = event.location || '';
+    sociEvent.photo = event.photo || null;
+    sociEvent.photoCaption = event.photoCaption || '';
+    sociEvent.startDate = new Date(event.startDate);
+    sociEvent.startTime = event.startTime || '';
+    sociEvent.title = event.title || '';
+    sociEvent.venueName = event.venueName || '';
+    return sociEvent;
+  }
+
+  private getEventKeyFromRoute(): string {
+    let key: string;
+    this.route.params.subscribe((params) => {
+      key = params['key'] as string;
+    });
+    return key;
+  }
+
+  private loadEvent(key: string) {
+    this.eventsService.getEvent(key).subscribe((event: SociEvent) => {
+      this.eventForm.setValue(this.createSociEvent(event));
     });
   }
 }
