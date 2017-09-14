@@ -22,14 +22,17 @@
       <div class="nav-item" routerLink="/events" routerLinkActive="active" (click)="scrollToTop()">
         Events
       </div>
-      <div class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
+      <div *ngIf="authService.isAnAdmin" class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
         Admin
       </div>
     </nav>
     <button class="donate__button" md-button>
       <div class="donate__button__text">DONATE</div>
     </button>
-    <div class="sign-in__button">SIGN IN</div>
+    <div class="user__container">
+      <div *ngIf="isSignInVisible" class="nav-item" (click)="onSignInClicked()">SIGN IN</div>
+      <img *ngIf="isSignOutVisible" class="sign-out__button"  (click)="onSignOutClicked()" [src]="user.photoURL" mdTooltip="Sign Out {{user.displayName}}">
+    </div>
   </div>
 </div>
 <div id="spacer"></div>

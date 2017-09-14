@@ -1,4 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'soci-header',
@@ -7,9 +10,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent {
   logoImage = '/assets/images/special-olympics-logo.svg';
+  isSignInVisible = false;
+  isSignOutVisible = false;
+  user: firebase.User;
   @Output() isHamburgerClicked = new EventEmitter();
 
-  constructor() { }
+  constructor(public authService: AuthService) {
+    this.subscribeToAuthorizedUser();
+  }
 
   onClicked() {
     this.isHamburgerClicked.emit();
@@ -17,5 +25,30 @@ export class HeaderComponent {
 
   scrollToTop() {
     window.scroll({ top: 0, left: 0 });
+  }
+
+  onSignInClicked() {
+    this.authService.login();
+  }
+
+  onSignOutClicked() {
+    this.authService.logout();
+  }
+
+  private subscribeToAuthorizedUser() {
+    this.authService.user.subscribe((user: firebase.User) => {
+      this.user = user;
+      this.toggleSigningStates(user);
+    });
+  }
+
+  private toggleSigningStates(user: firebase.User) {
+    if (user) {
+      this.isSignOutVisible = true;
+      this.isSignInVisible = false;
+    } else {
+      this.isSignOutVisible = false;
+      this.isSignInVisible = true;
+    }
   }
 }

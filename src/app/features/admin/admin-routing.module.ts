@@ -4,11 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { EventPublisherComponent } from './event-publisher/event-publisher.component';
 import { MyEventsComponent } from './my-events/my-events.component';
+import { AuthGuard } from '../../auth.guard';
 
 const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

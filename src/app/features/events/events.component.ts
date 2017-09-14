@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FirebaseListObservable } from 'angularfire2/database';
 
 import { eventTypes, SociEvent } from './data-model';
 import { EventsService } from './events.service';

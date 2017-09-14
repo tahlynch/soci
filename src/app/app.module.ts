@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
@@ -22,12 +23,15 @@ import { HeaderscrolledDirective } from './header/header-scrolled.directive';
 import { SidenavContentComponent } from './sidenav-content/sidenav-content.component';
 import { FeaturesModule } from './features/features.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 const imports = [
   BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     CommonModule,
@@ -51,7 +55,7 @@ firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: declarations,
   imports: imports,
-  providers: [Title],
+  providers: [Title, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
