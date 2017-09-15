@@ -22,7 +22,7 @@
       <div class="nav-item" routerLink="/events" routerLinkActive="active" (click)="scrollToTop()">
         Events
       </div>
-      <div *ngIf="authService.isAnAdmin" class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
+      <div *ngIf="isUserAnAdmin" class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
         Admin
       </div>
     </nav>

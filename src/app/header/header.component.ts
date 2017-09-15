@@ -13,10 +13,14 @@ export class HeaderComponent {
   isSignInVisible = false;
   isSignOutVisible = false;
   user: firebase.User;
+  isUserAnAdmin: boolean;
   @Output() isHamburgerClicked = new EventEmitter();
 
   constructor(public authService: AuthService) {
     this.subscribeToAuthorizedUser();
+    this.authService.isAdmin().subscribe((isAdmin) => {
+      this.isUserAnAdmin = isAdmin;
+    });
   }
 
   onClicked() {
