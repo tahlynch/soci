@@ -1,11 +1,23 @@
+.event__tag--fundraiser {
+  background: #ce93d8;
+}
+.event__tag--sports {
+  background: pink;
+}
+.event__tag--community-leadership {
+  background: #80cbc4;
+}
 :host {
   background: #ffffff;
 }
 .schedule__grid {
-  border-top: 1px solid #dcdcdc;
+  border-top: 1px solid #EDEDED;
+}
+.schedule__grid__placeholder {
+  margin: 20px auto;
 }
 .schedule__grid__section {
-  border-bottom: 1px solid #dcdcdc;
+  border-bottom: 1px solid #EDEDED;
 }
 .schedule__grid__section:last-child {
   border-bottom: none;
@@ -21,11 +33,16 @@
   flex: 1;
 }
 .schedule__row__event {
-  border-bottom: 1px solid #dcdcdc;
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #EDEDED;
   cursor: pointer;
 }
-.schedule__row__event:hover {
+.schedule__row__event__detail {
+  padding: 20px;
+  flex: 1;
+}
+.schedule__row__event__detail:hover {
   background: #fafafa;
 }
 .schedule__row__event:last-child {
@@ -40,14 +57,22 @@
 .schedule__row__event__tag {
   padding: 4px;
 }
-.schedule__row__event__tag--fundraiser {
-  background: #ce93d8;
+.filter__container {
+  display: flex;
+  justify-content: flex-end;
 }
-.schedule__row__event__tag--sports {
-  background: pink;
+.filter__button {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  cursor: pointer;
 }
-.schedule__row__event__tag--community-leadership {
-  background: #80cbc4;
+.filter__button__text {
+  display: none;
+  padding-right: 10px;
+}
+.schedule__grid__no-events {
+  text-align: center;
 }
 @media (min-width: 800px) {
   .schedule__row__date {
@@ -56,9 +81,9 @@
     padding: 30px 30px 30px 0;
   }
   .schedule__row__events {
-    border-left: 1px solid #dcdcdc;
+    border-left: 1px solid #EDEDED;
   }
-  .schedule__row__event {
+  .schedule__row__event__detail {
     padding: 30px 60px;
   }
   .schedule__grid__content {
@@ -67,5 +92,12 @@
     margin: 0 auto;
     padding-left: 20px;
     max-width: 1280px;
+  }
+  .filter__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .filter__button__text {
+    display: block;
   }
 }

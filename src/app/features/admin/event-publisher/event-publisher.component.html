@@ -1,3 +1,12 @@
+<div class="main__container">
+  <div class="main__content">
+    <div class="main__content__container">
+      <div class="main__content__left">
+        <div class="main__content__title">{{ pageTitle }}</div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="event-publisher__container">
   <form class="event-publisher__form" [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="event-publisher__form__item">
@@ -10,16 +19,30 @@
     <div class="event-publisher__form__item">
       <md-input-container class="form__control--default-width">
         <input mdInput [mdDatepicker]="startDatepicker" placeholder="Choose a start date" formControlName="startDate">
-        <button mdSuffix [mdDatepickerToggle]="startDatepicker"></button>
+        <md-datepicker-toggle mdSuffix [for]="startDatepicker"></md-datepicker-toggle>
       </md-input-container>
       <md-datepicker #startDatepicker></md-datepicker>
     </div>
     <div class="event-publisher__form__item">
       <md-input-container class="form__control--default-width">
         <input mdInput [mdDatepicker]="endDatepicker" placeholder="Choose an end date" formControlName="endDate">
-        <button mdSuffix [mdDatepickerToggle]="endDatepicker"></button>
+        <md-datepicker-toggle mdSuffix [for]="endDatepicker"></md-datepicker-toggle>
       </md-input-container>
-      <md-datepicker touchUi="true" #endDatepicker></md-datepicker>
+      <md-datepicker #endDatepicker></md-datepicker>
+    </div>
+    <div class="event-publisher__form__item">
+      <md-select class="form__control--default-width" placeholder="Start time" formControlName="startTime">
+        <md-option *ngFor="let eventTime of eventTimes" [value]="eventTime">
+          {{ eventTime }}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="event-publisher__form__item">
+      <md-select class="form__control--default-width" placeholder="End time" formControlName="endTime">
+        <md-option *ngFor="let eventTime of eventTimes" [value]="eventTime">
+          {{ eventTime }}
+        </md-option>
+      </md-select>
     </div>
     <div class="event-publisher__form__item">
       <md-select class="form__control--default-width" placeholder="Status of event" formControlName="eventStatus">
@@ -49,11 +72,9 @@
       </md-input-container>
     </div>
     <div class="event-publisher__form__buttons">
-      <button class="event-publisher__form__button event-publisher__form__button__cancel" type="reset" (click)="resetForm()" md-button>Cancel</button>
-
-      <button class="event-publisher__form__button event-publisher__form__button__submit" type="submit" md-button>Publish</button>
+      <button class="event-publisher__form__button event-publisher__form__button__cancel" type="reset" (click)="onCancelClicked()"
+        md-button>Cancel</button>
+      <button class="event-publisher__form__button event-publisher__form__button__submit" type="submit" md-button>{{submitButtonText}}</button>
     </div>
   </form>
 </div>
-<!-- <p>eventForm value: {{ eventForm.value | json}}</p>
-<p>Form value: {{ eventForm.status | json }}</p> -->

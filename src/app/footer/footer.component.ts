@@ -20,6 +20,10 @@ export class FooterComponent implements OnInit {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   }
 
+  onFooterLinkClicked() {
+    window.scroll({ top: 0, left: 0 });
+  }
+
   private isScrollBarVisible(): boolean {
     return document.body.clientHeight > window.innerHeight;
   }

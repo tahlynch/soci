@@ -2,6 +2,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  padding-bottom: 20px;
 }
 .event-publisher__container {
   margin-left: 10px;
@@ -12,7 +13,7 @@
   margin-top: 25px;
 }
 .event-publisher__form__item {
-  margin-bottom: 10px;
+  padding-bottom: 25px;
 }
 .form__control--default-width {
   width: 100%;
@@ -36,6 +37,10 @@
   background: #059334;
 }
 @media (min-width: 800px) {
+  :host {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
   .form__control--default-width {
     width: 300px;
   }

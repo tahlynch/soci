@@ -1,5 +1,5 @@
-<div class="soci-logo">
-  <img class="logo" src="/assets/images/soci-logo.svg" alt="SOCI Logo">
+ <div class="soci-logo">
+  <img class="logo" src="/assets/images/coat-of-arms.svg" alt="cayman islands coat of arms">
 </div>
 <div class="footer">
   <div *ngIf="isButtonVisible" class="footer-button" data-scroll aria-label="Back to top" (click)="onFooterButtonClicked()">
@@ -11,25 +11,31 @@
     </a>
     <div class="footer-links">
       <nav class="nav">
-        <div class="nav-item" routerLink="/stories" routerLinkActive="active">
-          Link 1
+        <div class="nav-item" routerLink="/faq" routerLinkActive="active" (click)="onFooterLinkClicked()">
+          FAQ
         </div>
-        <div class="nav-item" routerLink="/whatwedo" routerLinkActive="active">
+        <div class="nav-item" routerLink="/whatwedo" routerLinkActive="active" (click)="onFooterLinkClicked()">
           Link 2
         </div>
-        <div class="nav-item" routerLink="/third" routerLinkActive="active">
+        <div class="nav-item" routerLink="/third" routerLinkActive="active" (click)="onFooterLinkClicked()">
           Link 3
         </div>
-        <div class="nav-item" routerLink="/fourth" routerLinkActive="active">
+        <div class="nav-item" routerLink="/fourth" routerLinkActive="active" (click)="onFooterLinkClicked()">
           Link 4
         </div>
       </nav>
       <div class="right">
         <div class="follow-us">
           <div class="text">FOLLOW US</div>
-          <img class="icon" [src]="youtubeImage" alt="">
-          <img class="icon" [src]="facebookImage" alt="">
-          <img class="icon" [src]="instagramImage" alt="">
+          <a href="https://www.youtube.com/channel/UCGf4e0_-yhTys8cpWycAfUw">
+            <img class="icon" [src]="youtubeImage" alt="">
+          </a>
+          <a href="https://www.facebook.com/groups/119341734749391/">
+            <img class="icon" [src]="facebookImage" alt="" >
+          </a>
+          <a href="https://www.instagram.com/specialolympicscayman/">
+            <img class="icon" [src]="instagramImage" alt="">
+          </a>
         </div>
         <div class="email-us">EMAIL US</div>
       </div>

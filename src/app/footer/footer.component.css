@@ -56,7 +56,9 @@
   cursor: pointer;
 }
 .soci-logo {
-  padding: 50px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 75px;
   border-top: 1px solid #EDEDED;
   background-color: #ffffff;
 }
@@ -86,6 +88,7 @@
 @media (max-width: 800px) {
   .soci-logo {
     padding: 50px 0;
+    justify-content: center;
   }
   .footer {
     padding: 20px 20px;

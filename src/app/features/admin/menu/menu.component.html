@@ -1,4 +1,12 @@
 <div class="menu__container">
+  <button class="menu__new__button" md-button [mdMenuTriggerFor]="newMenu">
+   <div class="menu__new__button__text">NEW</div>
+   <md-icon class="menu__new__button__icon">add_circle</md-icon>
+  </button>
+  <md-menu #newMenu="mdMenu">
+    <button md-menu-item><md-icon class="menu__item__story">description</md-icon>Create Story</button>
+    <button md-menu-item (click)="onNewEventClicked()"><md-icon class="menu__item__event">event</md-icon>Create Event</button>
+  </md-menu>
   <nav class="menu__nav" *ngFor="let menuItem of menuItems">
     <div class="menu__nav__item" [routerLink]="menuItem.link" routerLinkActive="active">
       <div class="menu__nav__item__content">

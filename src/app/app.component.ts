@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isSideNavOpen = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   toggleSideNav() {
     this.isSideNavOpen = !this.isSideNavOpen;

@@ -1,0 +1,6 @@
+<div class="dialog__container" [ngClass]="{'dialog__container--centered' : isDialogCentered}">
+  <div class="dialog__shade" (click)="close.emit()"></div>
+  <div class="dialog__content">
+    <ng-content></ng-content>
+  </div>
+</div>

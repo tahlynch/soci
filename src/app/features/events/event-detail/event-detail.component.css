@@ -1,0 +1,77 @@
+.event__tag--fundraiser {
+  background: #ce93d8;
+}
+.event__tag--sports {
+  background: pink;
+}
+.event__tag--community-leadership {
+  background: #80cbc4;
+}
+.event__close {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1003;
+  padding: 15px;
+  cursor: pointer;
+}
+.event__title__container {
+  display: flex;
+  padding-left: 25px;
+  padding-right: 25px;
+  min-height: 180px;
+  align-items: flex-end;
+}
+.event__title__text {
+  line-height: 35px;
+  padding-bottom: 25px;
+  padding-top: 10px;
+  font-size: 28px;
+  margin-top: 58px;
+}
+.event__detail__container {
+  padding: 10px 25px;
+}
+.event__detail__time {
+  font-size: 18px;
+  line-height: 28px;
+}
+.event__detail__location {
+  font-size: 18px;
+  line-height: 28px;
+}
+.event__fab {
+  height: 56px;
+  width: 56px;
+  top: -23px;
+  right: 5%;
+  color: #808080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.24), 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  position: absolute;
+  -webkit-transition: all 200ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 200ms cubic-bezier(0, 0, 0.2, 1);
+  z-index: 1;
+}
+.event__fab:hover {
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 0 6px 0 rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 800px) {
+  .event__title__container {
+    padding-left: 80px;
+    padding-right: 80px;
+    min-height: 220px;
+  }
+  .event__title__text {
+    font-size: 40px;
+  }
+  .event__detail__container {
+    padding: 60px 80px;
+  }
+}
