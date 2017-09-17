@@ -25,6 +25,7 @@ import { FeaturesModule } from './features/features.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import {LoginModule} from './login/login.module';
 
 const imports = [
   BrowserModule,
@@ -37,6 +38,7 @@ const imports = [
     CommonModule,
     MaterialModule,
     NavigationModule,
+    LoginModule,
     FeaturesModule,
     AppRoutingModule, // this must be second to last
     PageNotFoundModule, // this must be last
