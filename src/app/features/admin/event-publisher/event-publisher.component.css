@@ -36,6 +36,9 @@
 .event-publisher__form__button__submit {
   background: #059334;
 }
+agm-map {
+  height: 300px;
+}
 @media (min-width: 800px) {
   :host {
     padding-left: 200px;
@@ -43,5 +46,8 @@
   }
   .form__control--default-width {
     width: 300px;
+  }
+  agm-map {
+    height: 500px;
   }
 }

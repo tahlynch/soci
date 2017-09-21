@@ -8,10 +8,15 @@ export class SociEvent {
   eventStatus: string;
   title: string;
   description: string;
-  venueName?: string;
-  location?: string;
+  locationPlaceName: string;
+  location?: SociLocation;
   photo?: File;
   photoCaption?: string;
+}
+
+export class SociLocation {
+  latitude: number;
+  longitude: number;
 }
 
 export const eventTypes = ['Sports - Athletics', 'Fundraiser', 'Community - Leadership']; // read these out of database

@@ -30,6 +30,13 @@ export class EventsService {
     this.angularFireDatabase.list('/events').push(stringDateEvent);
   }
 
+  updateEvent(event: SociEvent) {
+    const stringDateEvent = this.getStringDateEvent(event);
+    debugger;
+    // this.angularFireDatabase.object(event.$key)
+    // this.angularFireDatabase.list('/events').push(stringDateEvent);
+  }
+
   deleteEvent(key: string) {
     this.angularFireDatabase.object('/events/' + key).remove();
   }

@@ -28,18 +28,18 @@ import { AuthGuard } from './auth.guard';
 
 const imports = [
   BrowserModule,
-    FormsModule,
-    HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    BrowserAnimationsModule,
-    CommonModule,
-    MaterialModule,
-    NavigationModule,
-    FeaturesModule,
-    AppRoutingModule, // this must be second to last
-    PageNotFoundModule, // this must be last
+  FormsModule,
+  HttpModule,
+  AngularFireModule.initializeApp(firebaseConfig),
+  AngularFireAuthModule,
+  AngularFireDatabaseModule,
+  BrowserAnimationsModule,
+  CommonModule,
+  MaterialModule,
+  NavigationModule,
+  FeaturesModule,
+  AppRoutingModule, // this must be second to last
+  PageNotFoundModule, // this must be last
 ];
 
 const declarations = [

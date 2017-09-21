@@ -9,7 +9,7 @@ import { SociEvent } from '../../events/data-model';
 @Component({
   selector: 'soci-my-events',
   templateUrl: './my-events.component.html',
-  styleUrls: ['./my-events.component.css', '../../events/events.component.css']
+  styleUrls: ['./my-events.component.css', '../../events/events.component.css', '../../../dialog/dialog-decision-styles.less']
 })
 export class MyEventsComponent implements OnInit {
   items: any;
