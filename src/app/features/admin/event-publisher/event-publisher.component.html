@@ -65,7 +65,7 @@
       <md-input-container class="form__control--100-percent-width">
         <input mdInput placeholder="Location" formControlName="locationPlaceName" #search>
       </md-input-container>
-      <agm-map [latitude]="sociLocation.latitude" [longitude]="sociLocation.longitude" [scrollwheel]="true" [zoom]="zoom">
+      <agm-map [latitude]="sociLocation.latitude" [longitude]="sociLocation.longitude" [scrollwheel]="true" [mapTypeControl]="true" [zoom]="zoom">
         <agm-marker [latitude]="sociLocation.latitude" [longitude]="sociLocation.longitude"></agm-marker>
       </agm-map>
     </div>

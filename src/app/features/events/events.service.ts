@@ -32,7 +32,6 @@ export class EventsService {
 
   updateEvent(event: SociEvent) {
     const stringDateEvent = this.getStringDateEvent(event);
-    debugger;
     // this.angularFireDatabase.object(event.$key)
     // this.angularFireDatabase.list('/events').push(stringDateEvent);
   }
