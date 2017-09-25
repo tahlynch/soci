@@ -8,6 +8,7 @@ import { EventsComponent } from './events.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { FilterComponent } from './filter/filter.component';
 import { SharedEventsModule } from './shared-events.module';
+import { FilterStickyDirective } from './filter/filter-sticky.directive';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { SharedEventsModule } from './shared-events.module';
     MaterialModule,
     SharedEventsModule
   ],
-  declarations: [EventsComponent, EventDetailComponent, FilterComponent]
+  declarations: [EventsComponent, EventDetailComponent, FilterComponent, FilterStickyDirective]
 })
 export class EventsModule { }
