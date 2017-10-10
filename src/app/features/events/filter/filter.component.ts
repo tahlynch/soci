@@ -1,3 +1,4 @@
+import { eventTypes } from '../data-model';
 import { Component, SimpleChanges, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
@@ -8,7 +9,7 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
   animations: [
     trigger('slideInOut', [
       state('in', style({
-        height: '0px',
+        height: '0px'
       })),
       state('out', style({
         height: '*',
@@ -21,6 +22,8 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
 export class FilterComponent {
   menuState = 'in';
   icon = 'filter_list';
+  eventTypes = eventTypes;
+
   @ViewChild('filterComponent') container: ElementRef;
   constructor() { }
 

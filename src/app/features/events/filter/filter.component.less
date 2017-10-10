@@ -28,14 +28,31 @@
     margin: 0 auto;
 }
 
+.filter__wrapper__spacer{
+  width: 100%;
+}
+
 .filter__content {
+  display: flex;
     position: absolute;
+    overflow: auto;
     left: 0;
     right: 0;
     height: 250px;
     background: #FAFAFA;
     box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2);
     z-index: 2000;
+}
+
+.filter__content__container{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.filter__section__item{
+  display: flex;
+  align-items: center;
 }
 
 @media(min-width: 800px) {
@@ -45,5 +62,9 @@
     }
     .filter__button__text {
         display: block;
+    }
+    .filter__content__container {
+        max-width: 1280px;
+        margin: 0 auto;
     }
 }

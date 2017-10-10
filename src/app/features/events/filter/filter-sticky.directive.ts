@@ -6,28 +6,27 @@ import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 export class FilterStickyDirective {
   private headerHeight = 0;
+  private headerElement: HTMLElement;
   constructor(private el: ElementRef, private renderer: Renderer2) {
-    this.headerHeight = document.getElementById('header').offsetHeight;
+    this.headerElement = document.getElementById('header');
+    this.headerHeight = this.headerElement.offsetHeight;
   }
 
   @HostListener('window:scroll', [])
   private onWindowScroll() {
-    const fooElement = this.el.nativeElement.querySelector('.filter__wrapper');
+    const filterWrapperElement = this.el.nativeElement.querySelector('.filter__wrapper');
+    const filterWrapperSpacerElement = this.el.nativeElement.querySelector('.filter__wrapper__spacer');
     if (this.el.nativeElement.getBoundingClientRect().top <= this.headerHeight) {
-      this.renderer.addClass(fooElement, 'filter--stuck');
-      fooElement.style.top = this.headerHeight + 'px';
-      fooElement.style.boxShadow = '0 5px 6px -3px rgba(0,0,0,0.2)';
-      document.getElementById('header').style.boxShadow = 'none';
+      this.renderer.addClass(filterWrapperElement, 'filter--stuck');
+      filterWrapperElement.style.top = this.headerHeight + 'px';
+      filterWrapperElement.style.boxShadow = '0 5px 6px -3px rgba(0,0,0,0.2)';
+      this.headerElement.style.boxShadow = 'none';
+      filterWrapperSpacerElement.style.top = this.headerHeight + 'px';
+      filterWrapperSpacerElement.style.height = filterWrapperElement.offsetHeight + 'px';
     } else {
-      this.renderer.removeClass(this.el.nativeElement.querySelector('.filter__wrapper'), 'filter--stuck');
-      fooElement.style.boxShadow = 'none';
+      this.renderer.removeClass(filterWrapperElement, 'filter--stuck');
+      filterWrapperElement.style.boxShadow = 'none';
+      filterWrapperSpacerElement.style.height = '0';
     }
-  }
-
-  private offset(el: Element) {
-    const rect = el.getBoundingClientRect(),
-      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
   }
 }

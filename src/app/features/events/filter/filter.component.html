@@ -8,6 +8,17 @@
         </md-icon>
       </div>
     </div>
-    <div class="filter__content" [@slideInOut]="menuState"></div>
+    <div class="filter__content" [@slideInOut]="menuState">
+      <div class="filter__content__container">
+        <div class="filter__section__header">Type of Event</div>
+        <div class="filter__section__items">
+          <div class="filter__section__item" *ngFor="let type of eventTypes">
+            <md-checkbox></md-checkbox>
+            <div>{{type}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="filter__wrapper__spacer"></div>
 </div>
