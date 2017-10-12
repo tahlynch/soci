@@ -15,8 +15,11 @@ import { EventsHelper } from './events-helper';
 export class EventsComponent implements OnInit {
   items: any;
   eventsHelper = new EventsHelper();
+  eventItems: EventItem[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, public eventsService: EventsService) { }
+  constructor(private router: Router, private route: ActivatedRoute, public eventsService: EventsService) {
+    this.eventItems = this.eventsService.eventItems;
+  }
 
   ngOnInit() {
   }

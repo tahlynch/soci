@@ -72,7 +72,7 @@
     <div class="event-publisher__form__buttons">
       <button class="event-publisher__form__button event-publisher__form__button__cancel" type="reset" (click)="onCancelClicked()"
         md-button>Cancel</button>
-      <button class="event-publisher__form__button event-publisher__form__button__submit" type="submit" md-button>{{submitButtonText}}</button>
+      <button class="event-publisher__form__button event-publisher__form__button__submit" type="button" (click)="onSubmit()" md-button>{{submitButtonText}}</button>
     </div>
   </form>
 </div>

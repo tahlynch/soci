@@ -14,8 +14,9 @@ import { EventsService } from '../../events/events.service';
   styleUrls: ['./event-publisher.component.less', '../../../dialog/dialog-decision-styles.less']
 })
 export class EventPublisherComponent implements OnInit {
+  eventKey: string;
   sociLocation = new SociLocation();
-  zoom: number;
+  zoom = 15;
   @ViewChild('search')
   searchElementRef: ElementRef;
   locationPlaceName = '';
@@ -37,18 +38,19 @@ export class EventPublisherComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    const key = this.getEventKeyFromRoute();
-    if (!key || key.length === 0) {
+    this.eventKey = this.getEventKeyFromRoute();
+    if (!this.eventKey || this.eventKey.length === 0) {
       this.isEditingEvent = false;
       this.pageTitle = 'Event Publisher';
       this.submitButtonText = 'Save';
+      this.initialiseLocation();
       this.initialiseGoogleMaps();
       return;
     }
     this.isEditingEvent = true;
     this.pageTitle = 'Event Editor';
     this.submitButtonText = 'Update';
-    this.loadEvent(key);
+    this.loadEvent(this.eventKey);
     this.initialiseGoogleMaps();
   }
 
@@ -69,7 +71,7 @@ export class EventPublisherComponent implements OnInit {
     if (this.isEditingEvent) {
       this.openDecisionDialog();
     } else {
-      this.eventsService.saveEvent(this.prepareSaveEvent());
+      this.eventsService.saveEvent(this.eventForm, this.sociLocation);
       this.navigateToMyEventsPage();
     }
   }
@@ -89,7 +91,7 @@ export class EventPublisherComponent implements OnInit {
   }
 
   onDialogUpdateClicked() {
-    this.eventsService.updateEvent(this.prepareSaveEvent());
+    this.eventsService.updateEvent(this.eventForm, this.sociLocation, this.eventKey);
     this.closeDecisionDialog();
     this.navigateToMyEventsPage();
   }
@@ -106,57 +108,6 @@ export class EventPublisherComponent implements OnInit {
     this.router.navigate(['admin']);
   }
 
-  private prepareSaveEvent(): SociEvent {
-    const formModel = this.eventForm.value;
-    const saveEvent: SociEvent = {
-      startDate: formModel.startDate as Date,
-      endDate: formModel.endDate as Date,
-      startTime: formModel.startTime as string,
-      endTime: formModel.endTime as string,
-      eventType: formModel.eventType as string,
-      eventStatus: formModel.eventStatus as string,
-      title: formModel.title as string,
-      description: formModel.description as string,
-      locationPlaceName: this.locationPlaceName,
-      location: this.sociLocation
-    };
-    return saveEvent;
-  }
-
-  private createForm() {
-    this.eventForm = this.formBuilder.group({
-      startDate: [null, Validators.required],
-      endDate: [null, Validators.required],
-      startTime: ['', Validators.required],
-      endTime: ['', Validators.required],
-      eventType: ['', Validators.required],
-      eventStatus: ['', Validators.required],
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      locationPlaceName: ['', Validators.required],
-      location: '',
-      photo: File,
-      photoCaption: ''
-    });
-  }
-
-  private createSociEvent(event: SociEvent): SociEvent {
-    const sociEvent: SociEvent = new SociEvent();
-    sociEvent.description = event.description || '';
-    sociEvent.endDate = new Date(event.endDate);
-    sociEvent.endTime = event.endTime || '';
-    sociEvent.eventStatus = event.eventStatus || '';
-    sociEvent.eventType = event.eventType || '';
-    sociEvent.locationPlaceName = event.locationPlaceName || '';
-    sociEvent.location = event.location || new SociLocation();
-    sociEvent.photo = event.photo || null;
-    sociEvent.photoCaption = event.photoCaption || '';
-    sociEvent.startDate = new Date(event.startDate);
-    sociEvent.startTime = event.startTime || '';
-    sociEvent.title = event.title || '';
-    return sociEvent;
-  }
-
   private getEventKeyFromRoute(): string {
     let key: string;
     this.route.params.subscribe((params) => {
@@ -167,12 +118,33 @@ export class EventPublisherComponent implements OnInit {
 
   private loadEvent(key: string) {
     this.eventsService.getEvent(key).subscribe((event: SociEvent) => {
-      this.eventForm.setValue(this.createSociEvent(event));
+      this.setForm(event);
+      this.setLocation(event.location);
     });
   }
 
+  private setForm(event: SociEvent) {
+    const formObject = {
+      startDate: new Date(event.startDate),
+      endDate: new Date(event.endDate),
+      startTime: event.startTime,
+      endTime: event.endTime,
+      eventType: event.eventType,
+      eventStatus: event.eventStatus,
+      title: event.title,
+      description: event.description,
+      locationPlaceName: event.locationPlaceName,
+      photo: null,
+      photoCaption: ''
+    };
+    this.eventForm.setValue(formObject);
+  }
+
+  private setLocation(location: SociLocation) {
+    this.sociLocation = location;
+  }
+
   private initialiseGoogleMaps() {
-    this.initialiseLocation();
     this.mapsAPILoader.load().then(() => {
       const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
       autocomplete.addListener('place_changed', () => {
@@ -197,7 +169,6 @@ export class EventPublisherComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       this.sociLocation.latitude = position.coords.latitude;
       this.sociLocation.longitude = position.coords.longitude;
-      this.zoom = 15;
     });
   }
 
@@ -206,5 +177,38 @@ export class EventPublisherComponent implements OnInit {
       return place.name;
     }
     return place.name + ', ' + place.formatted_address;
+  }
+
+  private createForm() {
+    this.eventForm = this.formBuilder.group({
+      startDate: [null, Validators.required],
+      endDate: [null, Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required],
+      eventType: ['', Validators.required],
+      eventStatus: ['', Validators.required],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      locationPlaceName: ['', Validators.required],
+      photo: File,
+      photoCaption: ''
+    });
+  }
+
+  private createSociEvent(event: SociEvent): SociEvent {
+    const sociEvent: SociEvent = new SociEvent();
+    sociEvent.description = event.description || '';
+    sociEvent.endDate = new Date(event.endDate);
+    sociEvent.endTime = event.endTime || '';
+    sociEvent.eventStatus = event.eventStatus || '';
+    sociEvent.eventType = event.eventType || '';
+    sociEvent.locationPlaceName = event.locationPlaceName || '';
+    sociEvent.location = event.location || new SociLocation();
+    sociEvent.photo = event.photo || null;
+    sociEvent.photoCaption = event.photoCaption || '';
+    sociEvent.startDate = new Date(event.startDate);
+    sociEvent.startTime = event.startTime || '';
+    sociEvent.title = event.title || '';
+    return sociEvent;
   }
 }
