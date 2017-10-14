@@ -2,7 +2,8 @@ import { EventItem } from './event-item';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/rx';
-import { SociEvent } from './data-model';
+import { SociEvent, SociLocation } from './data-model';
+import { FormGroup } from '@angular/forms';
 
 @Injectable()
 export class EventsService {
@@ -12,7 +13,10 @@ export class EventsService {
   constructor(private angularFireDatabase: AngularFireDatabase) {
     this.isLoadingEvents = true;
     this.getAllEvents().subscribe((events) => {
-      this.eventItems = this.createEventItems(events);
+      this.eventItems.length = 0;
+      this.createEventItems(events).forEach((event) => {
+        this.eventItems.push(event);
+      });
       this.isLoadingEvents = false;
     });
   }
@@ -25,13 +29,35 @@ export class EventsService {
     return this.angularFireDatabase.object('/events/' + key);
   }
 
-  saveEvent(event: SociEvent) {
-    const stringDateEvent = this.getStringDateEvent(event);
+  saveEvent(eventForm: FormGroup, location: SociLocation) {
+    const stringDateEvent = this.getStringDateEvent(this.prepareSaveEvent(eventForm, location));
     this.angularFireDatabase.list('/events').push(stringDateEvent);
+  }
+
+  updateEvent(eventForm: FormGroup, location: SociLocation, eventKey: string) {
+    const stringDateEvent = this.getStringDateEvent(this.prepareSaveEvent(eventForm, location));
+    this.angularFireDatabase.object('/events/' + eventKey).$ref.set(stringDateEvent);
   }
 
   deleteEvent(key: string) {
     this.angularFireDatabase.object('/events/' + key).remove();
+  }
+
+  private prepareSaveEvent(eventForm: FormGroup, location: SociLocation): SociEvent {
+    const formModel = eventForm.value;
+    const saveEvent: SociEvent = {
+      startDate: formModel.startDate as Date,
+      endDate: formModel.endDate as Date,
+      startTime: formModel.startTime as string,
+      endTime: formModel.endTime as string,
+      eventType: formModel.eventType as string,
+      eventStatus: formModel.eventStatus as string,
+      title: formModel.title as string,
+      description: formModel.description as string,
+      locationPlaceName: formModel.locationPlaceName as string,
+      location: location
+    };
+    return saveEvent;
   }
 
   private getStringDateEvent(event: SociEvent) {

@@ -11,7 +11,7 @@ import { EventsHelper } from '../events-helper';
   styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent implements OnInit {
-  event: SociEvent = new SociEvent();
+  event: SociEvent;
   eventsHelper = new EventsHelper();
   constructor(private router: Router, private route: ActivatedRoute, private eventsService: EventsService) { }
 

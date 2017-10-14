@@ -62,19 +62,31 @@
       </md-input-container>
     </div>
     <div class="event-publisher__form__item">
-      <md-input-container class="form__control--default-width">
-        <input mdInput placeholder="Venue name" formControlName="venueName">
+      <md-input-container class="form__control--100-percent-width">
+        <input mdInput placeholder="Location" formControlName="locationPlaceName" #search>
       </md-input-container>
-    </div>
-    <div class="event-publisher__form__item">
-      <md-input-container class="form__control--default-width">
-        <input mdInput placeholder="Location" formControlName="location">
-      </md-input-container>
+      <agm-map [latitude]="sociLocation.latitude" [longitude]="sociLocation.longitude" [scrollwheel]="true" [mapTypeControl]="true" [zoom]="zoom">
+        <agm-marker [latitude]="sociLocation.latitude" [longitude]="sociLocation.longitude"></agm-marker>
+      </agm-map>
     </div>
     <div class="event-publisher__form__buttons">
       <button class="event-publisher__form__button event-publisher__form__button__cancel" type="reset" (click)="onCancelClicked()"
         md-button>Cancel</button>
-      <button class="event-publisher__form__button event-publisher__form__button__submit" type="submit" md-button>{{submitButtonText}}</button>
+      <button class="event-publisher__form__button event-publisher__form__button__submit" type="button" (click)="onSubmit()" md-button>{{submitButtonText}}</button>
     </div>
   </form>
 </div>
+<soci-dialog *ngIf="isDecisionDialogOpen" [isDialogCentered]="true">
+  <div class="decision__dialog__container">
+    <div class="decision__dialog__header">
+      <div class="decision__dialog__header__text">Confirm</div>
+    </div>
+    <div class="decision__dialog__content">
+      <div class="decision__dialog__content__message">Are you sure you want to update this event?</div>
+      <div class="decision__dialog__content__buttons">
+        <button class="decision__dialog__content__button" md-button (click)="onDialogCancelClicked()">Cancel</button>
+        <button class="decision__dialog__content__button decision__dialog__content__button__update" md-button (click)="onDialogUpdateClicked()">Continue</button>
+      </div>
+    </div>
+  </div>
+</soci-dialog>

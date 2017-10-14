@@ -1,1 +1,24 @@
-<div class="filter__container" [@slideInOut]="menuState"></div>
+<div sociFilterSticky>
+  <div #filterComponent class="filter__wrapper">
+    <div class="filter__button__container">
+      <div class="filter__button" (click)="onFilterButtonClicked()">
+        <div class="filter__button__text">FILTER</div>
+        <md-icon class="filter__button__icon">
+          <div>{{icon}}</div>
+        </md-icon>
+      </div>
+    </div>
+    <div class="filter__content" [@slideInOut]="menuState">
+      <div class="filter__content__container">
+        <div class="filter__section__header">Type of Event</div>
+        <div class="filter__section__items">
+          <div class="filter__section__item" *ngFor="let type of eventTypes">
+            <md-checkbox></md-checkbox>
+            <div>{{type}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="filter__wrapper__spacer"></div>
+</div>
