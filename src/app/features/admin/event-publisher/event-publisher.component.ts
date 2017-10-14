@@ -6,6 +6,8 @@ import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 
 import { EventsService } from '../../events/events.service';
+import { Ng2ImgToolsService } from 'ng2-img-tools';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -29,11 +31,12 @@ export class EventPublisherComponent implements OnInit {
   pageTitle = '';
   submitButtonText = '';
   isDecisionDialogOpen = false;
+  image: File = null;
   private isEditingEvent = false;
 
   constructor(private eventsService: EventsService, private formBuilder: FormBuilder,
     private route: ActivatedRoute, private router: Router, private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) {
+    private ngZone: NgZone, private ng2ImgToolsService: Ng2ImgToolsService, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
@@ -71,7 +74,7 @@ export class EventPublisherComponent implements OnInit {
     if (this.isEditingEvent) {
       this.openDecisionDialog();
     } else {
-      this.eventsService.saveEvent(this.eventForm, this.sociLocation);
+      this.eventsService.saveEvent(this.eventForm, this.sociLocation, this.image);
       this.navigateToMyEventsPage();
     }
   }
@@ -91,9 +94,22 @@ export class EventPublisherComponent implements OnInit {
   }
 
   onDialogUpdateClicked() {
-    this.eventsService.updateEvent(this.eventForm, this.sociLocation, this.eventKey);
+    this.eventsService.updateEvent(this.eventForm, this.sociLocation, this.eventKey, this.image);
     this.closeDecisionDialog();
     this.navigateToMyEventsPage();
+  }
+
+  onFileUploadChange(fileList: FileList) {
+    this.compressImage(fileList.item(0));
+  }
+
+  private compressImage(file: File) {
+    this.ng2ImgToolsService.compress([file], .1).subscribe(result => {
+      this.image = result;
+    }, error => {
+      console.error('Compression error:', error);
+    }
+    );
   }
 
   private openDecisionDialog() {
@@ -190,7 +206,7 @@ export class EventPublisherComponent implements OnInit {
       eventStatus: ['', Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
-      locationPlaceName: ['', Validators.required],
+      locationPlaceName: '',
       photo: File,
       photoCaption: ''
     });
@@ -205,7 +221,7 @@ export class EventPublisherComponent implements OnInit {
     sociEvent.eventType = event.eventType || '';
     sociEvent.locationPlaceName = event.locationPlaceName || '';
     sociEvent.location = event.location || new SociLocation();
-    sociEvent.photo = event.photo || null;
+    sociEvent.documentUrl = event.documentUrl || '';
     sociEvent.photoCaption = event.photoCaption || '';
     sociEvent.startDate = new Date(event.startDate);
     sociEvent.startTime = event.startTime || '';

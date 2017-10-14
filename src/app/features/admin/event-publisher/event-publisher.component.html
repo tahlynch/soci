@@ -62,6 +62,9 @@
       </md-input-container>
     </div>
     <div class="event-publisher__form__item">
+      <input type="file" name="fileUpload" (change)="onFileUploadChange($event.target.files)">
+    </div>
+    <div class="event-publisher__form__item">
       <md-input-container class="form__control--100-percent-width">
         <input mdInput placeholder="Location" formControlName="locationPlaceName" #search>
       </md-input-container>

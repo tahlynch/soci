@@ -1,9 +1,11 @@
-import { EventItem } from './event-item';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/rx';
-import { SociEvent, SociLocation } from './data-model';
 import { FormGroup } from '@angular/forms';
+import * as firebase from 'firebase';
+
+import { SociEvent, SociLocation } from './data-model';
+import { EventItem } from './event-item';
 
 @Injectable()
 export class EventsService {
@@ -29,14 +31,34 @@ export class EventsService {
     return this.angularFireDatabase.object('/events/' + key);
   }
 
-  saveEvent(eventForm: FormGroup, location: SociLocation) {
-    const stringDateEvent = this.getStringDateEvent(this.prepareSaveEvent(eventForm, location));
-    this.angularFireDatabase.list('/events').push(stringDateEvent);
+  saveEvent(eventForm: FormGroup, location: SociLocation, image: File) {
+    const sociEvent = this.prepareSaveEvent(eventForm, location);
+    if (image) {
+      this.putFileInStorage(image, 'events')
+        .then((uploadTask: firebase.storage.UploadTaskSnapshot) => {
+          sociEvent.documentUrl = uploadTask.downloadURL;
+          const stringDateEvent = this.getStringDateEvent(sociEvent);
+          this.angularFireDatabase.list('/events').push(stringDateEvent);
+        });
+    } else {
+      const stringDateEvent = this.getStringDateEvent(sociEvent);
+      this.angularFireDatabase.list('/events').push(stringDateEvent);
+    }
   }
 
-  updateEvent(eventForm: FormGroup, location: SociLocation, eventKey: string) {
-    const stringDateEvent = this.getStringDateEvent(this.prepareSaveEvent(eventForm, location));
-    this.angularFireDatabase.object('/events/' + eventKey).$ref.set(stringDateEvent);
+  updateEvent(eventForm: FormGroup, location: SociLocation, eventKey: string, image: File) {
+    const sociEvent = this.prepareSaveEvent(eventForm, location);
+    if (image) {
+      this.putFileInStorage(image, 'events')
+        .then((uploadTask: firebase.storage.UploadTaskSnapshot) => {
+          sociEvent.documentUrl = uploadTask.downloadURL;
+          const stringDateEvent = this.getStringDateEvent(sociEvent);
+          this.angularFireDatabase.object('/events/' + eventKey).$ref.set(stringDateEvent);
+        });
+    } else {
+      const stringDateEvent = this.getStringDateEvent(sociEvent);
+      this.angularFireDatabase.object('/events/' + eventKey).$ref.set(stringDateEvent);
+    }
   }
 
   deleteEvent(key: string) {
@@ -92,5 +114,11 @@ export class EventsService {
       return 1;
     }
     return 0;
+  }
+
+  private putFileInStorage(file: File, folderPath: string): firebase.Promise<any> {
+    const storageRef = firebase.storage().ref();
+    const ref = storageRef.child(folderPath + '/' + file.name);
+    return ref.put(file);
   }
 }

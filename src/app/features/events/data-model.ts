@@ -10,7 +10,7 @@ export class SociEvent {
   description: string;
   locationPlaceName: string;
   location?: SociLocation;
-  photo?: File;
+  documentUrl?: string;
   photoCaption?: string;
 }
 

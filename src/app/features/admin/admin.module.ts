@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule, MdAutocompleteModule } from '@angular/material';
+import { Ng2ImgToolsModule } from 'ng2-img-tools';
 
 import { EventPublisherComponent } from './event-publisher/event-publisher.component';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -20,7 +21,8 @@ import { AdminComponent } from './admin.component';
     MdDatepickerModule,
     MdNativeDateModule,
     MdAutocompleteModule,
-    SharedEventsModule
+    SharedEventsModule,
+    Ng2ImgToolsModule
   ],
   declarations: [AdminComponent, EventPublisherComponent, MenuComponent, MyEventsComponent],
   providers: []
