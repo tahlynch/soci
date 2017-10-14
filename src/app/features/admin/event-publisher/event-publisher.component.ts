@@ -106,6 +106,7 @@ export class EventPublisherComponent implements OnInit {
 
   private navigateToMyEventsPage() {
     this.router.navigate(['admin']);
+    window.scroll({ top: 0, left: 0 });
   }
 
   private getEventKeyFromRoute(): string {
@@ -156,7 +157,7 @@ export class EventPublisherComponent implements OnInit {
           this.sociLocation.latitude = place.geometry.location.lat();
           this.sociLocation.longitude = place.geometry.location.lng();
           this.zoom = 16;
-          this.locationPlaceName = this.getLocationPlaceName(place);
+          this.eventForm.value.locationPlaceName = this.getLocationPlaceName(place);
         });
       });
     });
