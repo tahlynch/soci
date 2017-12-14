@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MdGridListModule } from '@angular/material';
-import { MaterialModule } from '@angular/material';
+import { MatGridListModule, MatProgressSpinnerModule, MatIconModule, MatCheckboxModule, MatButtonModule } from '@angular/material';
 
 import { EventsRoutingModule } from './events-routing.module';
 import { EventsComponent } from './events.component';
@@ -13,9 +12,12 @@ import { FilterStickyDirective } from './filter/filter-sticky.directive';
 @NgModule({
   imports: [
     CommonModule,
-    MdGridListModule,
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatButtonModule,
     EventsRoutingModule,
-    MaterialModule,
     SharedEventsModule
   ],
   declarations: [EventsComponent, EventDetailComponent, FilterComponent, FilterStickyDirective]

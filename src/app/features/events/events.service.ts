@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/rx';
 import { FormGroup } from '@angular/forms';
 import * as firebase from 'firebase';
@@ -14,7 +14,9 @@ export class EventsService {
 
   constructor(private angularFireDatabase: AngularFireDatabase) {
     this.isLoadingEvents = true;
-    this.getAllEvents().subscribe((events) => {
+    this.getAllEvents().snapshotChanges().map((actions) => {
+      return actions.map(action => ({ key: action.key, ...action.payload.val() }));
+    }).subscribe(events => {
       this.eventItems.length = 0;
       this.createEventItems(events).forEach((event) => {
         this.eventItems.push(event);
@@ -23,7 +25,7 @@ export class EventsService {
     });
   }
 
-  getAllEvents(): FirebaseListObservable<any[]> {
+  getAllEvents(): AngularFireList<any[]> {
     return this.angularFireDatabase.list('/events');
   }
 
@@ -53,11 +55,11 @@ export class EventsService {
         .then((uploadTask: firebase.storage.UploadTaskSnapshot) => {
           sociEvent.documentUrl = uploadTask.downloadURL;
           const stringDateEvent = this.getStringDateEvent(sociEvent);
-          this.angularFireDatabase.object('/events/' + eventKey).$ref.set(stringDateEvent);
+          this.angularFireDatabase.object('/events/' + eventKey).set(stringDateEvent);
         });
     } else {
       const stringDateEvent = this.getStringDateEvent(sociEvent);
-      this.angularFireDatabase.object('/events/' + eventKey).$ref.set(stringDateEvent);
+      this.angularFireDatabase.object('/events/' + eventKey).set(stringDateEvent);
     }
   }
 
@@ -116,7 +118,7 @@ export class EventsService {
     return 0;
   }
 
-  private putFileInStorage(file: File, folderPath: string): firebase.Promise<any> {
+  private putFileInStorage(file: File, folderPath: string): firebase.storage.UploadTask {
     const storageRef = firebase.storage().ref();
     const ref = storageRef.child(folderPath + '/' + file.name);
     return ref.put(file);

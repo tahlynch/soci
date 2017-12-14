@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
-import { FirebaseListObservable, AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/combineLatest';
 
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
-  private adminAccounts: FirebaseListObservable<any[]>;
+  private adminAccounts: AngularFireList<any[]>;
 
   constructor(public firebaseAuth: AngularFireAuth, private angularFireDatabase: AngularFireDatabase) {
     this.user = firebaseAuth.authState;
@@ -27,22 +27,24 @@ export class AuthService {
   isAdmin(): Observable<boolean> {
     return Observable.combineLatest(
       this.user,
-      this.adminAccounts
+      this.adminAccounts.snapshotChanges().map((actions) => {
+        return actions.map(action => ({ key: action.key, value: action.payload.val() }));
+      })
     ).map(([user, adminAccounts]) => {
       return this.getAdminStatus(user, adminAccounts);
     });
   }
 
-  private getAdminAccounts(): FirebaseListObservable<any[]> {
+  private getAdminAccounts(): AngularFireList<any[]> {
     return this.angularFireDatabase.list('/auth/admin');
   }
 
-  private getAdminStatus(user: firebase.User, adminAccounts: any[]): boolean {
+  private getAdminStatus(user: firebase.User, adminAccounts: any): boolean {
     if (!user) {
       return false;
     }
-    const result = adminAccounts.find(account => account.$key === user.uid);
-    if (!result || result.$value !== true) {
+    const result = adminAccounts.find(account => account.key === user.uid);
+    if (!result || result.value !== true) {
       return false;
     }
     return true;

@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MaterialModule, MdDatepickerModule, MdNativeDateModule, MdAutocompleteModule } from '@angular/material';
+import {
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatAutocompleteModule,
+  MatSelectModule,
+  MatIconModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
+  MatButtonModule,
+  MatInputModule
+} from '@angular/material';
 import { Ng2ImgToolsModule } from 'ng2-img-tools';
 
 import { EventPublisherComponent } from './event-publisher/event-publisher.component';
@@ -17,10 +27,15 @@ import { AdminComponent } from './admin.component';
     FormsModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    MaterialModule,
-    MdDatepickerModule,
-    MdNativeDateModule,
-    MdAutocompleteModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    MatIconModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatInputModule,
     SharedEventsModule,
     Ng2ImgToolsModule
   ],

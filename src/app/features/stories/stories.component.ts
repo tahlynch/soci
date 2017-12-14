@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoryService } from './story.service';
 import { Story } from './story/story';
-import { FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireList } from 'angularfire2/database';
 @Component({
   selector: 'soci-stories',
   templateUrl: './stories.component.html',
@@ -12,7 +12,7 @@ export class StoriesComponent implements OnInit {
   submitted = false;
   fileList: FileList;
   model = new Story();
-  stories: FirebaseListObservable<any>;
+  stories: AngularFireList<any>;
   constructor(private storyService: StoryService, private router: Router) { }
 
   ngOnInit(): void {

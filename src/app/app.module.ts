@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule, MatTooltipModule, MatButtonModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import * as firebase from 'firebase';
 import 'hammerjs';
 
@@ -30,12 +30,14 @@ const imports = [
   BrowserModule,
   FormsModule,
   HttpModule,
+  MatIconModule,
+  MatTooltipModule,
+  MatButtonModule,
   AngularFireModule.initializeApp(firebaseConfig),
   AngularFireAuthModule,
   AngularFireDatabaseModule,
   BrowserAnimationsModule,
   CommonModule,
-  MaterialModule,
   NavigationModule,
   FeaturesModule,
   AppRoutingModule, // this must be second to last

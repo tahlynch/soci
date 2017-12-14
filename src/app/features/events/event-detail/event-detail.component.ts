@@ -32,7 +32,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
 
   private loadEvent() {
     this.eventSubscription = this.route.params.switchMap((params: Params) =>
-      this.eventsService.getEvent(params['key'])).subscribe((event: SociEvent) => {
+      this.eventsService.getEvent(params['key']).valueChanges()).subscribe((event: SociEvent) => {
         this.event = event;
       });
   }

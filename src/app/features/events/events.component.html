@@ -9,7 +9,7 @@
 </div>
 <soci-filter></soci-filter>
 <div class="schedule__grid">
-  <md-spinner class="schedule__grid__placeholder" *ngIf="eventsService.isLoadingEvents"></md-spinner>
+  <mat-spinner class="schedule__grid__placeholder" *ngIf="eventsService.isLoadingEvents"></mat-spinner>
   <div class="schedule__grid__section" *ngFor="let eventItem of eventsService.eventItems">
     <div class="schedule__grid__content">
       <div class="schedule__row__date">{{eventItem.date | dateFormat}}</div>

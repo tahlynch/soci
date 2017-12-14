@@ -88,7 +88,7 @@
   cursor: pointer;
   user-select: none;
 }
-.sideNav-button .md-icon {
+.sideNav-button .mat-icon {
   color: #ED1C24;
 }
 .header__right {

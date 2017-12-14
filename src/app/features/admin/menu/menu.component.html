@@ -1,16 +1,16 @@
 <div class="menu__container">
-  <button class="menu__new__button" md-button [mdMenuTriggerFor]="newMenu">
+  <button class="menu__new__button" mat-button [matMenuTriggerFor]="newMenu">
    <div class="menu__new__button__text">NEW</div>
-   <md-icon class="menu__new__button__icon">add_circle</md-icon>
+   <mat-icon class="menu__new__button__icon">add_circle</mat-icon>
   </button>
-  <md-menu #newMenu="mdMenu">
-    <button md-menu-item><md-icon class="menu__item__story">description</md-icon>Create Story</button>
-    <button md-menu-item (click)="onNewEventClicked()"><md-icon class="menu__item__event">event</md-icon>Create Event</button>
-  </md-menu>
+  <mat-menu #newMenu="matMenu">
+    <button mat-menu-item><mat-icon class="menu__item__story">description</mat-icon>Create Story</button>
+    <button mat-menu-item (click)="onNewEventClicked()"><mat-icon class="menu__item__event">event</mat-icon>Create Event</button>
+  </mat-menu>
   <nav class="menu__nav" *ngFor="let menuItem of menuItems">
     <div class="menu__nav__item" [routerLink]="menuItem.link" routerLinkActive="active">
       <div class="menu__nav__item__content">
-        <md-icon class="menu__nav__item__icon">{{menuItem.icon}}</md-icon>
+        <mat-icon class="menu__nav__item__icon">{{menuItem.icon}}</mat-icon>
         <div class="menu__nav__item__label">{{menuItem.label}}</div>
       </div>
     </div>

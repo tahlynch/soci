@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from '../auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'soci-header',

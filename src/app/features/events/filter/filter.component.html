@@ -3,9 +3,9 @@
     <div class="filter__button__container">
       <div class="filter__button" (click)="onFilterButtonClicked()">
         <div class="filter__button__text">FILTER</div>
-        <md-icon class="filter__button__icon">
+        <mat-icon class="filter__button__icon">
           <div>{{icon}}</div>
-        </md-icon>
+        </mat-icon>
       </div>
     </div>
     <div class="filter__content" [@slideInOut]="menuState">
@@ -13,7 +13,7 @@
         <div class="filter__section__header">Type of Event</div>
         <div class="filter__section__items">
           <div class="filter__section__item" *ngFor="let type of eventTypes">
-            <md-checkbox></md-checkbox>
+            <mat-checkbox></mat-checkbox>
             <div>{{type}}</div>
           </div>
         </div>

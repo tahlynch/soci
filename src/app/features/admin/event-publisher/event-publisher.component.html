@@ -10,72 +10,72 @@
 <div class="event-publisher__container">
   <form class="event-publisher__form" [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="event-publisher__form__item">
-      <md-select class="form__control--default-width" placeholder="Type of event" formControlName="eventType">
-        <md-option *ngFor="let eventType of eventTypes" [value]="eventType">
+      <mat-select class="form__control--default-width" placeholder="Type of event" formControlName="eventType">
+        <mat-option *ngFor="let eventType of eventTypes" [value]="eventType">
           {{ eventType }}
-        </md-option>
-      </md-select>
+        </mat-option>
+      </mat-select>
     </div>
     <div class="event-publisher__form__item">
-      <md-input-container class="form__control--default-width">
-        <input mdInput [mdDatepicker]="startDatepicker" placeholder="Choose a start date" formControlName="startDate">
-        <md-datepicker-toggle mdSuffix [for]="startDatepicker"></md-datepicker-toggle>
-      </md-input-container>
-      <md-datepicker #startDatepicker></md-datepicker>
+      <mat-input-container class="form__control--default-width">
+        <input matInput [matDatepicker]="startDatepicker" placeholder="Choose a start date" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+      </mat-input-container>
+      <mat-datepicker #startDatepicker></mat-datepicker>
     </div>
     <div class="event-publisher__form__item">
-      <md-input-container class="form__control--default-width">
-        <input mdInput [mdDatepicker]="endDatepicker" placeholder="Choose an end date" formControlName="endDate">
-        <md-datepicker-toggle mdSuffix [for]="endDatepicker"></md-datepicker-toggle>
-      </md-input-container>
-      <md-datepicker #endDatepicker></md-datepicker>
+      <mat-input-container class="form__control--default-width">
+        <input matInput [matDatepicker]="endDatepicker" placeholder="Choose an end date" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>
+      </mat-input-container>
+      <mat-datepicker #endDatepicker></mat-datepicker>
     </div>
     <div class="event-publisher__form__item">
-      <md-select class="form__control--default-width" placeholder="Start time" formControlName="startTime">
-        <md-option *ngFor="let eventTime of eventTimes" [value]="eventTime">
+      <mat-select class="form__control--default-width" placeholder="Start time" formControlName="startTime">
+        <mat-option *ngFor="let eventTime of eventTimes" [value]="eventTime">
           {{ eventTime }}
-        </md-option>
-      </md-select>
+        </mat-option>
+      </mat-select>
     </div>
     <div class="event-publisher__form__item">
-      <md-select class="form__control--default-width" placeholder="End time" formControlName="endTime">
-        <md-option *ngFor="let eventTime of eventTimes" [value]="eventTime">
+      <mat-select class="form__control--default-width" placeholder="End time" formControlName="endTime">
+        <mat-option *ngFor="let eventTime of eventTimes" [value]="eventTime">
           {{ eventTime }}
-        </md-option>
-      </md-select>
+        </mat-option>
+      </mat-select>
     </div>
     <div class="event-publisher__form__item">
-      <md-select class="form__control--default-width" placeholder="Status of event" formControlName="eventStatus">
-        <md-option *ngFor="let eventStatus of eventStatuses" [value]="eventStatus">
+      <mat-select class="form__control--default-width" placeholder="Status of event" formControlName="eventStatus">
+        <mat-option *ngFor="let eventStatus of eventStatuses" [value]="eventStatus">
           {{ eventStatus }}
-        </md-option>
-      </md-select>
+        </mat-option>
+      </mat-select>
     </div>
     <div class="event-publisher__form__item">
-      <md-input-container class="form__control--100-percent-width">
-        <input mdInput placeholder="Title" formControlName="title">
-      </md-input-container>
+      <mat-input-container class="form__control--100-percent-width">
+        <input matInput placeholder="Title" formControlName="title">
+      </mat-input-container>
     </div>
     <div class="event-publisher__form__item">
-      <md-input-container class="form__control--100-percent-width">
-        <textarea mdInput placeholder="Description" formControlName="description" rows="3"></textarea>
-      </md-input-container>
+      <mat-input-container class="form__control--100-percent-width">
+        <textarea matInput placeholder="Description" formControlName="description" rows="3"></textarea>
+      </mat-input-container>
     </div>
     <div class="event-publisher__form__item">
       <input type="file" name="fileUpload" (change)="onFileUploadChange($event.target.files)">
     </div>
     <div class="event-publisher__form__item">
-      <md-input-container class="form__control--100-percent-width">
-        <input mdInput placeholder="Location" formControlName="locationPlaceName" #search>
-      </md-input-container>
+      <mat-input-container class="form__control--100-percent-width">
+        <input matInput placeholder="Location" formControlName="locationPlaceName" #search>
+      </mat-input-container>
       <agm-map [latitude]="sociLocation.latitude" [longitude]="sociLocation.longitude" [scrollwheel]="true" [mapTypeControl]="true" [zoom]="zoom">
         <agm-marker [latitude]="sociLocation.latitude" [longitude]="sociLocation.longitude"></agm-marker>
       </agm-map>
     </div>
     <div class="event-publisher__form__buttons">
       <button class="event-publisher__form__button event-publisher__form__button__cancel" type="reset" (click)="onCancelClicked()"
-        md-button>Cancel</button>
-      <button class="event-publisher__form__button event-publisher__form__button__submit" type="button" (click)="onSubmit()" md-button>{{submitButtonText}}</button>
+        mat-button>Cancel</button>
+      <button class="event-publisher__form__button event-publisher__form__button__submit" type="button" (click)="onSubmit()" mat-button>{{submitButtonText}}</button>
     </div>
   </form>
 </div>
@@ -87,8 +87,8 @@
     <div class="decision__dialog__content">
       <div class="decision__dialog__content__message">Are you sure you want to update this event?</div>
       <div class="decision__dialog__content__buttons">
-        <button class="decision__dialog__content__button" md-button (click)="onDialogCancelClicked()">Cancel</button>
-        <button class="decision__dialog__content__button decision__dialog__content__button__update" md-button (click)="onDialogUpdateClicked()">Continue</button>
+        <button class="decision__dialog__content__button" mat-button (click)="onDialogCancelClicked()">Cancel</button>
+        <button class="decision__dialog__content__button decision__dialog__content__button__update" mat-button (click)="onDialogUpdateClicked()">Continue</button>
       </div>
     </div>
   </div>

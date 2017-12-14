@@ -25,6 +25,6 @@ export class EventsComponent implements OnInit {
   }
 
   onEventClicked(event: SociEvent) {
-    this.router.navigate([event.$key], { relativeTo: this.route });
+    this.router.navigate([event.key], { relativeTo: this.route });
   }
 }

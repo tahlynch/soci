@@ -134,7 +134,7 @@ export class EventPublisherComponent implements OnInit {
   }
 
   private loadEvent(key: string) {
-    this.eventsService.getEvent(key).subscribe((event: SociEvent) => {
+    this.eventsService.getEvent(key).valueChanges().subscribe((event: SociEvent) => {
       this.setForm(event);
       this.setLocation(event.location);
     });

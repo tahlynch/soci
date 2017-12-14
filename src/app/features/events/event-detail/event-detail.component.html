@@ -1,7 +1,7 @@
 <soci-dialog *ngIf="event" (close)="onEventCloseClicked()">
   <div class="event__container">
     <div class="event__close" (click)="onEventCloseClicked()">
-      <md-icon class="">arrow_back</md-icon>
+      <mat-icon class="">arrow_back</mat-icon>
     </div>
     <div  class="event__title__container" [ngClass]="eventsHelper.getTagClass(event?.eventType)" [ngStyle]="event.documentUrl?.length > 0 && {'background-image': 'url(' + event.documentUrl + ')'}">
       <div class="event__title__text">{{event.title}}: {{event.eventType}}</div>

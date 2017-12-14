@@ -22,8 +22,8 @@ export class MyEventsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onEventClicked(event: any) {
-    this.router.navigate(['eventpublisher/' + event.$key], { relativeTo: this.route.parent });
+  onEventClicked(event: SociEvent) {
+    this.router.navigate(['eventpublisher/' + event.key], { relativeTo: this.route.parent });
   }
 
   onDeleteClicked(event: SociEvent) {

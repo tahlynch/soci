@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { StoryService } from '../story.service';
 import { Story } from './story';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireObject } from 'angularfire2/database';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -12,7 +12,7 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./story.component.less']
 })
 export class StoryComponent implements OnInit {
-  story: FirebaseObjectObservable<any> = new FirebaseObjectObservable();
+  story: AngularFireObject<any>;
   isGoBackVisible = false;
   constructor(private route: ActivatedRoute, private router: Router, private storyService: StoryService, private location: Location) { }
 

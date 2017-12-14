@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Story } from './story/story';
 
 @Injectable()
@@ -23,7 +23,7 @@ export class StoryService {
     }
   }
 
-  allStories(): FirebaseListObservable<any> {
+  allStories(): AngularFireList<any> {
     return this.angularFireDatabase.list('/stories');
   }
 
@@ -31,7 +31,7 @@ export class StoryService {
     return this.angularFireDatabase.object('/stories/' + key);
   }
 
-  private putFileInStorage(file: File, folderPath: string): firebase.Promise<any> {
+  private putFileInStorage(file: File, folderPath: string): firebase.storage.UploadTask {
     const storageRef = firebase.storage().ref();
     const ref = storageRef.child(folderPath + '/' + file.name);
     return ref.put(file);
