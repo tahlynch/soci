@@ -40,21 +40,12 @@ export class EventPublisherComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createForm();
     this.eventKey = this.getEventKeyFromRoute();
     if (!this.eventKey || this.eventKey.length === 0) {
-      this.isEditingEvent = false;
-      this.pageTitle = 'Event Publisher';
-      this.submitButtonText = 'Save';
-      this.initialiseLocation();
-      this.initialiseGoogleMaps();
+      this.initialiseNewEvent();
       return;
     }
-    this.isEditingEvent = true;
-    this.pageTitle = 'Event Editor';
-    this.submitButtonText = 'Update';
-    this.loadEvent(this.eventKey);
-    this.initialiseGoogleMaps();
+    this.initialiseEditEvent();
   }
 
   resetForm() {
@@ -101,6 +92,24 @@ export class EventPublisherComponent implements OnInit {
 
   onFileUploadChange(fileList: FileList) {
     this.compressImage(fileList.item(0));
+  }
+
+  private initialiseEditEvent() {
+    this.createForm();
+    this.isEditingEvent = true;
+    this.pageTitle = 'Event Editor';
+    this.submitButtonText = 'Update';
+    this.loadEvent(this.eventKey);
+    this.initialiseGoogleMaps();
+  }
+
+  private initialiseNewEvent() {
+    this.createForm();
+    this.isEditingEvent = false;
+    this.pageTitle = 'Event Publisher';
+    this.submitButtonText = 'Save';
+    this.initialiseLocation();
+    this.initialiseGoogleMaps();
   }
 
   private compressImage(file: File) {
@@ -210,22 +219,5 @@ export class EventPublisherComponent implements OnInit {
       photo: File,
       photoCaption: ''
     });
-  }
-
-  private createSociEvent(event: SociEvent): SociEvent {
-    const sociEvent: SociEvent = new SociEvent();
-    sociEvent.description = event.description || '';
-    sociEvent.endDate = new Date(event.endDate);
-    sociEvent.endTime = event.endTime || '';
-    sociEvent.eventStatus = event.eventStatus || '';
-    sociEvent.eventType = event.eventType || '';
-    sociEvent.locationPlaceName = event.locationPlaceName || '';
-    sociEvent.location = event.location || new SociLocation();
-    sociEvent.documentUrl = event.documentUrl || '';
-    sociEvent.photoCaption = event.photoCaption || '';
-    sociEvent.startDate = new Date(event.startDate);
-    sociEvent.startTime = event.startTime || '';
-    sociEvent.title = event.title || '';
-    return sociEvent;
   }
 }

@@ -75,7 +75,7 @@
     <div class="event-publisher__form__buttons">
       <button class="event-publisher__form__button event-publisher__form__button__cancel" type="reset" (click)="onCancelClicked()"
         mat-button>Cancel</button>
-      <button class="event-publisher__form__button event-publisher__form__button__submit" type="button" (click)="onSubmit()" mat-button>{{submitButtonText}}</button>
+      <button class="event-publisher__form__button event-publisher__form__button__submit" type="button" [disabled]="eventForm.invalid" (click)="onSubmit()" mat-button>{{submitButtonText}}</button>
     </div>
   </form>
 </div>
