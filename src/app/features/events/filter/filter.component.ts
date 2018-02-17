@@ -1,8 +1,9 @@
-import { eventTypes, SociEvent } from '../data-model';
-import { Component, SimpleChanges, HostListener, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, SimpleChanges, HostListener, ViewChild, ElementRef, EventEmitter, Output, Input } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { ConformsPredicateObject } from 'lodash';
 import { forEach } from '@angular/router/src/utils/collection';
+
+import { eventTypes, SociEvent } from '../data-model';
 
 @Component({
   selector: 'soci-filter',
@@ -25,7 +26,7 @@ export class FilterComponent {
   menuState = 'in';
   icon = 'filter_list';
   eventTypeToggles = this.getEventTypeToggles();
-
+  @Input() eventItemCount = 0;
   @Output() foo = new EventEmitter<{}>();
   filters: ConformsPredicateObject<SociEvent> = {};
 
@@ -34,7 +35,7 @@ export class FilterComponent {
   }
 
   private getEventTypeToggles() {
-    const eventTypeToggles: {type: string, isActive: boolean}[] = [];
+    const eventTypeToggles: { type: string, isActive: boolean }[] = [];
     eventTypes.forEach((type) => {
       eventTypeToggles.push({ type: type, isActive: true });
     });

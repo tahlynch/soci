@@ -7,7 +7,7 @@
     </div>
   </div>
 </div>
-<soci-filter (foo)="onFoo($event)"></soci-filter>
+<soci-filter (foo)="onFoo($event)" [eventItemCount]="filteredEventItems.length"></soci-filter>
 <div class="schedule__grid">
   <mat-spinner class="schedule__grid__placeholder" *ngIf="isLoadingEvents"></mat-spinner>
   <div class="schedule__grid__section" *ngFor="let eventItem of filteredEventItems | groupByStartDate">

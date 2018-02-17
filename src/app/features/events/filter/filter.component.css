@@ -22,6 +22,7 @@
   background: #ffffff;
   max-width: 1800px;
   margin: 0 auto;
+  z-index: 10;
 }
 .filter__wrapper__spacer {
   width: 100%;
@@ -32,7 +33,6 @@
   overflow: auto;
   left: 0;
   right: 0;
-  height: 250px;
   background: #FAFAFA;
   box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2);
   z-index: 2000;
@@ -41,10 +41,36 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.filter__header {
+  display: flex;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+.filter__header__results {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.87;
+}
+.filter__sections {
+  display: flex;
+  flex-direction: column;
+}
+.filter__section__header {
+  font-size: 18px;
+  padding: 8px 14px;
+  line-height: 1.87;
 }
 .filter__section__item {
   display: flex;
   align-items: center;
+  line-height: 1.5;
+  padding: 4px 14px;
+}
+.filter__section__item__text {
+  margin-left: 10px;
 }
 @media (min-width: 800px) {
   .filter__button__container {
@@ -57,5 +83,9 @@
   .filter__content__container {
     max-width: 1280px;
     margin: 0 auto;
+    overflow: hidden;
+  }
+  .filter__sections {
+    flex-direction: row;
   }
 }
