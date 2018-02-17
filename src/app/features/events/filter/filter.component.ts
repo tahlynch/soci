@@ -27,11 +27,17 @@ export class FilterComponent {
   icon = 'filter_list';
   eventTypeToggles = this.getEventTypeToggles();
   @Input() eventItemCount = 0;
-  @Output() foo = new EventEmitter<{}>();
+  @Output() filtersEvent = new EventEmitter<{}>();
   filters: ConformsPredicateObject<SociEvent> = {};
 
   @ViewChild('filterComponent') container: ElementRef;
   constructor() {
+    this.setFilterDefaults();
+  }
+
+  private setFilterDefaults() {
+    this.filterFromTodaysDate('startDate', false);
+    this.emitFiltersEvent();
   }
 
   private getEventTypeToggles() {
@@ -58,18 +64,18 @@ export class FilterComponent {
       this.removeFilter(property);
     } else {
       this.filters[property] = val => new Date(val) > new Date();
-      this.emitFoo();
+      this.emitFiltersEvent();
     }
   }
 
   filterCheckBoxes(property: string, box: string, isActive: boolean) {
     this.filters[property] = val => this.eventTypeToggles.find((f) => f.type === val).isActive;
-    this.emitFoo();
+    this.emitFiltersEvent();
   }
 
   filterExact(property: string, rule: any) {
     this.filters[property] = val => val === rule;
-    this.emitFoo();
+    this.emitFiltersEvent();
   }
 
   filterBoolean(property: string, rule: boolean) {
@@ -77,14 +83,14 @@ export class FilterComponent {
       this.removeFilter(property);
     } else {
       this.filters[property] = val => val;
-      this.emitFoo();
+      this.emitFiltersEvent();
     }
   }
 
   private removeFilter(property: string) {
     delete this.filters[property];
     this[property] = null;
-    this.emitFoo();
+    this.emitFiltersEvent();
   }
 
   private toggleVisibility() {
@@ -105,7 +111,7 @@ export class FilterComponent {
     this.icon = 'filter_list';
   }
 
-  private emitFoo() {
-    this.foo.emit(this.filters);
+  private emitFiltersEvent() {
+    this.filtersEvent.emit(this.filters);
   }
 }

@@ -59,6 +59,6 @@
     "ts-helpers": "^1.1.2",
     "ts-node": "^4.0.1",
     "tslint": "^5.7.0",
-    "typescript": "2.6"
+    "typescript": "^2.6.2"
   }
 }

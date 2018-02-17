@@ -39,7 +39,7 @@ export class EventsComponent implements OnInit {
     this.router.navigate([event.key], { relativeTo: this.route });
   }
 
-  onFoo(foo: any) {
+  onFiltersEvent(foo: any) {
     this.filters = foo;
     this.applyFilters();
   }

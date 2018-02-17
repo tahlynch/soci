@@ -18,7 +18,11 @@ export class SociLocation {
   longitude: number;
 }
 
-export const eventTypes = ['Sports - Athletics', 'Fundraiser', 'Community - Leadership']; // read these out of database
+export const eventTypes = [
+  'Sports - Athletics',
+  'Fundraiser',
+  'Community - Leadership'
+]; // read these out of database
 
 export const eventStatuses = ['Active', 'Inactive', 'Cancelled', 'Postponed']; // read these out of database
 
