@@ -12,9 +12,15 @@
       <div class="filter__content__container">
         <div class="filter__section__header">Type of Event</div>
         <div class="filter__section__items">
-          <div class="filter__section__item" *ngFor="let type of eventTypes">
-            <mat-checkbox></mat-checkbox>
-            <div>{{type}}</div>
+          <div class="filter__section__item" *ngFor="let eventTypeToggle of eventTypeToggles">
+            <mat-checkbox [(ngModel)]="eventTypeToggle.isActive" (change)="filterCheckBoxes('eventType', eventTypeToggle.type, eventTypeToggle.isActive)"></mat-checkbox>
+            <div>{{eventTypeToggle.type}}</div>
+          </div>
+        </div>
+        <div class="filter__section__header">Show Previous Events</div>
+        <div class="filter__section__items">
+          <div class="filter__section__item">
+            <mat-checkbox [(ngModel)]="checked" (change)="filterFromTodaysDate('startDate', checked)"></mat-checkbox>
           </div>
         </div>
       </div>

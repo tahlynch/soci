@@ -1,17 +1,16 @@
 export class SociEvent {
   key?: any;
-  startDate: Date;
-  endDate: Date;
-  startTime: string;
-  endTime: string;
-  eventType: string;
-  eventStatus: string;
-  title: string;
   description: string;
-  locationPlaceName: string;
-  location?: SociLocation;
   documentUrl?: string;
-  photoCaption?: string;
+  endDate: Date;
+  endTime: string;
+  eventStatus: string;
+  eventType: string;
+  location?: SociLocation;
+  locationPlaceName: string;
+  startDate: Date;
+  startTime: string;
+  title: string;
 }
 
 export class SociLocation {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { EventItem } from '../../events/event-item';
 import { EventsHelper } from '../../events/events-helper';
 import { EventsService } from '../../events/events.service';
 import { SociEvent } from '../../events/data-model';

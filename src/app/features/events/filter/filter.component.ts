@@ -1,6 +1,8 @@
-import { eventTypes } from '../data-model';
-import { Component, SimpleChanges, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { eventTypes, SociEvent } from '../data-model';
+import { Component, SimpleChanges, HostListener, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { ConformsPredicateObject } from 'lodash';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'soci-filter',
@@ -22,10 +24,22 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
 export class FilterComponent {
   menuState = 'in';
   icon = 'filter_list';
-  eventTypes = eventTypes;
+  eventTypeToggles = this.getEventTypeToggles();
+
+  @Output() foo = new EventEmitter<{}>();
+  filters: ConformsPredicateObject<SociEvent> = {};
 
   @ViewChild('filterComponent') container: ElementRef;
-  constructor() { }
+  constructor() {
+  }
+
+  private getEventTypeToggles() {
+    const eventTypeToggles: {type: string, isActive: boolean}[] = [];
+    eventTypes.forEach((type) => {
+      eventTypeToggles.push({ type: type, isActive: true });
+    });
+    return eventTypeToggles;
+  }
 
   onFilterButtonClicked() {
     this.toggleVisibility();
@@ -36,6 +50,40 @@ export class FilterComponent {
     if (!this.container.nativeElement.contains(el.target)) {
       this.closeFilter();
     }
+  }
+
+  filterFromTodaysDate(property: string, rule: boolean) {
+    if (rule) {
+      this.removeFilter(property);
+    } else {
+      this.filters[property] = val => new Date(val) > new Date();
+      this.emitFoo();
+    }
+  }
+
+  filterCheckBoxes(property: string, box: string, isActive: boolean) {
+    this.filters[property] = val => this.eventTypeToggles.find((f) => f.type === val).isActive;
+    this.emitFoo();
+  }
+
+  filterExact(property: string, rule: any) {
+    this.filters[property] = val => val === rule;
+    this.emitFoo();
+  }
+
+  filterBoolean(property: string, rule: boolean) {
+    if (!rule) {
+      this.removeFilter(property);
+    } else {
+      this.filters[property] = val => val;
+      this.emitFoo();
+    }
+  }
+
+  private removeFilter(property: string) {
+    delete this.filters[property];
+    this[property] = null;
+    this.emitFoo();
   }
 
   private toggleVisibility() {
@@ -54,5 +102,9 @@ export class FilterComponent {
   private closeFilter() {
     this.menuState = 'in';
     this.icon = 'filter_list';
+  }
+
+  private emitFoo() {
+    this.foo.emit(this.filters);
   }
 }

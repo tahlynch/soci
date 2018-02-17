@@ -7,10 +7,10 @@
     </div>
   </div>
 </div>
-<soci-filter></soci-filter>
+<soci-filter (foo)="onFoo($event)"></soci-filter>
 <div class="schedule__grid">
-  <mat-spinner class="schedule__grid__placeholder" *ngIf="eventsService.isLoadingEvents"></mat-spinner>
-  <div class="schedule__grid__section" *ngFor="let eventItem of eventsService.eventItems">
+  <mat-spinner class="schedule__grid__placeholder" *ngIf="isLoadingEvents"></mat-spinner>
+  <div class="schedule__grid__section" *ngFor="let eventItem of filteredEventItems | groupByStartDate">
     <div class="schedule__grid__content">
       <div class="schedule__row__date">{{eventItem.date | dateFormat}}</div>
       <div class="schedule__row__events">
@@ -24,6 +24,6 @@
       </div>
     </div>
   </div>
-  <div class="schedule__grid__no-events" *ngIf="eventsService.eventItems.length === 0 && !eventsService.isLoadingEvents">No Events</div>
+  <div class="schedule__grid__no-events" *ngIf="filteredEventItems.length === 0 && !isLoadingEvents">No Events</div>
 </div>
 <router-outlet></router-outlet>

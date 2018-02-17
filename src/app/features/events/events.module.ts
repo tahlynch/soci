@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule, MatProgressSpinnerModule, MatIconModule, MatCheckboxModule, MatButtonModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 import { EventsRoutingModule } from './events-routing.module';
 import { EventsComponent } from './events.component';
@@ -18,7 +19,8 @@ import { FilterStickyDirective } from './filter/filter-sticky.directive';
     MatCheckboxModule,
     MatButtonModule,
     EventsRoutingModule,
-    SharedEventsModule
+    SharedEventsModule,
+    FormsModule
   ],
   declarations: [EventsComponent, EventDetailComponent, FilterComponent, FilterStickyDirective]
 })

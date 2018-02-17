@@ -5,28 +5,21 @@ import { FormGroup } from '@angular/forms';
 import * as firebase from 'firebase';
 
 import { SociEvent, SociLocation } from './data-model';
-import { EventItem } from './event-item';
 
 @Injectable()
 export class EventsService {
-  eventItems: EventItem[] = [];
+  eventItems: SociEvent[] = [];
   isLoadingEvents = false;
-
   constructor(private angularFireDatabase: AngularFireDatabase) {
-    this.isLoadingEvents = true;
-    this.getAllEvents().snapshotChanges().map((actions) => {
-      return actions.map(action => ({ key: action.key, ...action.payload.val() }));
-    }).subscribe(events => {
-      this.eventItems.length = 0;
-      this.createEventItems(events).forEach((event) => {
-        this.eventItems.push(event);
-      });
-      this.isLoadingEvents = false;
-    });
   }
 
-  getAllEvents(): AngularFireList<any[]> {
-    return this.angularFireDatabase.list('/events');
+  getAllEvents(): Observable<any[]> {
+    return this.angularFireDatabase
+      .list('/events')
+      .snapshotChanges()
+      .map((actions) => {
+        return actions.map(action => ({ key: action.key, ...action.payload.val() }));
+      });
   }
 
   getEvent(key: string) {
@@ -89,33 +82,6 @@ export class EventsService {
     stringDateEvent.startDate = event.startDate.toString();
     stringDateEvent.endDate = event.endDate.toString();
     return stringDateEvent;
-  }
-
-  private createEventItems(events): EventItem[] {
-    const eventItems: EventItem[] = [];
-    events.forEach((event: SociEvent) => {
-      const startDate = new Date(event.startDate);
-      let eventItem = eventItems.find(e => e.date.getDay() === startDate.getDay() &&
-        e.date.getMonth() === startDate.getMonth() &&
-        e.date.getFullYear() === startDate.getFullYear());
-      if (!eventItem) {
-        eventItem = new EventItem();
-        eventItem.date = startDate;
-        eventItems.push(eventItem);
-      }
-      eventItem.events.push(event);
-    });
-    return eventItems.sort(this.eventItemSortComparer);
-  }
-
-  private eventItemSortComparer(a: EventItem, b: EventItem) {
-    if (a.date < b.date) {
-      return -1;
-    }
-    if (a.date > b.date) {
-      return 1;
-    }
-    return 0;
   }
 
   private putFileInStorage(file: File, folderPath: string): firebase.storage.UploadTask {
