@@ -22,7 +22,7 @@
       <div class="nav-item" routerLink="/events" routerLinkActive="active" (click)="scrollToTop()">
         Events
       </div>
-      <div *ngIf="isUserAnAdmin" class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
+      <div *ngIf="authService.isAdmin(user)" class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
         Admin
       </div>
     </nav>
@@ -30,8 +30,8 @@
       <div class="donate__button__text">DONATE</div>
     </button>
     <div class="user__container">
-      <div *ngIf="isSignInVisible" class="nav-item" (click)="onSignInClicked()">SIGN IN</div>
-      <img *ngIf="isSignOutVisible" class="sign-out__button"  (click)="onSignOutClicked()" [src]="user.photoURL" matTooltip="Sign Out {{user.displayName}}">
+      <div *ngIf="!user" class="nav-item" (click)="onSignInClicked()">SIGN IN</div>
+      <img *ngIf="user" class="sign-out__button"  (click)="onSignOutClicked()" [src]="firebaseUser.photoURL" matTooltip="Sign Out {{firebaseUser.displayName}}">
     </div>
   </div>
 </div>

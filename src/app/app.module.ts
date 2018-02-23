@@ -23,8 +23,7 @@ import { HeaderscrolledDirective } from './header/header-scrolled.directive';
 import { SidenavContentComponent } from './sidenav-content/sidenav-content.component';
 import { FeaturesModule } from './features/features.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
+import { CoreModule } from './core/core.module';
 
 const imports = [
   BrowserModule,
@@ -40,6 +39,7 @@ const imports = [
   CommonModule,
   NavigationModule,
   FeaturesModule,
+  CoreModule,
   AppRoutingModule, // this must be second to last
   PageNotFoundModule, // this must be last
 ];
@@ -57,7 +57,7 @@ firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: declarations,
   imports: imports,
-  providers: [Title, AuthService, AuthGuard],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
