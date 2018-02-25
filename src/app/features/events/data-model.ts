@@ -22,7 +22,19 @@ export const eventTypes = [
   'Sports - Athletics',
   'Fundraiser',
   'Community - Leadership'
-]; // read these out of database
+];
+
+// export class EventType{
+//   id: number;
+//   name: string;
+//   color: string;
+// }
+
+// export const eventTypes: EventType[] = [
+//   { id: 0, name: 'Sports - Athletics', color: '#ffc0cb' },
+//   { id: 1, name: 'Fundraiser', color: '#ce93d8' },
+//   { id: 2, name: 'Community - Leadership', color: '#80cbc4' }
+// ];
 
 export const eventStatuses = ['Active', 'Inactive', 'Cancelled', 'Postponed']; // read these out of database
 
