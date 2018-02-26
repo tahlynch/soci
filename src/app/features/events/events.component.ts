@@ -14,7 +14,6 @@ import { EventsHelper } from './events-helper';
 })
 
 export class EventsComponent implements OnInit {
-  items: any;
   eventsHelper = new EventsHelper();
   isLoadingEvents = false;
 

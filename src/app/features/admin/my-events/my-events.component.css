@@ -5,3 +5,8 @@
 .my-events__container {
   width: 100%;
 }
+@media (min-width: 800px) {
+  .soci__filter {
+    margin-right: 80px;
+  }
+}

@@ -6,6 +6,7 @@ import { DateFormatPipe } from './date-format.pipe';
 import { EventsService } from './events.service';
 import { DialogModule } from '../../dialog/dialog.module';
 import { GroupByStartDatePipe } from './group-by-start-date.pipe';
+import { FilterModule } from './filter/filter.module';
 
 @NgModule({
   imports: [
@@ -14,9 +15,10 @@ import { GroupByStartDatePipe } from './group-by-start-date.pipe';
       libraries: ['places']
     }),
     CommonModule,
-    DialogModule
+    DialogModule,
+    FilterModule
   ],
-  exports: [DateFormatPipe, DialogModule, AgmCoreModule, GroupByStartDatePipe],
+  exports: [DateFormatPipe, DialogModule, AgmCoreModule, GroupByStartDatePipe, FilterModule],
   declarations: [DateFormatPipe, GroupByStartDatePipe],
   providers: [EventsService]
 })
