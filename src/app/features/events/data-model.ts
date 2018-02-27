@@ -5,7 +5,7 @@ export class SociEvent {
   endDate: Date;
   endTime: string;
   eventStatus: string;
-  eventType: string;
+  eventTypeId: number;
   location?: SociLocation;
   locationPlaceName: string;
   startDate: Date;
@@ -24,17 +24,17 @@ export const eventTypes = [
   'Community - Leadership'
 ];
 
-// export class EventType{
-//   id: number;
-//   name: string;
-//   color: string;
-// }
+export class EventType {
+  id: number;
+  name: string;
+  color: string;
+}
 
-// export const eventTypes: EventType[] = [
-//   { id: 0, name: 'Sports - Athletics', color: '#ffc0cb' },
-//   { id: 1, name: 'Fundraiser', color: '#ce93d8' },
-//   { id: 2, name: 'Community - Leadership', color: '#80cbc4' }
-// ];
+export const fooEventTypes: EventType[] = [
+  { id: 0, name: 'Sports - Athletics', color: '#ffc0cb' },
+  { id: 1, name: 'Fundraiser', color: '#ce93d8' },
+  { id: 2, name: 'Community - Leadership', color: '#80cbc4' }
+];
 
 export const eventStatuses = ['Active', 'Inactive', 'Cancelled', 'Postponed']; // read these out of database
 

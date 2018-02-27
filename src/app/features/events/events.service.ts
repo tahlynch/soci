@@ -67,7 +67,7 @@ export class EventsService {
       endDate: formModel.endDate as Date,
       startTime: formModel.startTime as string,
       endTime: formModel.endTime as string,
-      eventType: formModel.eventType as string,
+      eventTypeId: formModel.eventTypeId as number,
       eventStatus: formModel.eventStatus as string,
       title: formModel.title as string,
       description: formModel.description as string,

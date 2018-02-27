@@ -20,7 +20,7 @@
             <div class="schedule__row__event__detail" (click)="onEventClicked(event)" matTooltip="Edit Event">
               <div class="schedule__row__event__title">{{event.title}}</div>
               <div class="schedule__row__event__subtitle">{{event.startTime}} - {{event.endTime}}</div>
-              <span class="schedule__row__event__tag" [ngClass]="eventsHelper.getTagClass(event.eventType)">{{event.eventType}}</span>
+              <span class="schedule__row__event__tag" [style.backgroundColor]="event.eventType | eventType:'color'">{{event.eventType | eventType:'name'}}</span>
             </div>
             <button mat-button (click)="onDeleteClicked(event)"><mat-icon>delete_forever</mat-icon></button>
           </div>

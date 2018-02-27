@@ -155,7 +155,7 @@ export class EventPublisherComponent implements OnInit {
       endDate: new Date(event.endDate),
       startTime: event.startTime,
       endTime: event.endTime,
-      eventType: event.eventType,
+      eventTypeId: event.eventTypeId,
       eventStatus: event.eventStatus,
       title: event.title,
       description: event.description,

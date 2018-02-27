@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FilterComponent } from './filter.component';
 import { FilterStickyDirective } from './filter-sticky.directive';
 import { MatIconModule, MatCheckboxModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     MatIconModule,
     MatCheckboxModule,
-    FormsModule
+    SharedModule
   ],
   declarations: [FilterComponent, FilterStickyDirective],
   exports: [FilterComponent, FilterStickyDirective]

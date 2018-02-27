@@ -20,6 +20,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { SharedEventsModule } from '../events/shared-events.module';
 import { AdminComponent } from './admin.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { AdminComponent } from './admin.component';
     MatButtonModule,
     MatInputModule,
     SharedEventsModule,
+    SharedModule,
     Ng2ImgToolsModule
   ],
   declarations: [AdminComponent, EventPublisherComponent, MenuComponent, MyEventsComponent],

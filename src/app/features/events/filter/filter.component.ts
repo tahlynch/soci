@@ -1,9 +1,9 @@
-import { Component, SimpleChanges, HostListener, ViewChild, ElementRef, EventEmitter, Output, Input } from '@angular/core';
+import { Component, SimpleChanges, HostListener, ViewChild, ElementRef, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { ConformsPredicateObject } from 'lodash';
 import { forEach } from '@angular/router/src/utils/collection';
 
-import { eventTypes, SociEvent } from '../data-model';
+import { eventTypes, SociEvent, fooEventTypes } from '../data-model';
 
 @Component({
   selector: 'soci-filter',
@@ -22,9 +22,10 @@ import { eventTypes, SociEvent } from '../data-model';
     ]),
   ]
 })
-export class FilterComponent {
+export class FilterComponent implements OnInit {
   menuState = 'in';
   icon = 'filter_list';
+  isPreviousEventsChecked = false;
   eventTypeToggles = this.getEventTypeToggles();
   @Input() eventItemCount = 0;
   @Output() filtersEvent = new EventEmitter<{}>();
@@ -32,20 +33,10 @@ export class FilterComponent {
 
   @ViewChild('filterComponent') container: ElementRef;
   constructor() {
+  }
+
+  ngOnInit() {
     this.setFilterDefaults();
-  }
-
-  private setFilterDefaults() {
-    this.filterFromTodaysDate('startDate', false);
-    this.emitFiltersEvent();
-  }
-
-  private getEventTypeToggles() {
-    const eventTypeToggles: { type: string, isActive: boolean }[] = [];
-    eventTypes.forEach((type) => {
-      eventTypeToggles.push({ type: type, isActive: true });
-    });
-    return eventTypeToggles;
   }
 
   onFilterButtonClicked() {
@@ -68,8 +59,8 @@ export class FilterComponent {
     }
   }
 
-  filterCheckBoxes(property: string, box: string, isActive: boolean) {
-    this.filters[property] = val => this.eventTypeToggles.find((f) => f.type === val).isActive;
+  filterEventTypeCheckBoxes() {
+    this.filters['eventType'] = val => this.eventTypeToggles.find((f) => f.id === val).isActive;
     this.emitFiltersEvent();
   }
 
@@ -113,5 +104,18 @@ export class FilterComponent {
 
   private emitFiltersEvent() {
     this.filtersEvent.emit(this.filters);
+  }
+
+  private setFilterDefaults() {
+    this.filterFromTodaysDate('startDate', false);
+    this.emitFiltersEvent();
+  }
+
+  private getEventTypeToggles() {
+    const eventTypeToggles: { id: number, isActive: boolean }[] = [];
+    fooEventTypes.forEach((type) => {
+      eventTypeToggles.push({ id: type.id, isActive: false });
+    });
+    return eventTypeToggles;
   }
 }

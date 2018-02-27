@@ -53,6 +53,11 @@ export class MyEventsComponent implements OnInit {
     this.closeDeleteDialog();
   }
 
+  onFiltersEvent(foo: any) {
+    this.filters = foo;
+    this.applyFilters();
+  }
+
   protected openDeleteDialog() {
     this.isDeleteDialogOpen = true;
   }

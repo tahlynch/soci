@@ -76,6 +76,8 @@
 }
 .filter__section__item__text {
   margin-left: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 @media (min-width: 800px) {
   .filter__button__container {

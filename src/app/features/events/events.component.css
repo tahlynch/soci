@@ -1,12 +1,3 @@
-.event__tag--fundraiser {
-  background: #ce93d8;
-}
-.event__tag--sports {
-  background: pink;
-}
-.event__tag--community-leadership {
-  background: #80cbc4;
-}
 :host {
   background: #ffffff;
 }
@@ -70,7 +61,7 @@
     border-left: 1px solid #EDEDED;
   }
   .schedule__row__event__detail {
-    padding: 30px 60px;
+    padding: 35px 60px;
   }
   .schedule__grid__content {
     display: flex;

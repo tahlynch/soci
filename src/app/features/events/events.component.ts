@@ -5,7 +5,6 @@ import * as _ from 'lodash';
 
 import { eventTypes, SociEvent, eventTimes } from './data-model';
 import { EventsService } from './events.service';
-import { EventsHelper } from './events-helper';
 
 @Component({
   selector: 'soci-events',
@@ -14,7 +13,6 @@ import { EventsHelper } from './events-helper';
 })
 
 export class EventsComponent implements OnInit {
-  eventsHelper = new EventsHelper();
   isLoadingEvents = false;
 
   eventItems: SociEvent[] = [];
