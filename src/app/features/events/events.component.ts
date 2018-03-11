@@ -14,7 +14,6 @@ import { EventsService } from './events.service';
 
 export class EventsComponent implements OnInit {
   isLoadingEvents = false;
-
   eventItems: SociEvent[] = [];
   filteredEventItems: SociEvent[] = [];
   filters: ConformsPredicateObject<SociEvent> = {};

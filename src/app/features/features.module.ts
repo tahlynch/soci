@@ -7,6 +7,7 @@ import { WhatWeDoModule } from './what-we-do/what-we-do.module';
 import { StoriesModule } from './stories/stories.module';
 import { EventsModule } from './events/events.module';
 import { FrequentlyAskedQuestionsModule } from './frequently-asked-questions/frequently-asked-questions.module';
+import { GetInvolvedModule } from './get-involved/get-involved.module';
 
 @NgModule({
   imports: [
@@ -16,8 +17,8 @@ import { FrequentlyAskedQuestionsModule } from './frequently-asked-questions/fre
     WhatWeDoModule,
     StoriesModule,
     EventsModule,
-    FrequentlyAskedQuestionsModule
-  ],
-  declarations: []
+    FrequentlyAskedQuestionsModule,
+    GetInvolvedModule
+  ]
 })
 export class FeaturesModule { }
