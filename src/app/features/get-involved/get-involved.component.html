@@ -8,18 +8,8 @@
       </div>
     </div>
   </div>
-  <div class="soci-menu--mobile" sociMenuSticky>
-    <div class="get-involved__menu__container">
-      <div class="get-involved__menu__menu-trigger">
-        <div class="get-involved__menu__menu-trigger__text" [matMenuTriggerFor]="menu">Menu</div>
-        <mat-icon class="get-involved__menu__menu-trigger__icon">arrow_drop_down</mat-icon>
-      </div>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>
-    </div>
-    <div class="get-involved__menu__container__spacer"></div>
+  <soci-menu [menuNavItems]="menuNavItems"></soci-menu>
+  <div class="temp-filler">
+    <router-outlet></router-outlet>
   </div>
-  <div class="temp-filler"></div>
 </div>

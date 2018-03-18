@@ -1,0 +1,48 @@
+.get-involved__menu__container{
+    display: flex;
+    height: 70px;
+    background-color: #ffffff;
+}
+
+.menu--stuck {
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 80px;
+}
+
+.nav-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 7px 14px;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid transparent;
+    color: #4A4A4A;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    user-select: none;
+}
+
+.active {
+    border-bottom: 3px solid #ED1C24;
+}
+
+.nav-item:hover {
+    border-bottom: 3px solid #f8a5a9;
+}
+
+.nav-item&.active:hover {
+    border-bottom: 3px solid #ED1C24;
+}

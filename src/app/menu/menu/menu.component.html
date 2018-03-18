@@ -1,0 +1,11 @@
+<div *ngIf="!isMobile" class="menu__container" sociMenuSticky>
+  <div class="get-involved__menu__container">
+    <nav class="nav">
+      <div *ngFor="let navItem of menuNavItems" class="nav-item" [routerLink]="navItem.routerLink" routerLinkActive="active">
+        {{navItem.label}}
+      </div>
+    </nav>
+  </div>
+  <div class="get-involved__menu__container__spacer"></div>
+</div>
+<soci-menu-mobile *ngIf="isMobile" [menuNavItems]="menuNavItems"></soci-menu-mobile>
