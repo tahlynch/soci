@@ -14,8 +14,8 @@ export class MenuStickyDirective {
 
   @HostListener('window:scroll', [])
   private onWindowScroll() {
-    const filterWrapperElement = this.el.nativeElement.querySelector('.get-involved__menu__container');
-    const filterWrapperSpacerElement = this.el.nativeElement.querySelector('.get-involved__menu__container__spacer');
+    const filterWrapperElement = this.el.nativeElement.querySelector('.menu');
+    const filterWrapperSpacerElement = this.el.nativeElement.querySelector('.menu__spacer');
     if (this.el.nativeElement.getBoundingClientRect().top <= this.headerHeight) {
       this.renderer.addClass(filterWrapperElement, 'menu--stuck');
       filterWrapperElement.style.top = this.headerHeight + 'px';

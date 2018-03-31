@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   logoImage = '/assets/images/special-olympics-logo.svg';
   isSignInVisible = false;
   isSignOutVisible = false;
-  user: User;
+  user: User  = {uid: '', displayName: '', email: '', roles: {}};
   firebaseUser: firebase.User;
   isUserAnAdmin: boolean;
   @Output() isHamburgerClicked = new EventEmitter();

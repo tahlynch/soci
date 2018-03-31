@@ -29,12 +29,12 @@
         Admin
       </div>
     </nav>
-    <button mat-button class="donate__button" >
+    <button mat-button class="donate__button" routerLink="/giving" (click)="scrollToTop()">
       <div class="donate__button__text">DONATE</div>
     </button>
     <div class="user__container">
       <div *ngIf="!user" class="nav-item" (click)="onSignInClicked()">SIGN IN</div>
-      <img *ngIf="user" class="sign-out__button"  (click)="onSignOutClicked()" [src]="firebaseUser.photoURL" matTooltip="Sign Out {{firebaseUser.displayName}}">
+      <img *ngIf="user" class="sign-out__button image__fade"  (click)="onSignOutClicked()" [src]="firebaseUser.photoURL" matTooltip="Sign Out {{firebaseUser.displayName}}">
     </div>
   </div>
 </div>
