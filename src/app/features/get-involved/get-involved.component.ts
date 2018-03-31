@@ -15,9 +15,9 @@ export class GetInvolvedComponent implements OnInit {
   }
 
   private setMenuNavItems() {
-    this.menuNavItems.push(new MenuNavItem('Volunteer', 'volunteer'));
-    this.menuNavItems.push(new MenuNavItem('Unified Sports', 'unified-sports'));
-    this.menuNavItems.push(new MenuNavItem('Become An Athlete', 'become-athlete'));
-    this.menuNavItems.push(new MenuNavItem('Become a Coach or Official', 'become-coach'));
+    this.menuNavItems.push(new MenuNavItem('Volunteers', 'volunteer'));
+    this.menuNavItems.push(new MenuNavItem('Families', 'families'));
+    this.menuNavItems.push(new MenuNavItem('Athletes', 'become-athlete'));
+    this.menuNavItems.push(new MenuNavItem('Coaches and Officials', 'coaches'));
   }
 }

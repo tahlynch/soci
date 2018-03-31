@@ -9,6 +9,7 @@ import { EventsModule } from './events/events.module';
 import { FrequentlyAskedQuestionsModule } from './frequently-asked-questions/frequently-asked-questions.module';
 import { GetInvolvedModule } from './get-involved/get-involved.module';
 import { GivingModule } from './giving/giving.module';
+import { LanguageGuidelinesModule } from './language-guidelines/language-guidelines.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { GivingModule } from './giving/giving.module';
     EventsModule,
     FrequentlyAskedQuestionsModule,
     GetInvolvedModule,
-    GivingModule
+    GivingModule,
+    LanguageGuidelinesModule
   ]
 })
 export class FeaturesModule { }

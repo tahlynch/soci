@@ -3,7 +3,7 @@
     <div class="logo-button">
       <div class="logo" routerLink="" (click)="scrollToTop()">
         <div class="logo-icon">
-          <img class="icon" [src]="logoImage">
+          <img class="icon image__fade" [src]="logoImage">
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
     </button>
     <div class="user__container">
       <div *ngIf="!user" class="nav-item" (click)="onSignInClicked()">SIGN IN</div>
-      <img *ngIf="user" class="sign-out__button image__fade"  (click)="onSignOutClicked()" [src]="firebaseUser.photoURL" matTooltip="Sign Out {{firebaseUser.displayName}}">
+      <img *ngIf="user" class="sign-out__button image__fade"  (click)="onSignOutClicked()" [src]="firebaseUser?.photoURL" matTooltip="Sign Out {{firebaseUser?.displayName}}">
     </div>
   </div>
 </div>
