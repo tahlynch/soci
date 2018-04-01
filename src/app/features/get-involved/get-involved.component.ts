@@ -15,9 +15,9 @@ export class GetInvolvedComponent implements OnInit {
   }
 
   private setMenuNavItems() {
-    this.menuNavItems.push(new MenuNavItem('Volunteers', 'volunteer'));
+    this.menuNavItems.push(new MenuNavItem('Coaches', 'coaches'));
+    this.menuNavItems.push(new MenuNavItem('Volunteers', 'volunteers'));
+    this.menuNavItems.push(new MenuNavItem('Athletes', 'athletes'));
     this.menuNavItems.push(new MenuNavItem('Families', 'families'));
-    this.menuNavItems.push(new MenuNavItem('Athletes', 'become-athlete'));
-    this.menuNavItems.push(new MenuNavItem('Coaches and Officials', 'coaches'));
   }
 }

@@ -4,9 +4,11 @@ import { MatMenuModule, MatIconModule } from '@angular/material';
 
 import { GetInvolvedRoutingModule } from './get-involved-routing.module';
 import { GetInvolvedComponent } from './get-involved.component';
-import { VolunteerComponent } from './volunteer/volunteer.component';
-import { AthleteComponent } from './athlete/athlete.component';
 import { MenuModule } from '../../menu/menu.module';
+import { CoachesComponent } from './coaches/coaches.component';
+import { VolunteersComponent } from './volunteers/volunteers.component';
+import { AthletesComponent } from './athletes/athletes.component';
+import { FamiliesComponent } from './families/families.component';
 
 @NgModule({
   imports: [
@@ -14,6 +16,12 @@ import { MenuModule } from '../../menu/menu.module';
     MenuModule,
     GetInvolvedRoutingModule
   ],
-  declarations: [GetInvolvedComponent, VolunteerComponent, AthleteComponent]
+  declarations: [
+    GetInvolvedComponent,
+    CoachesComponent,
+    VolunteersComponent,
+    AthletesComponent,
+    FamiliesComponent
+  ]
 })
 export class GetInvolvedModule { }

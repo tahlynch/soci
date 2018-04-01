@@ -10,6 +10,7 @@ import { FrequentlyAskedQuestionsModule } from './frequently-asked-questions/fre
 import { GetInvolvedModule } from './get-involved/get-involved.module';
 import { GivingModule } from './giving/giving.module';
 import { LanguageGuidelinesModule } from './language-guidelines/language-guidelines.module';
+import { WhoWeAreModule } from './who-we-are/who-we-are.module';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { LanguageGuidelinesModule } from './language-guidelines/language-guideli
     FrequentlyAskedQuestionsModule,
     GetInvolvedModule,
     GivingModule,
-    LanguageGuidelinesModule
+    LanguageGuidelinesModule,
+    WhoWeAreModule
   ]
 })
 export class FeaturesModule { }

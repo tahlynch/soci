@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { SociEvent } from './data-model';
+import { EventItem } from './event-item';
 
 @Pipe({
   name: 'groupByStartDate'
@@ -44,9 +45,4 @@ export class GroupByStartDatePipe implements PipeTransform {
     }
     return 0;
   }
-}
-
-export class EventItem {
-  date: Date;
-  events: SociEvent[] = [];
 }

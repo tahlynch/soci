@@ -7,8 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -58,7 +57,7 @@
     "protractor": "^5.1.2",
     "ts-helpers": "^1.1.2",
     "ts-node": "^4.0.1",
-    "tslint": "^5.7.0",
+    "tslint": "^5.9.1",
     "typescript": "^2.6.2"
   }
 }
