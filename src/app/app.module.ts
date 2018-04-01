@@ -24,6 +24,7 @@ import { SidenavContentComponent } from './sidenav-content/sidenav-content.compo
 import { FeaturesModule } from './features/features.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { CoreModule } from './core/core.module';
+import { SocialComponent } from './social/social.component';
 
 const imports = [
   BrowserModule,
@@ -50,7 +51,8 @@ const declarations = [
   FooterComponent,
   TransformDirective,
   HeaderscrolledDirective,
-  SidenavContentComponent
+  SidenavContentComponent,
+  SocialComponent
 ];
 
 firebase.initializeApp(firebaseConfig);
