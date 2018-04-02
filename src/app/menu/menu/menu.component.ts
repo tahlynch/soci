@@ -1,4 +1,4 @@
-import { Component, Input, HostListener, OnInit } from '@angular/core';
+import { Component, Input, HostListener, OnInit, ElementRef } from '@angular/core';
 
 import { MenuNavItem } from '../menu-nav-item';
 
@@ -11,6 +11,9 @@ export class MenuComponent implements OnInit {
   @Input() menuNavItems: MenuNavItem[] = [];
   isMobile = false;
 
+  constructor(private elementRef: ElementRef) {
+  }
+
   ngOnInit(): void {
     this.setIsMobile();
   }
@@ -18,6 +21,14 @@ export class MenuComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.setIsMobile();
+  }
+
+  scrollToTop() {
+    window.scroll({ top: this.nativeElement().previousElementSibling.clientHeight, left: 0 });
+  }
+
+  private nativeElement() {
+    return this.elementRef.nativeElement as HTMLElement;
   }
 
   private setIsMobile() {

@@ -1,7 +1,7 @@
 <div *ngIf="!isMobile" class="menu__container" sociMenuSticky>
   <div class="menu">
     <nav class="nav">
-      <div *ngFor="let navItem of menuNavItems" class="nav-item" [routerLink]="navItem.routerLink" routerLinkActive="active">
+      <div *ngFor="let navItem of menuNavItems" class="nav-item" [routerLink]="navItem.routerLink" routerLinkActive="active" (click)="scrollToTop()">
         {{navItem.label}}
       </div>
     </nav>
