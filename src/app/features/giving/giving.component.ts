@@ -17,7 +17,7 @@ export class GivingComponent implements OnInit {
 
   private setMenuNavItems() {
     this.menuNavItems.push(new MenuNavItem('Donations', 'donations'));
-    this.menuNavItems.push(new MenuNavItem('Supporters', 'supporters'));
+    this.menuNavItems.push(new MenuNavItem('Corporate Sponsors', 'corporatesponsors'));
     this.menuNavItems.push(new MenuNavItem('Fundraisers', 'fundraisers'));
   }
 

@@ -3,6 +3,7 @@
   align-items: center;
   height: 50px;
   background-color: #ED1C24;
+  z-index: 10;
 }
 .menu__trigger {
   display: flex;

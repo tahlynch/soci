@@ -18,9 +18,9 @@
   background: #0b50a0;
   color: #ffffff;
 }
-.tarp__green {
+.tarp--green {
   background: #059334;
-  color: #000000;
+  color: #ffffff;
 }
 @media (min-width: 800px) {
   .tarp__container {
