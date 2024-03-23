@@ -3,18 +3,18 @@
     <div class="logo-button">
       <div class="logo" routerLink="" (click)="scrollToTop()">
         <div class="logo-icon">
-          <img class="icon" [src]="logoImage">
+          <img class="icon image__fade" [src]="logoImage">
         </div>
       </div>
     </div>
     <div class="sideNav-button" (click)="onClicked()">
-      <md-icon class="md-icon">menu</md-icon>
+      <mat-icon class="mat-icon">menu</mat-icon>
     </div>
   </div>
   <div class="header__right">
     <nav class="nav">
-      <div class="nav-item" routerLink="/stories" routerLinkActive="active" (click)="scrollToTop()">
-        Stories
+      <div class="nav-item" routerLink="/whoweare" routerLinkActive="active" (click)="scrollToTop()">
+        Who We Are
       </div>
       <div class="nav-item" routerLink="/whatwedo" routerLinkActive="active" (click)="scrollToTop()">
         What We Do
@@ -22,16 +22,19 @@
       <div class="nav-item" routerLink="/events" routerLinkActive="active" (click)="scrollToTop()">
         Events
       </div>
-      <div *ngIf="isUserAnAdmin" class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
+      <div class="nav-item" routerLink="/get-involved" routerLinkActive="active" (click)="scrollToTop()">
+        Get Involved
+      </div>
+      <div *ngIf="authService.isAdmin(user)" class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="scrollToTop()">
         Admin
       </div>
     </nav>
-    <button class="donate__button" md-button>
+    <button mat-button class="donate__button" routerLink="/giving" (click)="scrollToTop()">
       <div class="donate__button__text">DONATE</div>
     </button>
     <div class="user__container">
-      <div *ngIf="isSignInVisible" class="nav-item" (click)="onSignInClicked()">SIGN IN</div>
-      <img *ngIf="isSignOutVisible" class="sign-out__button"  (click)="onSignOutClicked()" [src]="user.photoURL" mdTooltip="Sign Out {{user.displayName}}">
+      <div *ngIf="!user" class="nav-item" (click)="onSignInClicked()">SIGN IN</div>
+      <img *ngIf="user" class="sign-out__button image__fade"  (click)="onSignOutClicked()" [src]="firebaseUser?.photoURL" matTooltip="Sign Out {{firebaseUser?.displayName}}">
     </div>
   </div>
 </div>

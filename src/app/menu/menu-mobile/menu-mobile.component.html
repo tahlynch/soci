@@ -1,0 +1,12 @@
+<div class="soci-menu--mobile" sociMenuSticky>
+  <div class="menu">
+    <div class="menu__trigger">
+      <div class="menu__trigger__text" [matMenuTriggerFor]="menu">Menu</div>
+      <mat-icon class="menu__trigger__icon">arrow_drop_down</mat-icon>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button *ngFor="let navItem of menuNavItems" mat-menu-item (click)="navigate(navItem.routerLink)">{{navItem.label}}</button>
+    </mat-menu>
+  </div>
+  <div class="menu__spacer"></div>
+</div>

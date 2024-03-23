@@ -1,19 +1,18 @@
 <soci-dialog *ngIf="event" (close)="onEventCloseClicked()">
   <div class="event__container">
     <div class="event__close" (click)="onEventCloseClicked()">
-      <md-icon class="">arrow_back</md-icon>
+      <mat-icon class="">arrow_back</mat-icon>
     </div>
-    <div class="event__title__container" [ngClass]="eventsHelper.getTagClass(event?.eventType)">
-      <div class="event__title__text">{{event.title}}: {{event.eventType}}</div>
+    <div  class="event__title__container" [style.backgroundColor]="event.eventType | eventType:'color'" [ngStyle]="event.documentUrl?.length > 0 && {'background-image': 'url(' + event.documentUrl + ')'}">
+      <div class="event__title__text">{{event.title}}: {{event.eventType | eventType:'name'}}</div>
     </div>
     <div class="event__detail__container">
       <div class="event__detail__time">{{event.startDate | dateFormat}},  {{event.startTime}} - {{event.endTime}}</div>
-      <div class="event__detail__location">{{event.locationPlaceName}}</div>
+      <div *ngIf="event.locationPlaceName.length > 0" class="event__detail__location">{{event.locationPlaceName}}</div>
       <p class="event__detail__description">{{event.description}}</p>
-      <agm-map [latitude]="event?.location?.latitude" [longitude]="event?.location?.longitude" [scrollwheel]="true" [mapTypeControl]="true" [zoom]="15">
+      <agm-map *ngIf="event.location" [latitude]="event?.location?.latitude" [longitude]="event?.location?.longitude" [scrollwheel]="true" [mapTypeControl]="true" [zoom]="15">
         <agm-marker [latitude]="event?.location?.latitude" [longitude]="event?.location?.longitude"></agm-marker>
       </agm-map>
     </div>
-    <!-- <div class="event__fab"></div> -->
   </div>
 </soci-dialog>

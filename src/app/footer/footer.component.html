@@ -1,9 +1,6 @@
- <div class="soci-logo">
-  <img class="logo" src="/assets/images/coat-of-arms.svg" alt="cayman islands coat of arms">
-</div>
 <div class="footer">
   <div *ngIf="isButtonVisible" class="footer-button" data-scroll aria-label="Back to top" (click)="onFooterButtonClicked()">
-    <md-icon class="md-icon">keyboard_arrow_up</md-icon>
+    <mat-icon class="mat-icon">keyboard_arrow_up</mat-icon>
   </div>
   <div class="footer-content">
     <a href="http://www.specialolympics.org/">
@@ -14,6 +11,9 @@
         <div class="nav-item" routerLink="/faq" routerLinkActive="active" (click)="onFooterLinkClicked()">
           FAQ
         </div>
+        <div class="nav-item" routerLink="/languageguidelines" routerLinkActive="active" (click)="onFooterLinkClicked()">
+          Language Guidelines
+        </div>
       </nav>
       <div class="right">
         <div class="follow-us">
@@ -22,7 +22,7 @@
             <img class="icon" [src]="youtubeImage" alt="">
           </a>
           <a href="https://www.facebook.com/groups/119341734749391/">
-            <img class="icon" [src]="facebookImage" alt="" >
+            <img class="icon" [src]="facebookImage" alt="">
           </a>
           <a href="https://www.instagram.com/specialolympicscayman/">
             <img class="icon" [src]="instagramImage" alt="">

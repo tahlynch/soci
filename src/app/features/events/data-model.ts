@@ -1,17 +1,16 @@
 export class SociEvent {
-  $key?: any;
-  startDate: Date;
-  endDate: Date;
-  startTime: string;
-  endTime: string;
-  eventType: string;
-  eventStatus: string;
-  title: string;
+  key?: any;
   description: string;
-  locationPlaceName: string;
+  documentUrl?: string;
+  endDate: Date;
+  endTime: string;
+  eventStatus: string;
+  eventTypeId: number;
   location?: SociLocation;
-  photo?: File;
-  photoCaption?: string;
+  locationPlaceName: string;
+  startDate: Date;
+  startTime: string;
+  title: string;
 }
 
 export class SociLocation {
@@ -19,7 +18,23 @@ export class SociLocation {
   longitude: number;
 }
 
-export const eventTypes = ['Sports - Athletics', 'Fundraiser', 'Community - Leadership']; // read these out of database
+export const eventTypes = [
+  'Sports - Athletics',
+  'Fundraiser',
+  'Community - Leadership'
+];
+
+export class EventType {
+  id: number;
+  name: string;
+  color: string;
+}
+
+export const fooEventTypes: EventType[] = [
+  { id: 0, name: 'Sports - Athletics', color: '#ffc0cb' },
+  { id: 1, name: 'Fundraiser', color: '#ce93d8' },
+  { id: 2, name: 'Community - Leadership', color: '#80cbc4' }
+];
 
 export const eventStatuses = ['Active', 'Inactive', 'Cancelled', 'Postponed']; // read these out of database
 

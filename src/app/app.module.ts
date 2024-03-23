@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule, MatTooltipModule, MatButtonModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import * as firebase from 'firebase';
 import 'hammerjs';
 
@@ -23,21 +23,24 @@ import { HeaderscrolledDirective } from './header/header-scrolled.directive';
 import { SidenavContentComponent } from './sidenav-content/sidenav-content.component';
 import { FeaturesModule } from './features/features.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
+import { CoreModule } from './core/core.module';
+import { SocialComponent } from './social/social.component';
 
 const imports = [
   BrowserModule,
   FormsModule,
   HttpModule,
+  MatIconModule,
+  MatTooltipModule,
+  MatButtonModule,
   AngularFireModule.initializeApp(firebaseConfig),
   AngularFireAuthModule,
   AngularFireDatabaseModule,
   BrowserAnimationsModule,
   CommonModule,
-  MaterialModule,
   NavigationModule,
   FeaturesModule,
+  CoreModule,
   AppRoutingModule, // this must be second to last
   PageNotFoundModule, // this must be last
 ];
@@ -48,14 +51,15 @@ const declarations = [
   FooterComponent,
   TransformDirective,
   HeaderscrolledDirective,
-  SidenavContentComponent
+  SidenavContentComponent,
+  SocialComponent
 ];
 
 firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: declarations,
   imports: imports,
-  providers: [Title, AuthService, AuthGuard],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

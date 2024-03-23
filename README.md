@@ -1,1 +1,1 @@
-# Special Olympics Cayman Islands
+# Special Olympics Cayman Islands.

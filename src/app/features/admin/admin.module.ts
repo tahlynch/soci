@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MaterialModule, MdDatepickerModule, MdNativeDateModule, MdAutocompleteModule } from '@angular/material';
+import {
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatAutocompleteModule,
+  MatSelectModule,
+  MatIconModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
+  MatButtonModule,
+  MatInputModule
+} from '@angular/material';
+import { Ng2ImgToolsModule } from 'ng2-img-tools';
 
 import { EventPublisherComponent } from './event-publisher/event-publisher.component';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -9,6 +20,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { SharedEventsModule } from '../events/shared-events.module';
 import { AdminComponent } from './admin.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,11 +28,18 @@ import { AdminComponent } from './admin.component';
     FormsModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    MaterialModule,
-    MdDatepickerModule,
-    MdNativeDateModule,
-    MdAutocompleteModule,
-    SharedEventsModule
+    MatDatepickerModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    MatIconModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatInputModule,
+    SharedEventsModule,
+    SharedModule,
+    Ng2ImgToolsModule
   ],
   declarations: [AdminComponent, EventPublisherComponent, MenuComponent, MyEventsComponent],
   providers: []

@@ -11,8 +11,12 @@ export class DateFormatPipe implements PipeTransform {
     if (!date || date === undefined || date.toDateString() === 'Invalid Date') {
       return '';
     }
+
+    const dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat'];
+
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
       'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-    return monthNames[date.getMonth()] + ' ' + date.getDate();
+
+    return monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
   }
 }

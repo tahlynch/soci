@@ -6,6 +6,8 @@ import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 
 import { EventsService } from '../../events/events.service';
+import { Ng2ImgToolsService } from 'ng2-img-tools';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -29,29 +31,21 @@ export class EventPublisherComponent implements OnInit {
   pageTitle = '';
   submitButtonText = '';
   isDecisionDialogOpen = false;
+  image: File = null;
   private isEditingEvent = false;
 
   constructor(private eventsService: EventsService, private formBuilder: FormBuilder,
     private route: ActivatedRoute, private router: Router, private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) {
+    private ngZone: NgZone, private ng2ImgToolsService: Ng2ImgToolsService, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
-    this.createForm();
     this.eventKey = this.getEventKeyFromRoute();
     if (!this.eventKey || this.eventKey.length === 0) {
-      this.isEditingEvent = false;
-      this.pageTitle = 'Event Publisher';
-      this.submitButtonText = 'Save';
-      this.initialiseLocation();
-      this.initialiseGoogleMaps();
+      this.initialiseNewEvent();
       return;
     }
-    this.isEditingEvent = true;
-    this.pageTitle = 'Event Editor';
-    this.submitButtonText = 'Update';
-    this.loadEvent(this.eventKey);
-    this.initialiseGoogleMaps();
+    this.initialiseEditEvent();
   }
 
   resetForm() {
@@ -71,7 +65,7 @@ export class EventPublisherComponent implements OnInit {
     if (this.isEditingEvent) {
       this.openDecisionDialog();
     } else {
-      this.eventsService.saveEvent(this.eventForm, this.sociLocation);
+      this.eventsService.saveEvent(this.eventForm, this.sociLocation, this.image);
       this.navigateToMyEventsPage();
     }
   }
@@ -91,9 +85,40 @@ export class EventPublisherComponent implements OnInit {
   }
 
   onDialogUpdateClicked() {
-    this.eventsService.updateEvent(this.eventForm, this.sociLocation, this.eventKey);
+    this.eventsService.updateEvent(this.eventForm, this.sociLocation, this.eventKey, this.image);
     this.closeDecisionDialog();
     this.navigateToMyEventsPage();
+  }
+
+  onFileUploadChange(fileList: FileList) {
+    this.compressImage(fileList.item(0));
+  }
+
+  private initialiseEditEvent() {
+    this.createForm();
+    this.isEditingEvent = true;
+    this.pageTitle = 'Event Editor';
+    this.submitButtonText = 'Update';
+    this.loadEvent(this.eventKey);
+    this.initialiseGoogleMaps();
+  }
+
+  private initialiseNewEvent() {
+    this.createForm();
+    this.isEditingEvent = false;
+    this.pageTitle = 'Event Publisher';
+    this.submitButtonText = 'Save';
+    this.initialiseLocation();
+    this.initialiseGoogleMaps();
+  }
+
+  private compressImage(file: File) {
+    this.ng2ImgToolsService.compress([file], .1).subscribe(result => {
+      this.image = result;
+    }, error => {
+      console.error('Compression error:', error);
+    }
+    );
   }
 
   private openDecisionDialog() {
@@ -118,7 +143,7 @@ export class EventPublisherComponent implements OnInit {
   }
 
   private loadEvent(key: string) {
-    this.eventsService.getEvent(key).subscribe((event: SociEvent) => {
+    this.eventsService.getEvent(key).valueChanges().subscribe((event: SociEvent) => {
       this.setForm(event);
       this.setLocation(event.location);
     });
@@ -130,7 +155,7 @@ export class EventPublisherComponent implements OnInit {
       endDate: new Date(event.endDate),
       startTime: event.startTime,
       endTime: event.endTime,
-      eventType: event.eventType,
+      eventTypeId: event.eventTypeId,
       eventStatus: event.eventStatus,
       title: event.title,
       description: event.description,
@@ -190,26 +215,9 @@ export class EventPublisherComponent implements OnInit {
       eventStatus: ['', Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
-      locationPlaceName: ['', Validators.required],
+      locationPlaceName: '',
       photo: File,
       photoCaption: ''
     });
-  }
-
-  private createSociEvent(event: SociEvent): SociEvent {
-    const sociEvent: SociEvent = new SociEvent();
-    sociEvent.description = event.description || '';
-    sociEvent.endDate = new Date(event.endDate);
-    sociEvent.endTime = event.endTime || '';
-    sociEvent.eventStatus = event.eventStatus || '';
-    sociEvent.eventType = event.eventType || '';
-    sociEvent.locationPlaceName = event.locationPlaceName || '';
-    sociEvent.location = event.location || new SociLocation();
-    sociEvent.photo = event.photo || null;
-    sociEvent.photoCaption = event.photoCaption || '';
-    sociEvent.startDate = new Date(event.startDate);
-    sociEvent.startTime = event.startTime || '';
-    sociEvent.title = event.title || '';
-    return sociEvent;
   }
 }

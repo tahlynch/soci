@@ -1,6 +1,9 @@
-import { eventTypes } from '../data-model';
-import { Component, SimpleChanges, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, SimpleChanges, HostListener, ViewChild, ElementRef, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { ConformsPredicateObject } from 'lodash';
+import { forEach } from '@angular/router/src/utils/collection';
+
+import { eventTypes, SociEvent, fooEventTypes } from '../data-model';
 
 @Component({
   selector: 'soci-filter',
@@ -19,13 +22,22 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
     ]),
   ]
 })
-export class FilterComponent {
+export class FilterComponent implements OnInit {
   menuState = 'in';
   icon = 'filter_list';
-  eventTypes = eventTypes;
+  isPreviousEventsChecked = false;
+  eventTypeToggles = this.getEventTypeToggles();
+  @Input() eventItemCount = 0;
+  @Output() filtersEvent = new EventEmitter<{}>();
+  filters: ConformsPredicateObject<SociEvent> = {};
 
   @ViewChild('filterComponent') container: ElementRef;
-  constructor() { }
+  constructor() {
+  }
+
+  ngOnInit() {
+    this.setFilterDefaults();
+  }
 
   onFilterButtonClicked() {
     this.toggleVisibility();
@@ -36,6 +48,40 @@ export class FilterComponent {
     if (!this.container.nativeElement.contains(el.target)) {
       this.closeFilter();
     }
+  }
+
+  filterFromTodaysDate(property: string, rule: boolean) {
+    if (rule) {
+      this.removeFilter(property);
+    } else {
+      this.filters[property] = val => new Date(val) > new Date();
+      this.emitFiltersEvent();
+    }
+  }
+
+  filterEventTypeCheckBoxes() {
+    this.filters['eventType'] = val => this.eventTypeToggles.find((f) => f.id === val).isActive;
+    this.emitFiltersEvent();
+  }
+
+  filterExact(property: string, rule: any) {
+    this.filters[property] = val => val === rule;
+    this.emitFiltersEvent();
+  }
+
+  filterBoolean(property: string, rule: boolean) {
+    if (!rule) {
+      this.removeFilter(property);
+    } else {
+      this.filters[property] = val => val;
+      this.emitFiltersEvent();
+    }
+  }
+
+  private removeFilter(property: string) {
+    delete this.filters[property];
+    this[property] = null;
+    this.emitFiltersEvent();
   }
 
   private toggleVisibility() {
@@ -54,5 +100,22 @@ export class FilterComponent {
   private closeFilter() {
     this.menuState = 'in';
     this.icon = 'filter_list';
+  }
+
+  private emitFiltersEvent() {
+    this.filtersEvent.emit(this.filters);
+  }
+
+  private setFilterDefaults() {
+    this.filterFromTodaysDate('startDate', false);
+    this.emitFiltersEvent();
+  }
+
+  private getEventTypeToggles() {
+    const eventTypeToggles: { id: number, isActive: boolean }[] = [];
+    fooEventTypes.forEach((type) => {
+      eventTypeToggles.push({ id: type.id, isActive: false });
+    });
+    return eventTypeToggles;
   }
 }

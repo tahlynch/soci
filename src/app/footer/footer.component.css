@@ -55,16 +55,6 @@
 .special-olympics-logo {
   cursor: pointer;
 }
-.soci-logo {
-  display: flex;
-  justify-content: flex-start;
-  padding: 75px;
-  border-top: 1px solid #EDEDED;
-  background-color: #ffffff;
-}
-.soci-logo .logo {
-  width: 310px;
-}
 .follow-us {
   display: flex;
   margin-right: 40px;
@@ -86,10 +76,6 @@
   font-weight: 600;
 }
 @media (max-width: 800px) {
-  .soci-logo {
-    padding: 50px 0;
-    justify-content: center;
-  }
   .footer {
     padding: 20px 20px;
   }
